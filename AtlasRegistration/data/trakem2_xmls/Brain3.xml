@@ -1,0 +1,5260 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE trakem2_anything [
+	<!ELEMENT trakem2 (project,t2_layer_set,t2_display)>
+	<!ELEMENT project (anything)>
+	<!ATTLIST project id NMTOKEN #REQUIRED>
+	<!ATTLIST project unuid NMTOKEN #REQUIRED>
+	<!ATTLIST project title NMTOKEN #REQUIRED>
+	<!ATTLIST project preprocessor NMTOKEN #REQUIRED>
+	<!ATTLIST project mipmaps_folder NMTOKEN #REQUIRED>
+	<!ATTLIST project storage_folder NMTOKEN #REQUIRED>
+	<!ATTLIST project n_mipmap_threads NMTOKEN #REQUIRED>
+	<!ATTLIST project n_undo_steps NMTOKEN #REQUIRED>
+	<!ATTLIST project look_ahead_cache NMTOKEN #REQUIRED>
+	<!ELEMENT anything (ball, area_list)>
+	<!ATTLIST anything id NMTOKEN #REQUIRED>
+	<!ATTLIST anything expanded NMTOKEN #REQUIRED>
+	<!ELEMENT ball EMPTY>
+	<!ATTLIST ball id NMTOKEN #REQUIRED>
+	<!ATTLIST ball oid NMTOKEN #REQUIRED>
+	<!ATTLIST ball expanded NMTOKEN #REQUIRED>
+	<!ELEMENT area_list EMPTY>
+	<!ATTLIST area_list id NMTOKEN #REQUIRED>
+	<!ATTLIST area_list oid NMTOKEN #REQUIRED>
+	<!ATTLIST area_list expanded NMTOKEN #REQUIRED>
+	<!ELEMENT t2_layer (t2_patch,t2_label,t2_layer_set,t2_profile)>
+	<!ATTLIST t2_layer oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer thickness NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer z NMTOKEN #REQUIRED>
+	<!ELEMENT t2_layer_set (t2_prop,t2_linked_prop,t2_annot,t2_layer,t2_pipe,t2_ball,t2_area_list,t2_calibration,t2_stack,t2_treeline)>
+	<!ATTLIST t2_layer_set oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set layer_width NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set layer_height NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set rot_x NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set rot_y NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set rot_z NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set snapshots_quality NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set color_cues NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set area_color_cues NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set avoid_color_cue_colors NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set n_layers_color_cue NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set paint_arrows NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set paint_tags NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set paint_edge_confidence_boxes NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set preload_ahead NMTOKEN #REQUIRED>
+	<!ELEMENT t2_calibration EMPTY>
+	<!ATTLIST t2_calibration pixelWidth NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration pixelHeight NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration pixelDepth NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration xOrigin NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration yOrigin NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration zOrigin NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration info NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration valueUnit NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration timeUnit NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration unit NMTOKEN #REQUIRED>
+	<!ELEMENT t2_ball (t2_prop,t2_linked_prop,t2_annot,t2_ball_ob)>
+	<!ATTLIST t2_ball oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball fill NMTOKEN #REQUIRED>
+	<!ELEMENT t2_ball_ob EMPTY>
+	<!ATTLIST t2_ball_ob x NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball_ob y NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball_ob r NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball_ob layer_id NMTOKEN #REQUIRED>
+	<!ELEMENT t2_label (t2_prop,t2_linked_prop,t2_annot)>
+	<!ATTLIST t2_label oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label composite NMTOKEN #REQUIRED>
+	<!ELEMENT t2_filter EMPTY>
+	<!ELEMENT t2_patch (t2_prop,t2_linked_prop,t2_annot,ict_transform,ict_transform_list,t2_filter)>
+	<!ATTLIST t2_patch oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch file_path NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch original_path NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch type NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch false_color NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch ct NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch o_width NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch o_height NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch min NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch max NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch o_width NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch o_height NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch pps NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch mres NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch ct_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch alpha_mask_id NMTOKEN #REQUIRED>
+	<!ELEMENT t2_pipe (t2_prop,t2_linked_prop,t2_annot)>
+	<!ATTLIST t2_pipe oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe d NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe p_width NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe layer_ids NMTOKEN #REQUIRED>
+	<!ELEMENT t2_polyline (t2_prop,t2_linked_prop,t2_annot)>
+	<!ATTLIST t2_polyline oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline d NMTOKEN #REQUIRED>
+	<!ELEMENT t2_profile (t2_prop,t2_linked_prop,t2_annot)>
+	<!ATTLIST t2_profile oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile d NMTOKEN #REQUIRED>
+	<!ELEMENT t2_area_list (t2_prop,t2_linked_prop,t2_annot,t2_area)>
+	<!ATTLIST t2_area_list oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list fill_paint NMTOKEN #REQUIRED>
+	<!ELEMENT t2_area (t2_path)>
+	<!ATTLIST t2_area layer_id NMTOKEN #REQUIRED>
+	<!ELEMENT t2_path EMPTY>
+	<!ATTLIST t2_path d NMTOKEN #REQUIRED>
+	<!ELEMENT t2_dissector (t2_prop,t2_linked_prop,t2_annot,t2_dd_item)>
+	<!ATTLIST t2_dissector oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector composite NMTOKEN #REQUIRED>
+	<!ELEMENT t2_dd_item EMPTY>
+	<!ATTLIST t2_dd_item radius NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dd_item tag NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dd_item points NMTOKEN #REQUIRED>
+	<!ELEMENT t2_stack (t2_prop,t2_linked_prop,t2_annot,(iict_transform|iict_transform_list)?)>
+	<!ATTLIST t2_stack oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack file_path CDATA #REQUIRED>
+	<!ATTLIST t2_stack depth CDATA #REQUIRED>
+	<!ELEMENT t2_tag EMPTY>
+	<!ATTLIST t2_tag name NMTOKEN #REQUIRED>
+	<!ATTLIST t2_tag key NMTOKEN #REQUIRED>
+	<!ELEMENT t2_node (t2_area*,t2_tag*)>
+	<!ATTLIST t2_node x NMTOKEN #REQUIRED>
+	<!ATTLIST t2_node y NMTOKEN #REQUIRED>
+	<!ATTLIST t2_node lid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_node c NMTOKEN #REQUIRED>
+	<!ATTLIST t2_node r NMTOKEN #IMPLIED>
+	<!ELEMENT t2_treeline (t2_node*,t2_prop,t2_linked_prop,t2_annot)>
+	<!ATTLIST t2_treeline oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline composite NMTOKEN #REQUIRED>
+	<!ELEMENT t2_areatree (t2_node*,t2_prop,t2_linked_prop,t2_annot)>
+	<!ATTLIST t2_areatree oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree composite NMTOKEN #REQUIRED>
+	<!ELEMENT t2_connector (t2_node*,t2_prop,t2_linked_prop,t2_annot)>
+	<!ATTLIST t2_connector oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector composite NMTOKEN #REQUIRED>
+	<!ELEMENT t2_prop EMPTY>
+	<!ATTLIST t2_prop key NMTOKEN #REQUIRED>
+	<!ATTLIST t2_prop value NMTOKEN #REQUIRED>
+	<!ELEMENT t2_linked_prop EMPTY>
+	<!ATTLIST t2_linked_prop target_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_linked_prop key NMTOKEN #REQUIRED>
+	<!ATTLIST t2_linked_prop value NMTOKEN #REQUIRED>
+	<!ELEMENT t2_annot EMPTY>
+	<!ELEMENT t2_display EMPTY>
+	<!ATTLIST t2_display id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display x NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display y NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display magnification NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display srcrect_x NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display srcrect_y NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display srcrect_width NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display srcrect_height NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display scroll_step NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display c_alphas NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display c_alphas_state NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_enabled NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_min_max_enabled NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_min NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_max NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_invert NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_clahe_enabled NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_clahe_block_size NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_clahe_histogram_bins NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_clahe_max_slope NMTOKEN #REQUIRED>
+	<!ELEMENT ict_transform EMPTY>
+	<!ATTLIST ict_transform class CDATA #REQUIRED>
+	<!ATTLIST ict_transform data CDATA #REQUIRED>
+	<!ELEMENT iict_transform EMPTY>
+	<!ATTLIST iict_transform class CDATA #REQUIRED>
+	<!ATTLIST iict_transform data CDATA #REQUIRED>
+	<!ELEMENT ict_transform_list (ict_transform|iict_transform)*>
+	<!ELEMENT iict_transform_list (iict_transform*)>
+] >
+
+<trakem2>
+	<project 
+		id="0"
+		title="Brain3.xml"
+		unuid="1683306234620.637324688.1062956851"
+		mipmaps_folder="10x__RGB__x8/trakem2.1683306234620.637324688.1062956851/trakem2.mipmaps/"
+		storage_folder="10x__RGB__x8/"
+		mipmaps_format="4"
+		n_mipmap_threads="16"
+		image_resizing_mode="Area downsampling"
+		n_undo_steps="32"
+		first_mipmap_level_saved="0"
+		look_ahead_cache="0"
+	>
+		<anything id="507" title="thal" expanded="true">
+			<ball id="514" oid="513"/>
+			<area_list id="516" oid="515"/>
+		</anything>
+	</project>
+	<t2_layer_set
+		oid="3"
+		width="20.0"
+		height="20.0"
+		transform="matrix(1.0,0.0,0.0,1.0,0.0,0.0)"
+		title="Top Level"
+		links=""
+		layer_width="3185.0"
+		layer_height="2426.0"
+		rot_x="0.0"
+		rot_y="0.0"
+		rot_z="0.0"
+		snapshots_quality="true"
+		snapshots_mode="Full"
+		color_cues="false"
+		area_color_cues="true"
+		avoid_color_cue_colors="false"
+		n_layers_color_cue="0"
+		paint_arrows="true"
+		paint_tags="true"
+		paint_edge_confidence_boxes="true"
+		prepaint="false"
+		preload_ahead="0"
+	>
+		<t2_calibration
+			pixelWidth="3.632005230087531"
+			pixelHeight="3.632005230087531"
+			pixelDepth="40.0"
+			xOrigin="0.0"
+			yOrigin="0.0"
+			zOrigin="0.0"
+			info="null"
+			valueUnit="Gray Value"
+			timeUnit="sec"
+			unit="µm"
+		/>
+		<t2_ball
+			oid="513"
+			width="1634.0"
+			height="884.0"
+			transform="matrix(1.0,0.0,0.0,1.0,749.0,692.0)"
+			title="fiducials"
+			links=""
+			layer_set_id="3"
+			style="fill:none;stroke-opacity:1.0;stroke:#ffff00;stroke-width:1.0px;"
+		>
+			<t2_ball_ob x="832.0" y="472.0" layer_id="102" r="20.0" />
+			<t2_ball_ob x="810.0" y="864.0" layer_id="195" r="20.0" />
+			<t2_ball_ob x="806.0" y="298.0" layer_id="240" r="20.0" />
+			<t2_ball_ob x="838.0" y="20.0" layer_id="357" r="20.0" />
+			<t2_ball_ob x="826.0" y="340.0" layer_id="339" r="20.0" />
+			<t2_ball_ob x="98.0" y="590.0" layer_id="396" r="20.0" />
+			<t2_ball_ob x="1558.0" y="594.0" layer_id="393" r="20.0" />
+			<t2_ball_ob x="20.0" y="782.0" layer_id="336" r="20.0" />
+			<t2_ball_ob x="1614.0" y="792.0" layer_id="330" r="20.0" />
+		</t2_ball>
+		<t2_area_list
+			oid="515"
+			width="856.0"
+			height="1030.0"
+			transform="matrix(1.0,0.0,0.0,1.0,1547.0,762.0)"
+			locked="true"
+			title="rect"
+			links="200,203,206,209,212,215,218,221,224,227,230,233,236,239,242,245,248,251,254,257,260,263,266,269,272,275,278,281,284,287,290,293,296,299,302,305,308,311,314,317,320,323,326,329,332,335,338,341,344,347,350,353,356,359,362,365,368,371,374,377,380,383,386,389,392,395,398,401,404,407,410,413,416,419,422,425,428,431,434,437,440,443,446,449,452,455"
+			layer_set_id="3"
+			fill_paint="true"
+			style="stroke:none;fill-opacity:0.4;fill:#ffff00;"
+		>
+			<t2_area layer_id="384">
+				<t2_path d="M 42 8 L 42 1002 L 778 1002 L 778 8 z" />
+			</t2_area>
+			<t2_area layer_id="258">
+				<t2_path d="M 6 230 L 6 912 L 672 912 L 672 230 z" />
+			</t2_area>
+			<t2_area layer_id="387">
+				<t2_path d="M 44 12 L 44 994 L 754 994 L 754 12 z" />
+			</t2_area>
+			<t2_area layer_id="261">
+				<t2_path d="M 10 224 L 10 902 L 694 902 L 694 224 z" />
+			</t2_area>
+			<t2_area layer_id="390">
+				<t2_path d="M 46 12 L 46 1000 L 754 1000 L 754 12 z" />
+			</t2_area>
+			<t2_area layer_id="264">
+				<t2_path d="M 14 214 L 14 908 L 706 908 L 706 214 z" />
+			</t2_area>
+			<t2_area layer_id="393">
+				<t2_path d="M 36 32 L 36 994 L 750 994 L 750 32 z" />
+			</t2_area>
+			<t2_area layer_id="267">
+				<t2_path d="M 20 204 L 20 912 L 718 912 L 718 204 z" />
+			</t2_area>
+			<t2_area layer_id="396">
+				<t2_path d="M 40 48 L 40 994 L 754 994 L 754 48 z" />
+			</t2_area>
+			<t2_area layer_id="270">
+				<t2_path d="M 22 202 L 22 914 L 720 914 L 720 202 z" />
+			</t2_area>
+			<t2_area layer_id="399">
+				<t2_path d="M 38 42 L 38 996 L 754 996 L 754 42 z" />
+			</t2_area>
+			<t2_area layer_id="273">
+				<t2_path d="M 26 196 L 26 912 L 744 912 L 744 196 z" />
+			</t2_area>
+			<t2_area layer_id="402">
+				<t2_path d="M 34 60 L 34 1000 L 750 1000 L 750 60 z" />
+			</t2_area>
+			<t2_area layer_id="276">
+				<t2_path d="M 22 198 L 22 924 L 756 924 L 756 198 z" />
+			</t2_area>
+			<t2_area layer_id="405">
+				<t2_path d="M 38 64 L 38 998 L 754 998 L 754 64 z" />
+			</t2_area>
+			<t2_area layer_id="279">
+				<t2_path d="M 22 186 L 22 932 L 772 932 L 772 186 z" />
+			</t2_area>
+			<t2_area layer_id="408">
+				<t2_path d="M 34 50 L 34 994 L 762 994 L 762 50 z" />
+			</t2_area>
+			<t2_area layer_id="282">
+				<t2_path d="M 28 198 L 28 940 L 772 940 L 772 198 z" />
+			</t2_area>
+			<t2_area layer_id="411">
+				<t2_path d="M 34 60 L 34 1006 L 758 1006 L 758 60 z" />
+			</t2_area>
+			<t2_area layer_id="285">
+				<t2_path d="M 24 192 L 24 944 L 766 944 L 766 192 z" />
+			</t2_area>
+			<t2_area layer_id="414">
+				<t2_path d="M 40 52 L 40 1000 L 766 1000 L 766 52 z" />
+			</t2_area>
+			<t2_area layer_id="288">
+				<t2_path d="M 20 196 L 20 960 L 804 960 L 804 196 z" />
+			</t2_area>
+			<t2_area layer_id="417">
+				<t2_path d="M 44 56 L 44 996 L 760 996 L 760 56 z" />
+			</t2_area>
+			<t2_area layer_id="291">
+				<t2_path d="M 20 194 L 20 944 L 804 944 L 804 194 z" />
+			</t2_area>
+			<t2_area layer_id="420">
+				<t2_path d="M 36 36 L 36 988 L 768 988 L 768 36 z" />
+			</t2_area>
+			<t2_area layer_id="294">
+				<t2_path d="M 22 176 L 22 938 L 798 938 L 798 176 z" />
+			</t2_area>
+			<t2_area layer_id="423">
+				<t2_path d="M 32 34 L 32 986 L 762 986 L 762 34 z" />
+			</t2_area>
+			<t2_area layer_id="297">
+				<t2_path d="M 20 180 L 20 956 L 800 956 L 800 180 z" />
+			</t2_area>
+			<t2_area layer_id="426">
+				<t2_path d="M 40 24 L 40 992 L 770 992 L 770 24 z" />
+			</t2_area>
+			<t2_area layer_id="300">
+				<t2_path d="M 18 180 L 18 958 L 798 958 L 798 180 z" />
+			</t2_area>
+			<t2_area layer_id="429">
+				<t2_path d="M 46 18 L 46 982 L 776 982 L 776 18 z" />
+			</t2_area>
+			<t2_area layer_id="303">
+				<t2_path d="M 16 178 L 16 954 L 810 954 L 810 178 z" />
+			</t2_area>
+			<t2_area layer_id="432">
+				<t2_path d="M 46 52 L 46 994 L 772 994 L 772 52 z" />
+			</t2_area>
+			<t2_area layer_id="306">
+				<t2_path d="M 22 178 L 22 958 L 808 958 L 808 178 z" />
+			</t2_area>
+			<t2_area layer_id="435">
+				<t2_path d="M 46 30 L 46 1002 L 784 1002 L 784 30 z" />
+			</t2_area>
+			<t2_area layer_id="309">
+				<t2_path d="M 18 174 L 18 968 L 802 968 L 802 174 z" />
+			</t2_area>
+			<t2_area layer_id="438">
+				<t2_path d="M 42 14 L 42 1006 L 786 1006 L 786 14 z" />
+			</t2_area>
+			<t2_area layer_id="312">
+				<t2_path d="M 24 172 L 24 970 L 798 970 L 798 172 z" />
+			</t2_area>
+			<t2_area layer_id="441">
+				<t2_path d="M 48 0 L 48 1014 L 736 1014 L 736 0 z" />
+			</t2_area>
+			<t2_area layer_id="315">
+				<t2_path d="M 22 170 L 22 964 L 800 964 L 800 170 z" />
+			</t2_area>
+			<t2_area layer_id="444">
+				<t2_path d="M 48 2 L 48 1004 L 760 1004 L 760 2 z" />
+			</t2_area>
+			<t2_area layer_id="318">
+				<t2_path d="M 22 168 L 22 986 L 804 986 L 804 168 z" />
+			</t2_area>
+			<t2_area layer_id="447">
+				<t2_path d="M 48 12 L 48 1000 L 692 1000 L 692 12 z" />
+			</t2_area>
+			<t2_area layer_id="321">
+				<t2_path d="M 22 172 L 22 964 L 806 964 L 806 172 z" />
+			</t2_area>
+			<t2_area layer_id="450">
+				<t2_path d="M 40 16 L 40 996 L 692 996 L 692 16 z" />
+			</t2_area>
+			<t2_area layer_id="324">
+				<t2_path d="M 22 188 L 22 992 L 802 992 L 802 188 z" />
+			</t2_area>
+			<t2_area layer_id="453">
+				<t2_path d="M 36 20 L 36 996 L 680 996 L 680 20 z" />
+			</t2_area>
+			<t2_area layer_id="198">
+				<t2_path d="M 2 580 L 2 706 L 204 706 L 204 580 z" />
+			</t2_area>
+			<t2_area layer_id="327">
+				<t2_path d="M 22 192 L 22 1006 L 800 1006 L 800 192 z" />
+			</t2_area>
+			<t2_area layer_id="201">
+				<t2_path d="M 2 558 L 2 752 L 218 752 L 218 558 z" />
+			</t2_area>
+			<t2_area layer_id="330">
+				<t2_path d="M 18 206 L 18 1006 L 808 1006 L 808 206 z" />
+			</t2_area>
+			<t2_area layer_id="204">
+				<t2_path d="M 0 520 L 0 798 L 326 798 L 326 520 z" />
+			</t2_area>
+			<t2_area layer_id="333">
+				<t2_path d="M 20 192 L 20 1012 L 818 1012 L 818 192 z" />
+			</t2_area>
+			<t2_area layer_id="207">
+				<t2_path d="M 12 470 L 12 796 L 356 796 L 356 470 z" />
+			</t2_area>
+			<t2_area layer_id="336">
+				<t2_path d="M 26 176 L 26 1030 L 832 1030 L 832 176 z" />
+			</t2_area>
+			<t2_area layer_id="210">
+				<t2_path d="M 2 468 L 2 838 L 368 838 L 368 468 z" />
+			</t2_area>
+			<t2_area layer_id="339">
+				<t2_path d="M 26 170 L 26 1012 L 842 1012 L 842 170 z" />
+			</t2_area>
+			<t2_area layer_id="213">
+				<t2_path d="M 8 442 L 8 832 L 420 832 L 420 442 z" />
+			</t2_area>
+			<t2_area layer_id="342">
+				<t2_path d="M 28 156 L 28 1008 L 850 1008 L 850 156 z" />
+			</t2_area>
+			<t2_area layer_id="216">
+				<t2_path d="M 4 426 L 4 846 L 436 846 L 436 426 z" />
+			</t2_area>
+			<t2_area layer_id="345">
+				<t2_path d="M 34 146 L 34 1012 L 854 1012 L 854 146 z" />
+			</t2_area>
+			<t2_area layer_id="219">
+				<t2_path d="M 12 388 L 12 828 L 472 828 L 472 388 z" />
+			</t2_area>
+			<t2_area layer_id="348">
+				<t2_path d="M 38 128 L 38 1008 L 856 1008 L 856 128 z" />
+			</t2_area>
+			<t2_area layer_id="222">
+				<t2_path d="M 8 376 L 8 860 L 492 860 L 492 376 z" />
+			</t2_area>
+			<t2_area layer_id="351">
+				<t2_path d="M 38 114 L 38 1002 L 854 1002 L 854 114 z" />
+			</t2_area>
+			<t2_area layer_id="225">
+				<t2_path d="M 8 354 L 8 860 L 504 860 L 504 354 z" />
+			</t2_area>
+			<t2_area layer_id="354">
+				<t2_path d="M 42 100 L 42 1022 L 850 1022 L 850 100 z" />
+			</t2_area>
+			<t2_area layer_id="228">
+				<t2_path d="M 2 338 L 2 870 L 516 870 L 516 338 z" />
+			</t2_area>
+			<t2_area layer_id="357">
+				<t2_path d="M 36 92 L 36 988 L 844 988 L 844 92 z" />
+			</t2_area>
+			<t2_area layer_id="231">
+				<t2_path d="M 2 330 L 2 878 L 532 878 L 532 330 z" />
+			</t2_area>
+			<t2_area layer_id="360">
+				<t2_path d="M 44 78 L 44 998 L 838 998 L 838 78 z" />
+			</t2_area>
+			<t2_area layer_id="234">
+				<t2_path d="M 4 314 L 4 868 L 546 868 L 546 314 z" />
+			</t2_area>
+			<t2_area layer_id="363">
+				<t2_path d="M 42 72 L 42 1010 L 826 1010 L 826 72 z" />
+			</t2_area>
+			<t2_area layer_id="237">
+				<t2_path d="M 10 310 L 10 890 L 572 890 L 572 310 z" />
+			</t2_area>
+			<t2_area layer_id="366">
+				<t2_path d="M 48 72 L 48 1006 L 822 1006 L 822 72 z" />
+			</t2_area>
+			<t2_area layer_id="240">
+				<t2_path d="M 8 308 L 8 890 L 590 890 L 590 308 z" />
+			</t2_area>
+			<t2_area layer_id="369">
+				<t2_path d="M 48 56 L 48 1000 L 812 1000 L 812 56 z" />
+			</t2_area>
+			<t2_area layer_id="243">
+				<t2_path d="M 10 296 L 10 890 L 606 890 L 606 296 z" />
+			</t2_area>
+			<t2_area layer_id="372">
+				<t2_path d="M 54 48 L 54 996 L 816 996 L 816 48 z" />
+			</t2_area>
+			<t2_area layer_id="246">
+				<t2_path d="M 4 286 L 4 902 L 620 902 L 620 286 z" />
+			</t2_area>
+			<t2_area layer_id="375">
+				<t2_path d="M 54 44 L 54 1000 L 806 1000 L 806 44 z" />
+			</t2_area>
+			<t2_area layer_id="249">
+				<t2_path d="M 8 264 L 8 906 L 618 906 L 618 264 z" />
+			</t2_area>
+			<t2_area layer_id="378">
+				<t2_path d="M 56 26 L 56 996 L 812 996 L 812 26 z" />
+			</t2_area>
+			<t2_area layer_id="252">
+				<t2_path d="M 6 262 L 6 908 L 624 908 L 624 262 z" />
+			</t2_area>
+			<t2_area layer_id="381">
+				<t2_path d="M 40 28 L 40 1002 L 798 1002 L 798 28 z" />
+			</t2_area>
+			<t2_area layer_id="255">
+				<t2_path d="M 8 232 L 8 904 L 650 904 L 650 232 z" />
+			</t2_area>
+		</t2_area_list>
+		<t2_layer oid="5"
+			 thickness="40.0"
+			 z="11.013200000000001"
+			 title="sec#01"
+		>
+			<t2_patch
+				oid="8"
+				width="1715.0"
+				height="1194.0"
+				transform="matrix(0.9999999947096258,-1.028627643566265E-4,1.028627643566265E-4,0.9999999947096258,737.4925617902145,657.9095168476288)"
+				locked="true"
+				title="Brain3_001_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_001_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1715"
+				o_height="1194"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="1"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="9"
+			 thickness="40.0"
+			 z="22.026400000000002"
+			 title="sec#02"
+		>
+			<t2_patch
+				oid="11"
+				width="1737.0"
+				height="1222.0"
+				transform="matrix(0.999764332392557,-0.02170897684519078,0.02170897684519078,0.999764332392557,728.0169412101413,678.4484657629332)"
+				locked="true"
+				title="Brain3_002_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_002_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1737"
+				o_height="1222"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="2"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="12"
+			 thickness="40.0"
+			 z="33.0396"
+			 title="sec#03"
+		>
+			<t2_patch
+				oid="14"
+				width="1737.0"
+				height="1222.0"
+				transform="matrix(0.9998435205255337,0.017689953733876457,-0.017689953733876457,0.9998435205255337,734.5207213647554,644.6987896839255)"
+				locked="true"
+				title="Brain3_003_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_003_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1737"
+				o_height="1222"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="3"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="15"
+			 thickness="40.0"
+			 z="44.052800000000005"
+			 title="sec#04"
+		>
+			<t2_patch
+				oid="17"
+				width="1786.0"
+				height="1238.0"
+				transform="matrix(0.9999984610336333,-0.0017544031364494636,0.0017544031364494636,0.9999984610336333,696.7290094147675,637.6485887937574)"
+				locked="true"
+				title="Brain3_004_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_004_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1786"
+				o_height="1238"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="4"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="18"
+			 thickness="40.0"
+			 z="55.066"
+			 title="sec#05"
+		>
+			<t2_patch
+				oid="20"
+				width="1790.0"
+				height="1265.0"
+				transform="matrix(0.9973551162629173,-0.07268268063426708,0.07268268063426708,0.9973551162629173,656.3750002286652,687.711254609148)"
+				locked="true"
+				title="Brain3_005_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_005_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1790"
+				o_height="1265"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="5"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="21"
+			 thickness="40.0"
+			 z="66.0792"
+			 title="sec#06"
+		>
+			<t2_patch
+				oid="23"
+				width="1806.0"
+				height="1262.0"
+				transform="matrix(0.9999104918553312,-0.01337939750622533,0.01337939750622533,0.9999104918553312,684.513090959179,638.3323052930755)"
+				locked="true"
+				title="Brain3_006_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_006_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1806"
+				o_height="1262"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="6"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="24"
+			 thickness="40.0"
+			 z="77.0924"
+			 title="sec#07"
+		>
+			<t2_patch
+				oid="26"
+				width="1818.0"
+				height="1308.0"
+				transform="matrix(0.9937974176628025,-0.11120563226179359,0.11120563226179359,0.9937974176628025,628.021239551992,705.2101498322872)"
+				locked="true"
+				title="Brain3_007_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_007_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1818"
+				o_height="1308"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="7"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="27"
+			 thickness="40.0"
+			 z="88.10560000000001"
+			 title="sec#08"
+		>
+			<t2_patch
+				oid="29"
+				width="1802.0"
+				height="1303.0"
+				transform="matrix(0.9958032413063186,-0.09151996833385619,0.09151996833385619,0.9958032413063186,660.9367239877647,700.0153293965673)"
+				locked="true"
+				title="Brain3_008_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_008_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1802"
+				o_height="1303"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="8"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="30"
+			 thickness="40.0"
+			 z="99.11880000000001"
+			 title="sec#09"
+		>
+			<t2_patch
+				oid="32"
+				width="1860.0"
+				height="1312.0"
+				transform="matrix(0.9987917580537375,-0.049142894134597985,0.049142894134597985,0.9987917580537375,634.3077782771597,651.3350183074613)"
+				locked="true"
+				title="Brain3_009_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_009_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1860"
+				o_height="1312"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="9"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="33"
+			 thickness="40.0"
+			 z="110.132"
+			 title="sec#10"
+		>
+			<t2_patch
+				oid="35"
+				width="1826.0"
+				height="1292.0"
+				transform="matrix(0.9976655782147662,-0.06828904777046076,0.06828904777046076,0.9976655782147662,647.573293479576,670.8732756426289)"
+				locked="true"
+				title="Brain3_010_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_010_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1826"
+				o_height="1292"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="10"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="36"
+			 thickness="40.0"
+			 z="121.1452"
+			 title="sec#11"
+		>
+			<t2_patch
+				oid="38"
+				width="1904.0"
+				height="1308.0"
+				transform="matrix(0.999584119097679,0.028837282252618036,-0.028837282252618036,0.999584119097679,656.8854296306217,558.2066231810145)"
+				locked="true"
+				title="Brain3_011_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_011_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1904"
+				o_height="1308"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="11"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="39"
+			 thickness="40.0"
+			 z="132.1584"
+			 title="sec#12"
+		>
+			<t2_patch
+				oid="41"
+				width="1924.0"
+				height="1328.0"
+				transform="matrix(0.9999820714096914,-0.005988059717719502,0.005988059717719502,0.9999820714096914,627.7437072633893,580.7544425445267)"
+				locked="true"
+				title="Brain3_012_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_012_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1924"
+				o_height="1328"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="12"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="42"
+			 thickness="40.0"
+			 z="143.1716"
+			 title="sec#13"
+		>
+			<t2_patch
+				oid="44"
+				width="1939.0"
+				height="1319.0"
+				transform="matrix(0.9999482658614294,0.010171804201809393,-0.010171804201809393,0.9999482658614294,627.01476162994,572.6535049698468)"
+				locked="true"
+				title="Brain3_013_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_013_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1939"
+				o_height="1319"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="13"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="45"
+			 thickness="40.0"
+			 z="154.1848"
+			 title="sec#14"
+		>
+			<t2_patch
+				oid="47"
+				width="1942.0"
+				height="1343.0"
+				transform="matrix(0.9999846501348326,-0.005540712473721935,0.005540712473721935,0.9999846501348326,617.6424480033957,560.3763811131776)"
+				locked="true"
+				title="Brain3_014_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_014_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1942"
+				o_height="1343"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="14"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="48"
+			 thickness="40.0"
+			 z="165.198"
+			 title="sec#15"
+		>
+			<t2_patch
+				oid="50"
+				width="1982.0"
+				height="1355.0"
+				transform="matrix(0.9990257418967748,-0.04413124774576997,0.04413124774576997,0.9990257418967748,569.6401036335246,610.2700800467219)"
+				locked="true"
+				title="Brain3_015_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_015_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1982"
+				o_height="1355"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="15"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="51"
+			 thickness="40.0"
+			 z="176.21120000000002"
+			 title="sec#16"
+		>
+			<t2_patch
+				oid="53"
+				width="1977.0"
+				height="1348.0"
+				transform="matrix(0.9999193107377577,-0.01270322847654251,0.01270322847654251,0.9999193107377577,604.1088873710551,572.0348200915919)"
+				locked="true"
+				title="Brain3_016_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_016_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1977"
+				o_height="1348"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="16"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="54"
+			 thickness="40.0"
+			 z="187.2244"
+			 title="sec#17"
+		>
+			<t2_patch
+				oid="56"
+				width="2004.0"
+				height="1390.0"
+				transform="matrix(0.9989224894340184,-0.046409698371606856,0.046409698371606856,0.9989224894340184,563.314821515296,597.852590041427)"
+				locked="true"
+				title="Brain3_017_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_017_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2004"
+				o_height="1390"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="17"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="57"
+			 thickness="40.0"
+			 z="198.23760000000001"
+			 title="sec#18"
+		>
+			<t2_patch
+				oid="59"
+				width="2035.0"
+				height="1375.0"
+				transform="matrix(0.9999216948512445,-0.012514158613935199,0.012514158613935199,0.9999216948512445,570.3689290211105,573.3286942405621)"
+				locked="true"
+				title="Brain3_018_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_018_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2035"
+				o_height="1375"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="18"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="60"
+			 thickness="40.0"
+			 z="209.2508"
+			 title="sec#19"
+		>
+			<t2_patch
+				oid="62"
+				width="2021.0"
+				height="1380.0"
+				transform="matrix(0.9996789827856561,0.02533636470837239,-0.02533636470837239,0.9996789827856561,621.1861779283563,513.4902363831338)"
+				locked="true"
+				title="Brain3_019_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_019_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2021"
+				o_height="1380"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="19"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="63"
+			 thickness="40.0"
+			 z="220.264"
+			 title="sec#20"
+		>
+			<t2_patch
+				oid="65"
+				width="2068.0"
+				height="1438.0"
+				transform="matrix(0.996281673889287,-0.086155825527705,0.086155825527705,0.996281673889287,509.6252426487954,616.7915829407148)"
+				locked="true"
+				title="Brain3_020_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_020_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2068"
+				o_height="1438"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="20"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="66"
+			 thickness="40.0"
+			 z="231.27720000000002"
+			 title="sec#21"
+		>
+			<t2_patch
+				oid="68"
+				width="2056.0"
+				height="1425.0"
+				transform="matrix(0.9997540742823837,0.02217636029139849,-0.02217636029139849,0.9997540742823837,613.1017241527625,483.8991397540708)"
+				locked="true"
+				title="Brain3_021_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_021_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2056"
+				o_height="1425"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="21"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="69"
+			 thickness="40.0"
+			 z="242.2904"
+			 title="sec#22"
+		>
+			<t2_patch
+				oid="71"
+				width="2087.0"
+				height="1425.0"
+				transform="matrix(0.9999906754686697,-0.004318445983652432,0.004318445983652432,0.9999906754686697,554.8243867016399,518.2025140973665)"
+				locked="true"
+				title="Brain3_022_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_022_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2087"
+				o_height="1425"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="22"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="72"
+			 thickness="40.0"
+			 z="253.30360000000002"
+			 title="sec#23"
+		>
+			<t2_patch
+				oid="74"
+				width="2102.0"
+				height="1429.0"
+				transform="matrix(0.9999421560532271,0.010755675135650612,-0.010755675135650612,0.9999421560532271,554.7874279080961,519.5777843535852)"
+				locked="true"
+				title="Brain3_023_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_023_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2102"
+				o_height="1429"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="23"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="75"
+			 thickness="40.0"
+			 z="264.3168"
+			 title="sec#24"
+		>
+			<t2_patch
+				oid="77"
+				width="2103.0"
+				height="1462.0"
+				transform="matrix(0.997071419568233,-0.07647603729397041,0.07647603729397041,0.997071419568233,503.3159244837789,632.166361261231)"
+				locked="true"
+				title="Brain3_024_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_024_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2103"
+				o_height="1462"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="24"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="78"
+			 thickness="40.0"
+			 z="275.33"
+			 title="sec#25"
+		>
+			<t2_patch
+				oid="80"
+				width="2143.0"
+				height="1491.0"
+				transform="matrix(0.9997562914790683,-0.022076178292901573,0.022076178292901573,0.9997562914790683,505.4505253964053,537.5134802217226)"
+				locked="true"
+				title="Brain3_025_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_025_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2143"
+				o_height="1491"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="25"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="81"
+			 thickness="40.0"
+			 z="286.3432"
+			 title="sec#26"
+		>
+			<t2_patch
+				oid="83"
+				width="2162.0"
+				height="1498.0"
+				transform="matrix(0.9998428959176872,0.01772522166103883,-0.01772522166103883,0.9998428959176872,514.6773984919473,488.0388371930535)"
+				locked="true"
+				title="Brain3_026_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_026_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2162"
+				o_height="1498"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="26"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="84"
+			 thickness="40.0"
+			 z="297.3564"
+			 title="sec#27"
+		>
+			<t2_patch
+				oid="86"
+				width="2167.0"
+				height="1514.0"
+				transform="matrix(0.9998741566035787,-0.015864140578115322,0.015864140578115322,0.9998741566035787,482.4352241432225,501.6914956252226)"
+				locked="true"
+				title="Brain3_027_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_027_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2167"
+				o_height="1514"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="27"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="87"
+			 thickness="40.0"
+			 z="308.3696"
+			 title="sec#28"
+		>
+			<t2_patch
+				oid="89"
+				width="2192.0"
+				height="1552.0"
+				transform="matrix(0.9994949694577323,-0.031777445282571905,0.031777445282571905,0.9994949694577323,475.50086686648956,516.603928463343)"
+				locked="true"
+				title="Brain3_028_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_028_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2192"
+				o_height="1552"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="28"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="90"
+			 thickness="40.0"
+			 z="319.38280000000003"
+			 title="sec#29"
+		>
+			<t2_patch
+				oid="92"
+				width="2201.0"
+				height="1544.0"
+				transform="matrix(0.999324421260358,0.036751885293821555,-0.036751885293821555,0.999324421260358,511.47571141156186,461.40986900315147)"
+				locked="true"
+				title="Brain3_029_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_029_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2201"
+				o_height="1544"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="29"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="93"
+			 thickness="40.0"
+			 z="330.396"
+			 title="sec#30"
+		>
+			<t2_patch
+				oid="95"
+				width="2214.0"
+				height="1558.0"
+				transform="matrix(0.9998683767921555,-0.016224336381501097,0.016224336381501097,0.9998683767921555,468.7137396142034,498.27646018638234)"
+				locked="true"
+				title="Brain3_030_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_030_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2214"
+				o_height="1558"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="30"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="96"
+			 thickness="40.0"
+			 z="341.4092"
+			 title="sec#31"
+		>
+			<t2_patch
+				oid="98"
+				width="2241.0"
+				height="1573.0"
+				transform="matrix(0.999941670487227,0.010800723272730161,-0.010800723272730161,0.999941670487227,474.7011843992177,470.73258552605785)"
+				locked="true"
+				title="Brain3_031_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_031_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2241"
+				o_height="1573"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="31"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="99"
+			 thickness="40.0"
+			 z="352.42240000000004"
+			 title="sec#32"
+		>
+			<t2_patch
+				oid="101"
+				width="2253.0"
+				height="1588.0"
+				transform="matrix(0.9999413043321792,0.010834569232785638,-0.010834569232785638,0.9999413043321792,471.74101398198036,466.98179762800646)"
+				locked="true"
+				title="Brain3_032_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_032_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2253"
+				o_height="1588"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="32"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="102"
+			 thickness="40.0"
+			 z="363.4356"
+			 title="sec#33"
+		>
+			<t2_patch
+				oid="104"
+				width="2258.0"
+				height="1576.0"
+				transform="matrix(0.999974526272809,0.007137703094911799,-0.007137703094911799,0.999974526272809,463.4375965673207,477.0356561567978)"
+				locked="true"
+				title="Brain3_033_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_033_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2258"
+				o_height="1576"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="33"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="105"
+			 thickness="40.0"
+			 z="374.4488"
+			 title="sec#34"
+		>
+			<t2_patch
+				oid="107"
+				width="2272.0"
+				height="1593.0"
+				transform="matrix(0.9992870915530412,0.037753260196493006,-0.037753260196493006,0.9992870915530412,490.20162065082786,452.1747932197977)"
+				locked="true"
+				title="Brain3_034_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_034_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2272"
+				o_height="1593"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="34"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="108"
+			 thickness="40.0"
+			 z="385.462"
+			 title="sec#35"
+		>
+			<t2_patch
+				oid="110"
+				width="2284.0"
+				height="1593.0"
+				transform="matrix(0.9999726125753717,-0.00740095258634821,0.00740095258634821,0.9999726125753717,456.05565489846776,487.8976349521172)"
+				locked="true"
+				title="Brain3_035_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_035_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2284"
+				o_height="1593"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="35"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="111"
+			 thickness="40.0"
+			 z="396.47520000000003"
+			 title="sec#36"
+		>
+			<t2_patch
+				oid="113"
+				width="2296.0"
+				height="1634.0"
+				transform="matrix(0.9997101394035551,-0.024075655208621635,0.024075655208621635,0.9997101394035551,443.40999500509315,497.86661622293013)"
+				locked="true"
+				title="Brain3_036_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_036_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2296"
+				o_height="1634"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="36"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="114"
+			 thickness="40.0"
+			 z="407.4884"
+			 title="sec#37"
+		>
+			<t2_patch
+				oid="116"
+				width="2331.0"
+				height="1656.0"
+				transform="matrix(0.9995446732203808,-0.0301736016538027,0.0301736016538027,0.9995446732203808,411.7293264944774,487.9149110107596)"
+				locked="true"
+				title="Brain3_037_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_037_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2331"
+				o_height="1656"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="37"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="117"
+			 thickness="40.0"
+			 z="418.5016"
+			 title="sec#38"
+		>
+			<t2_patch
+				oid="119"
+				width="2320.0"
+				height="1665.0"
+				transform="matrix(0.9997951318844607,0.020240905615457102,-0.020240905615457102,0.9997951318844607,462.8040289765977,412.5154421173647)"
+				locked="true"
+				title="Brain3_038_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_038_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2320"
+				o_height="1665"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="38"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="120"
+			 thickness="40.0"
+			 z="429.51480000000004"
+			 title="sec#39"
+		>
+			<t2_patch
+				oid="122"
+				width="2346.0"
+				height="1692.0"
+				transform="matrix(0.9985591616637615,0.053661910675689414,-0.053661910675689414,0.9985591616637615,476.93493663807567,384.8616258864913)"
+				locked="true"
+				title="Brain3_039_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_039_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2346"
+				o_height="1692"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="39"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="123"
+			 thickness="40.0"
+			 z="440.528"
+			 title="sec#40"
+		>
+			<t2_patch
+				oid="125"
+				width="2352.0"
+				height="1674.0"
+				transform="matrix(0.9999999358626427,3.581545905479312E-4,-3.581545905479312E-4,0.9999999358626427,434.34686457626503,438.47358880933416)"
+				locked="true"
+				title="Brain3_040_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_040_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2352"
+				o_height="1674"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="40"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="126"
+			 thickness="40.0"
+			 z="451.5412"
+			 title="sec#41"
+		>
+			<t2_patch
+				oid="128"
+				width="2361.0"
+				height="1693.0"
+				transform="matrix(0.9999504755308751,-0.009952210085040642,0.009952210085040642,0.9999504755308751,417.339306386978,428.686069203085)"
+				locked="true"
+				title="Brain3_041_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_041_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2361"
+				o_height="1693"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="41"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="129"
+			 thickness="40.0"
+			 z="462.55440000000004"
+			 title="sec#42"
+		>
+			<t2_patch
+				oid="131"
+				width="2411.0"
+				height="1653.0"
+				transform="matrix(0.9996742605079212,0.025522007717671713,-0.025522007717671713,0.9996742605079212,429.58550759426,420.52206937607116)"
+				locked="true"
+				title="Brain3_042_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_042_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2411"
+				o_height="1653"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="42"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="132"
+			 thickness="40.0"
+			 z="473.5676"
+			 title="sec#43"
+		>
+			<t2_patch
+				oid="134"
+				width="2384.0"
+				height="1658.0"
+				transform="matrix(0.9999591582093446,0.00903780467032337,-0.00903780467032337,0.9999591582093446,423.1841681499327,439.35733844263996)"
+				locked="true"
+				title="Brain3_043_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_043_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2384"
+				o_height="1658"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="43"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="135"
+			 thickness="40.0"
+			 z="484.5808"
+			 title="sec#44"
+		>
+			<t2_patch
+				oid="137"
+				width="2415.0"
+				height="1691.0"
+				transform="matrix(0.9993935850887792,-0.034820426238013714,0.034820426238013714,0.9993935850887792,368.1837508817125,472.53550073968927)"
+				locked="true"
+				title="Brain3_044_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_044_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2415"
+				o_height="1691"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="44"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="138"
+			 thickness="40.0"
+			 z="495.594"
+			 title="sec#45"
+		>
+			<t2_patch
+				oid="140"
+				width="2426.0"
+				height="1700.0"
+				transform="matrix(0.9982918054513304,0.05842491907331272,-0.05842491907331272,0.9982918054513304,431.13446277597996,370.8902957114119)"
+				locked="true"
+				title="Brain3_045_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_045_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2426"
+				o_height="1700"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="45"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="141"
+			 thickness="40.0"
+			 z="506.60720000000003"
+			 title="sec#46"
+		>
+			<t2_patch
+				oid="143"
+				width="2437.0"
+				height="1664.0"
+				transform="matrix(0.9996874588991568,0.024999690393014515,-0.024999690393014515,0.9996874588991568,394.0280800659875,420.5594771453116)"
+				locked="true"
+				title="Brain3_046_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_046_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2437"
+				o_height="1664"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="46"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="144"
+			 thickness="40.0"
+			 z="517.6204"
+			 title="sec#47"
+		>
+			<t2_patch
+				oid="146"
+				width="2454.0"
+				height="1714.0"
+				transform="matrix(0.9998497092544808,-0.01733663472909667,0.01733663472909667,0.9998497092544808,354.60108554544877,429.22039650890383)"
+				locked="true"
+				title="Brain3_047_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_047_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2454"
+				o_height="1714"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="47"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="147"
+			 thickness="40.0"
+			 z="528.6336"
+			 title="sec#48"
+		>
+			<t2_patch
+				oid="149"
+				width="2471.0"
+				height="1733.0"
+				transform="matrix(0.9985969783872888,-0.052953515046471215,0.052953515046471215,0.9985969783872888,318.3750810463298,475.0863237931635)"
+				locked="true"
+				title="Brain3_048_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_048_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2471"
+				o_height="1733"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="48"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="150"
+			 thickness="40.0"
+			 z="539.6468"
+			 title="sec#49"
+		>
+			<t2_patch
+				oid="152"
+				width="2487.0"
+				height="1683.0"
+				transform="matrix(0.9999916591061127,-0.0040843259179638046,0.0040843259179638046,0.9999916591061127,345.5975585690567,442.0446369066508)"
+				locked="true"
+				title="Brain3_049_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_049_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2487"
+				o_height="1683"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="49"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="153"
+			 thickness="40.0"
+			 z="550.66"
+			 title="sec#50"
+		>
+			<t2_patch
+				oid="155"
+				width="2484.0"
+				height="1706.0"
+				transform="matrix(0.9999997161526509,7.534551197963459E-4,-7.534551197963459E-4,0.9999997161526509,353.20763189198533,413.5453271344618)"
+				locked="true"
+				title="Brain3_050_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_050_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2484"
+				o_height="1706"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="50"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="156"
+			 thickness="40.0"
+			 z="561.6732000000001"
+			 title="sec#51"
+		>
+			<t2_patch
+				oid="158"
+				width="2511.0"
+				height="1728.0"
+				transform="matrix(0.9993047599154508,-0.03728266098769299,0.03728266098769299,0.9993047599154508,303.7612539819429,465.0436437543708)"
+				locked="true"
+				title="Brain3_051_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_051_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2511"
+				o_height="1728"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="51"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="159"
+			 thickness="40.0"
+			 z="572.6864"
+			 title="sec#52"
+		>
+			<t2_patch
+				oid="161"
+				width="2537.0"
+				height="1720.0"
+				transform="matrix(0.9997500858074608,-0.022355445152681012,0.022355445152681012,0.9997500858074608,300.74445271629975,439.618828576597)"
+				locked="true"
+				title="Brain3_052_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_052_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2537"
+				o_height="1720"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="52"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="162"
+			 thickness="40.0"
+			 z="583.6996"
+			 title="sec#53"
+		>
+			<t2_patch
+				oid="164"
+				width="2543.0"
+				height="1733.0"
+				transform="matrix(0.9998802645099047,-0.015474386695534185,0.015474386695534185,0.9998802645099047,299.7574719427412,410.18857737500866)"
+				locked="true"
+				title="Brain3_053_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_053_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2543"
+				o_height="1733"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="53"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="165"
+			 thickness="40.0"
+			 z="594.7128"
+			 title="sec#54"
+		>
+			<t2_patch
+				oid="167"
+				width="2557.0"
+				height="1733.0"
+				transform="matrix(0.9999942294218062,-0.0033972228493307013,0.0033972228493307013,0.9999942294218062,302.90586201314545,398.78617673382496)"
+				locked="true"
+				title="Brain3_054_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_054_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2557"
+				o_height="1733"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="54"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="168"
+			 thickness="40.0"
+			 z="605.726"
+			 title="sec#55"
+		>
+			<t2_patch
+				oid="170"
+				width="2567.0"
+				height="1705.0"
+				transform="matrix(0.9999443711819964,-0.010547726837655601,0.010547726837655601,0.9999443711819964,287.8062197826639,425.7117086227636)"
+				locked="true"
+				title="Brain3_055_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_055_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2567"
+				o_height="1705"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="55"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="171"
+			 thickness="40.0"
+			 z="616.7392"
+			 title="sec#56"
+		>
+			<t2_patch
+				oid="173"
+				width="2507.0"
+				height="1743.0"
+				transform="matrix(0.9976749509402506,-0.06815197918159552,0.06815197918159552,0.9976749509402506,236.95614524719804,495.72560647733326)"
+				locked="true"
+				title="Brain3_056_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_056_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2507"
+				o_height="1743"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="56"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="174"
+			 thickness="40.0"
+			 z="627.7524000000001"
+			 title="sec#57"
+		>
+			<t2_patch
+				oid="176"
+				width="2577.0"
+				height="1743.0"
+				transform="matrix(0.9998064060850389,-0.019676136595335757,0.019676136595335757,0.9998064060850389,265.65671023856976,412.8727515553205)"
+				locked="true"
+				title="Brain3_057_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_057_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2577"
+				o_height="1743"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="57"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="177"
+			 thickness="40.0"
+			 z="638.7656000000001"
+			 title="sec#58"
+		>
+			<t2_patch
+				oid="179"
+				width="2592.0"
+				height="1735.0"
+				transform="matrix(0.999686306226172,-0.025045741032603243,0.025045741032603243,0.999686306226172,258.6470789764253,430.44003707498405)"
+				locked="true"
+				title="Brain3_058_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_058_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2592"
+				o_height="1735"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="58"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="180"
+			 thickness="40.0"
+			 z="649.7788"
+			 title="sec#59"
+		>
+			<t2_patch
+				oid="182"
+				width="2592.0"
+				height="1748.0"
+				transform="matrix(0.9993126297115194,-0.03707112217141243,0.03707112217141243,0.9993126297115194,240.39541306724823,426.91357829219487)"
+				locked="true"
+				title="Brain3_059_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_059_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2592"
+				o_height="1748"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="59"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="183"
+			 thickness="40.0"
+			 z="660.792"
+			 title="sec#60"
+		>
+			<t2_patch
+				oid="185"
+				width="2615.0"
+				height="1753.0"
+				transform="matrix(0.9996143294760619,-0.027770349405855814,0.027770349405855814,0.9996143294760619,236.6118311880391,406.57476417965154)"
+				locked="true"
+				title="Brain3_060_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_060_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2615"
+				o_height="1753"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="60"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="186"
+			 thickness="40.0"
+			 z="671.8052"
+			 title="sec#61"
+		>
+			<t2_patch
+				oid="188"
+				width="2633.0"
+				height="1781.0"
+				transform="matrix(0.9973442610772669,-0.07283148286448986,0.07283148286448986,0.9973442610772669,197.6900876310374,454.21563970587613)"
+				locked="true"
+				title="Brain3_061_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_061_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2633"
+				o_height="1781"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="61"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="189"
+			 thickness="40.0"
+			 z="682.8184"
+			 title="sec#62"
+		>
+			<t2_patch
+				oid="191"
+				width="2645.0"
+				height="1755.0"
+				transform="matrix(0.997472418769003,0.07105472394650764,-0.07105472394650764,0.997472418769003,304.4225854435608,274.3286103329938)"
+				locked="true"
+				title="Brain3_062_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_062_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2645"
+				o_height="1755"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="62"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="192"
+			 thickness="40.0"
+			 z="693.8316"
+			 title="sec#63"
+		>
+			<t2_patch
+				oid="194"
+				width="2680.0"
+				height="1802.0"
+				transform="matrix(0.9977855862730665,-0.06651258396508826,0.06651258396508826,0.9977855862730665,143.26844191363125,437.34048346764985)"
+				locked="true"
+				title="Brain3_063_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_063_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2680"
+				o_height="1802"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="63"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="195"
+			 thickness="40.0"
+			 z="704.8448000000001"
+			 title="sec#64"
+		>
+			<t2_patch
+				oid="197"
+				width="2668.0"
+				height="1776.0"
+				transform="matrix(0.99853250204938,-0.054155723160206386,0.054155723160206386,0.99853250204938,180.89514202870214,435.8219182966154)"
+				locked="true"
+				title="Brain3_064_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_064_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2668"
+				o_height="1776"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="64"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="198"
+			 thickness="40.0"
+			 z="715.8580000000001"
+			 title="sec#65"
+		>
+			<t2_patch
+				oid="200"
+				width="2686.0"
+				height="1738.0"
+				transform="matrix(0.9998576215732788,0.01687413943956253,-0.01687413943956253,0.9998576215732788,224.76468570141424,352.13130019141136)"
+				locked="true"
+				title="Brain3_065_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_065_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2686"
+				o_height="1738"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="65"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="201"
+			 thickness="40.0"
+			 z="726.8712"
+			 title="sec#66"
+		>
+			<t2_patch
+				oid="203"
+				width="2682.0"
+				height="1754.0"
+				transform="matrix(0.997677691978712,0.06811184132021654,-0.06811184132021654,0.997677691978712,276.73123939049765,285.27228747586605)"
+				locked="true"
+				title="Brain3_066_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_066_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2682"
+				o_height="1754"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="66"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="204"
+			 thickness="40.0"
+			 z="737.8844"
+			 title="sec#67"
+		>
+			<t2_patch
+				oid="206"
+				width="2686.0"
+				height="1732.0"
+				transform="matrix(0.9998182302292514,0.019065846460291865,-0.019065846460291865,0.9998182302292514,226.02804895999725,361.9562626620036)"
+				locked="true"
+				title="Brain3_067_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_067_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2686"
+				o_height="1732"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="67"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="207"
+			 thickness="40.0"
+			 z="748.8976"
+			 title="sec#68"
+		>
+			<t2_patch
+				oid="209"
+				width="2688.0"
+				height="1732.0"
+				transform="matrix(0.9989251779312622,0.04635179494902354,-0.04635179494902354,0.9989251779312622,263.57089571157667,326.3071684694746)"
+				locked="true"
+				title="Brain3_068_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_068_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2688"
+				o_height="1732"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="68"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="210"
+			 thickness="40.0"
+			 z="759.9108"
+			 title="sec#69"
+		>
+			<t2_patch
+				oid="212"
+				width="2710.0"
+				height="1728.0"
+				transform="matrix(0.999980726026237,0.006208669425885949,-0.006208669425885949,0.999980726026237,206.2359315220474,367.62692056713377)"
+				locked="true"
+				title="Brain3_069_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_069_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2710"
+				o_height="1728"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="69"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="213"
+			 thickness="40.0"
+			 z="770.924"
+			 title="sec#70"
+		>
+			<t2_patch
+				oid="215"
+				width="2724.0"
+				height="1770.0"
+				transform="matrix(0.999423770193622,-0.03394300475747869,0.03394300475747869,0.999423770193622,155.34481165794205,405.7447782506979)"
+				locked="true"
+				title="Brain3_070_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_070_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2724"
+				o_height="1770"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="70"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="216"
+			 thickness="40.0"
+			 z="781.9372000000001"
+			 title="sec#71"
+		>
+			<t2_patch
+				oid="218"
+				width="2732.0"
+				height="1733.0"
+				transform="matrix(0.9996756605061766,0.025467111959139,-0.025467111959139,0.9996756605061766,211.2302981462426,337.04719612724375)"
+				locked="true"
+				title="Brain3_071_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_071_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2732"
+				o_height="1733"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="71"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="219"
+			 thickness="40.0"
+			 z="792.9504000000001"
+			 title="sec#72"
+		>
+			<t2_patch
+				oid="221"
+				width="2734.0"
+				height="1747.0"
+				transform="matrix(0.9998101417769031,0.019485389399476093,-0.019485389399476093,0.9998101417769031,214.14318450590054,336.63146263722683)"
+				locked="true"
+				title="Brain3_072_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_072_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2734"
+				o_height="1747"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="72"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="222"
+			 thickness="40.0"
+			 z="803.9636"
+			 title="sec#73"
+		>
+			<t2_patch
+				oid="224"
+				width="2730.0"
+				height="1741.0"
+				transform="matrix(0.9998582078297712,-0.016839365648325368,0.016839365648325368,0.9998582078297712,177.78195365861848,412.0284323931719)"
+				locked="true"
+				title="Brain3_073_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_073_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2730"
+				o_height="1741"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="73"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="225"
+			 thickness="40.0"
+			 z="814.9768"
+			 title="sec#74"
+		>
+			<t2_patch
+				oid="227"
+				width="2738.0"
+				height="1762.0"
+				transform="matrix(0.9998722848155112,0.015981678816993677,-0.015981678816993677,0.9998722848155112,205.73951872989528,340.3203479648091)"
+				locked="true"
+				title="Brain3_074_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_074_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2738"
+				o_height="1762"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="74"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="228"
+			 thickness="40.0"
+			 z="825.99"
+			 title="sec#75"
+		>
+			<t2_patch
+				oid="230"
+				width="2743.0"
+				height="1805.0"
+				transform="matrix(0.999821809027694,-0.01887724006811237,0.01887724006811237,0.999821809027694,165.02077793482567,373.284387927391)"
+				locked="true"
+				title="Brain3_075_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_075_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2743"
+				o_height="1805"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="75"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="231"
+			 thickness="40.0"
+			 z="837.0032"
+			 title="sec#76"
+		>
+			<t2_patch
+				oid="233"
+				width="2751.0"
+				height="1778.0"
+				transform="matrix(0.9997942228119375,0.020285759336886523,-0.020285759336886523,0.9997942228119375,196.04116865074866,333.3598960481827)"
+				locked="true"
+				title="Brain3_076_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_076_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2751"
+				o_height="1778"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="76"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="234"
+			 thickness="40.0"
+			 z="848.0164000000001"
+			 title="sec#77"
+		>
+			<t2_patch
+				oid="236"
+				width="2755.0"
+				height="1778.0"
+				transform="matrix(0.9998820911430841,0.01535590477090953,-0.01535590477090953,0.9998820911430841,194.5274798752862,330.93700629525847)"
+				locked="true"
+				title="Brain3_077_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_077_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2755"
+				o_height="1778"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="77"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="237"
+			 thickness="40.0"
+			 z="859.0296000000001"
+			 title="sec#78"
+		>
+			<t2_patch
+				oid="239"
+				width="2758.0"
+				height="1813.0"
+				transform="matrix(0.9991074947465297,0.042239956691657504,-0.042239956691657504,0.9991074947465297,230.20087228008651,305.4154655003722)"
+				locked="true"
+				title="Brain3_078_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_078_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2758"
+				o_height="1813"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="78"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="240"
+			 thickness="40.0"
+			 z="870.0428"
+			 title="sec#79"
+		>
+			<t2_patch
+				oid="242"
+				width="2750.0"
+				height="1815.0"
+				transform="matrix(0.9997586421815022,-0.021969464795463307,0.021969464795463307,0.9997586421815022,166.27228979560005,376.98739792283504)"
+				locked="true"
+				title="Brain3_079_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_079_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2750"
+				o_height="1815"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="79"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="243"
+			 thickness="40.0"
+			 z="881.056"
+			 title="sec#80"
+		>
+			<t2_patch
+				oid="245"
+				width="2768.0"
+				height="1787.0"
+				transform="matrix(0.9998999400115297,0.014146022937189515,-0.014146022937189515,0.9998999400115297,189.94309960211285,328.13622690257307)"
+				locked="true"
+				title="Brain3_080_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_080_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2768"
+				o_height="1787"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="80"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="246"
+			 thickness="40.0"
+			 z="892.0692"
+			 title="sec#81"
+		>
+			<t2_patch
+				oid="248"
+				width="2780.0"
+				height="1823.0"
+				transform="matrix(0.9999899340846141,-0.004486839583625058,0.004486839583625058,0.9999899340846141,163.57007245322166,349.4398929859126)"
+				locked="true"
+				title="Brain3_081_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_081_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2780"
+				o_height="1823"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="81"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="249"
+			 thickness="40.0"
+			 z="903.0824"
+			 title="sec#82"
+		>
+			<t2_patch
+				oid="251"
+				width="2788.0"
+				height="1801.0"
+				transform="matrix(0.9999982711116542,-0.0018595089950178192,0.0018595089950178192,0.9999982711116542,166.09456966004382,350.32652709002605)"
+				locked="true"
+				title="Brain3_082_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_082_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2788"
+				o_height="1801"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="82"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="252"
+			 thickness="40.0"
+			 z="914.0956"
+			 title="sec#83"
+		>
+			<t2_patch
+				oid="254"
+				width="2788.0"
+				height="1829.0"
+				transform="matrix(0.9996681106334143,0.025761765906468354,-0.025761765906468354,0.9996681106334143,192.2559372901742,305.500155051398)"
+				locked="true"
+				title="Brain3_083_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_083_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2788"
+				o_height="1829"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="83"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="255"
+			 thickness="40.0"
+			 z="925.1088000000001"
+			 title="sec#84"
+		>
+			<t2_patch
+				oid="257"
+				width="2785.0"
+				height="1835.0"
+				transform="matrix(0.9995519604981019,-0.02993122557465517,0.02993122557465517,0.9995519604981019,128.38411835886836,360.5809564584406)"
+				locked="true"
+				title="Brain3_084_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_084_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2785"
+				o_height="1835"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="84"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="258"
+			 thickness="40.0"
+			 z="936.1220000000001"
+			 title="sec#85"
+		>
+			<t2_patch
+				oid="260"
+				width="2795.0"
+				height="1838.0"
+				transform="matrix(0.999738079361152,0.022886080382515554,-0.022886080382515554,0.999738079361152,182.2269641151097,297.4503848462905)"
+				locked="true"
+				title="Brain3_085_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_085_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2795"
+				o_height="1838"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="85"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="261"
+			 thickness="40.0"
+			 z="947.1352"
+			 title="sec#86"
+		>
+			<t2_patch
+				oid="263"
+				width="2805.0"
+				height="1835.0"
+				transform="matrix(0.9999876819416317,0.004963463005040781,-0.004963463005040781,0.9999876819416317,162.96859362327086,302.6251667301808)"
+				locked="true"
+				title="Brain3_086_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_086_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2805"
+				o_height="1835"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="86"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="264"
+			 thickness="40.0"
+			 z="958.1484"
+			 title="sec#87"
+		>
+			<t2_patch
+				oid="266"
+				width="2795.0"
+				height="1833.0"
+				transform="matrix(0.9999966792834644,-0.002577095660626264,0.002577095660626264,0.9999966792834644,164.46006423082417,315.8113987864326)"
+				locked="true"
+				title="Brain3_087_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_087_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2795"
+				o_height="1833"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="87"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="267"
+			 thickness="40.0"
+			 z="969.1616"
+			 title="sec#88"
+		>
+			<t2_patch
+				oid="269"
+				width="2805.0"
+				height="1833.0"
+				transform="matrix(0.9998005600241945,0.0199709833335041,-0.0199709833335041,0.9998005600241945,184.68878678498368,285.6204379669116)"
+				locked="true"
+				title="Brain3_088_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_088_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2805"
+				o_height="1833"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="88"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="270"
+			 thickness="40.0"
+			 z="980.1748"
+			 title="sec#89"
+		>
+			<t2_patch
+				oid="272"
+				width="2816.0"
+				height="1833.0"
+				transform="matrix(0.9999253968472316,-0.0122147754750845,0.0122147754750845,0.9999253968472316,146.25672742955066,323.468682168535)"
+				locked="true"
+				title="Brain3_089_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_089_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2816"
+				o_height="1833"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="89"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="273"
+			 thickness="40.0"
+			 z="991.188"
+			 title="sec#90"
+		>
+			<t2_patch
+				oid="275"
+				width="2810.0"
+				height="1865.0"
+				transform="matrix(0.999968727498304,-0.007908478072450589,0.007908478072450589,0.999968727498304,163.45339745222827,305.9361873729167)"
+				locked="true"
+				title="Brain3_090_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_090_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2810"
+				o_height="1865"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="90"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="276"
+			 thickness="40.0"
+			 z="1002.2012000000001"
+			 title="sec#91"
+		>
+			<t2_patch
+				oid="278"
+				width="2834.0"
+				height="1857.0"
+				transform="matrix(0.9994167981102381,0.03414767422650936,-0.03414767422650936,0.9994167981102381,191.5380867331114,259.79451576238534)"
+				locked="true"
+				title="Brain3_091_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_091_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2834"
+				o_height="1857"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="91"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="279"
+			 thickness="40.0"
+			 z="1013.2144000000001"
+			 title="sec#92"
+		>
+			<t2_patch
+				oid="281"
+				width="2834.0"
+				height="1859.0"
+				transform="matrix(0.9996758173528424,-0.025460954419003725,0.025460954419003725,0.9996758173528424,129.50283554522775,338.13862072407755)"
+				locked="true"
+				title="Brain3_092_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_092_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2834"
+				o_height="1859"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="92"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="282"
+			 thickness="40.0"
+			 z="1024.2276"
+			 title="sec#93"
+		>
+			<t2_patch
+				oid="284"
+				width="2834.0"
+				height="1848.0"
+				transform="matrix(0.9999999817273953,-1.9116801225625918E-4,1.9116801225625918E-4,0.9999999817273953,153.56259091590437,314.2894543211446)"
+				locked="true"
+				title="Brain3_093_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_093_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2834"
+				o_height="1848"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="93"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="285"
+			 thickness="40.0"
+			 z="1035.2408"
+			 title="sec#94"
+		>
+			<t2_patch
+				oid="287"
+				width="2837.0"
+				height="1873.0"
+				transform="matrix(0.9998597992301224,0.016744607594663927,-0.016744607594663927,0.9998597992301224,183.73764835599832,283.1870892647862)"
+				locked="true"
+				title="Brain3_094_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_094_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2837"
+				o_height="1873"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="94"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="288"
+			 thickness="40.0"
+			 z="1046.2540000000001"
+			 title="sec#95"
+		>
+			<t2_patch
+				oid="290"
+				width="2840.0"
+				height="1964.0"
+				transform="matrix(0.9936462720983943,-0.11254814945153023,0.11254814945153023,0.9936462720983943,27.833796741653714,435.9531846011141)"
+				locked="true"
+				title="Brain3_095_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_095_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2840"
+				o_height="1964"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="95"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="291"
+			 thickness="40.0"
+			 z="1057.2672"
+			 title="sec#96"
+		>
+			<t2_patch
+				oid="293"
+				width="2878.0"
+				height="1978.0"
+				transform="matrix(0.9933415462315501,-0.1152066514152423,0.1152066514152423,0.9933415462315501,31.88017812654016,418.55352223222053)"
+				locked="true"
+				title="Brain3_096_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_096_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2878"
+				o_height="1978"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="96"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="294"
+			 thickness="40.0"
+			 z="1068.2804"
+			 title="sec#97"
+		>
+			<t2_patch
+				oid="296"
+				width="2854.0"
+				height="1904.0"
+				transform="matrix(0.9998793008942042,-0.015536526101974105,0.015536526101974105,0.9998793008942042,130.1626464319006,274.0897324342477)"
+				locked="true"
+				title="Brain3_097_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_097_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2854"
+				o_height="1904"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="97"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="297"
+			 thickness="40.0"
+			 z="1079.2936"
+			 title="sec#98"
+		>
+			<t2_patch
+				oid="299"
+				width="2892.0"
+				height="1901.0"
+				transform="matrix(0.9987888610405482,0.04920173839738319,-0.04920173839738319,0.9987888610405482,164.96463026148103,204.7225717397323)"
+				locked="true"
+				title="Brain3_098_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_098_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2892"
+				o_height="1901"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="98"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="300"
+			 thickness="40.0"
+			 z="1090.3068"
+			 title="sec#99"
+		>
+			<t2_patch
+				oid="302"
+				width="2892.0"
+				height="1923.0"
+				transform="matrix(0.9970449374692858,0.0768205224329279,-0.0768205224329279,0.9970449374692858,186.11624180060608,160.09407868146582)"
+				locked="true"
+				title="Brain3_099_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_099_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2892"
+				o_height="1923"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="99"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="303"
+			 thickness="40.0"
+			 z="1101.32"
+			 title="sec#100"
+		>
+			<t2_patch
+				oid="305"
+				width="2886.0"
+				height="1935.0"
+				transform="matrix(0.9975436079915421,0.07004819880065932,-0.07004819880065932,0.9975436079915421,194.9204983046384,173.1328087836173)"
+				locked="true"
+				title="Brain3_100_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_100_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2886"
+				o_height="1935"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="100"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="306"
+			 thickness="40.0"
+			 z="1112.3332"
+			 title="sec#101"
+		>
+			<t2_patch
+				oid="308"
+				width="2883.0"
+				height="1905.0"
+				transform="matrix(0.9996280323460939,-0.027272641013962227,0.027272641013962227,0.9996280323460939,90.8678354367994,294.8227073639573)"
+				locked="true"
+				title="Brain3_101_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_101_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2883"
+				o_height="1905"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="101"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="309"
+			 thickness="40.0"
+			 z="1123.3464000000001"
+			 title="sec#102"
+		>
+			<t2_patch
+				oid="311"
+				width="2886.0"
+				height="1884.0"
+				transform="matrix(0.9997330029243537,0.023106770952556338,-0.023106770952556338,0.9997330029243537,145.3820763234262,216.60313322161164)"
+				locked="true"
+				title="Brain3_102_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_102_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2886"
+				o_height="1884"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="102"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="312"
+			 thickness="40.0"
+			 z="1134.3596"
+			 title="sec#103"
+		>
+			<t2_patch
+				oid="314"
+				width="2883.0"
+				height="1902.0"
+				transform="matrix(0.9997820603664321,0.02087658423812911,-0.02087658423812911,0.9997820603664321,140.09867792187652,224.27712692049045)"
+				locked="true"
+				title="Brain3_103_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_103_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2883"
+				o_height="1902"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="103"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="315"
+			 thickness="40.0"
+			 z="1145.3728"
+			 title="sec#104"
+		>
+			<t2_patch
+				oid="317"
+				width="2883.0"
+				height="1896.0"
+				transform="matrix(0.9998135069485538,0.01931194768101684,-0.01931194768101684,0.9998135069485538,141.3111041731927,234.9181331140967)"
+				locked="true"
+				title="Brain3_104_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_104_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2883"
+				o_height="1896"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="104"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="318"
+			 thickness="40.0"
+			 z="1156.386"
+			 title="sec#105"
+		>
+			<t2_patch
+				oid="320"
+				width="2895.0"
+				height="1902.0"
+				transform="matrix(0.9993812543020208,-0.03517255392659949,0.03517255392659949,0.9993812543020208,89.35644656230579,303.72212584317776)"
+				locked="true"
+				title="Brain3_105_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_105_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2895"
+				o_height="1902"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="105"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="321"
+			 thickness="40.0"
+			 z="1167.3992"
+			 title="sec#106"
+		>
+			<t2_patch
+				oid="323"
+				width="2901.0"
+				height="1864.0"
+				transform="matrix(0.9999840500382086,0.005647979212213005,-0.005647979212213005,0.9999840500382086,117.13931285487342,255.26238266146493)"
+				locked="true"
+				title="Brain3_106_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_106_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2901"
+				o_height="1864"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="106"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="324"
+			 thickness="40.0"
+			 z="1178.4124000000002"
+			 title="sec#107"
+		>
+			<t2_patch
+				oid="326"
+				width="2933.0"
+				height="2003.0"
+				transform="matrix(0.9918995502187347,-0.1270247309616196,0.1270247309616196,0.9918995502187347,8.758288986817206,439.6868315523766)"
+				locked="true"
+				title="Brain3_107_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_107_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2933"
+				o_height="2003"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="107"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="327"
+			 thickness="40.0"
+			 z="1189.4256"
+			 title="sec#108"
+		>
+			<t2_patch
+				oid="329"
+				width="2892.0"
+				height="1944.0"
+				transform="matrix(0.9981635359752021,0.06057685572461884,-0.06057685572461884,0.9981635359752021,177.6346021412328,197.24574403301995)"
+				locked="true"
+				title="Brain3_108_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_108_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2892"
+				o_height="1944"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="108"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="330"
+			 thickness="40.0"
+			 z="1200.4388000000001"
+			 title="sec#109"
+		>
+			<t2_patch
+				oid="332"
+				width="2885.0"
+				height="1937.0"
+				transform="matrix(0.9949969004865725,-0.0999057957383539,0.0999057957383539,0.9949969004865725,25.20030625209165,435.2383356401433)"
+				locked="true"
+				title="Brain3_109_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_109_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2885"
+				o_height="1937"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="109"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="333"
+			 thickness="40.0"
+			 z="1211.452"
+			 title="sec#110"
+		>
+			<t2_patch
+				oid="335"
+				width="2906.0"
+				height="1910.0"
+				transform="matrix(0.9977321514390521,0.06730939001952325,-0.06730939001952325,0.9977321514390521,168.80070686705676,195.55716120355055)"
+				locked="true"
+				title="Brain3_110_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_110_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2906"
+				o_height="1910"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="110"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="336"
+			 thickness="40.0"
+			 z="1222.4652"
+			 title="sec#111"
+		>
+			<t2_patch
+				oid="338"
+				width="2887.0"
+				height="1992.0"
+				transform="matrix(0.9917686094324717,-0.12804306050849282,0.12804306050849282,0.9917686094324717,7.284910385164039,446.78784206523824)"
+				locked="true"
+				title="Brain3_111_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_111_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2887"
+				o_height="1992"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="111"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="339"
+			 thickness="40.0"
+			 z="1233.4784"
+			 title="sec#112"
+		>
+			<t2_patch
+				oid="341"
+				width="2907.0"
+				height="1855.0"
+				transform="matrix(0.9999308198890359,0.01176245875829072,-0.01176245875829072,0.9999308198890359,114.68042174081256,284.3665990427744)"
+				locked="true"
+				title="Brain3_112_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_112_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2907"
+				o_height="1855"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="112"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="342"
+			 thickness="40.0"
+			 z="1244.4916"
+			 title="sec#113"
+		>
+			<t2_patch
+				oid="344"
+				width="2896.0"
+				height="1866.0"
+				transform="matrix(0.999624066776561,-0.02741760604228111,0.02741760604228111,0.999624066776561,96.93631910445583,303.3953673150886)"
+				locked="true"
+				title="Brain3_113_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_113_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2896"
+				o_height="1866"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="113"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="345"
+			 thickness="40.0"
+			 z="1255.5048000000002"
+			 title="sec#114"
+		>
+			<t2_patch
+				oid="347"
+				width="2896.0"
+				height="1869.0"
+				transform="matrix(0.9985534181758141,-0.05376868093414442,0.05376868093414442,0.9985534181758141,64.65181527003915,352.5946438472838)"
+				locked="true"
+				title="Brain3_114_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_114_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2896"
+				o_height="1869"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="114"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="348"
+			 thickness="40.0"
+			 z="1266.518"
+			 title="sec#115"
+		>
+			<t2_patch
+				oid="350"
+				width="2905.0"
+				height="1868.0"
+				transform="matrix(0.9990392328638109,-0.04382477836667658,0.04382477836667658,0.9990392328638109,75.84540912012926,335.45333350721694)"
+				locked="true"
+				title="Brain3_115_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_115_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2905"
+				o_height="1868"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="115"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="351"
+			 thickness="40.0"
+			 z="1277.5312000000001"
+			 title="sec#116"
+		>
+			<t2_patch
+				oid="353"
+				width="2876.0"
+				height="1842.0"
+				transform="matrix(0.9999869060715003,-0.005117390501833538,0.005117390501833538,0.9999869060715003,149.0573180821848,279.73675995772555)"
+				locked="true"
+				title="Brain3_116_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_116_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2876"
+				o_height="1842"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="116"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="354"
+			 thickness="40.0"
+			 z="1288.5444"
+			 title="sec#117"
+		>
+			<t2_patch
+				oid="356"
+				width="2942.0"
+				height="1850.0"
+				transform="matrix(0.9989177531601805,-0.046511529983616566,0.046511529983616566,0.9989177531601805,63.44985934066426,339.72476687717335)"
+				locked="true"
+				title="Brain3_117_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_117_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2942"
+				o_height="1850"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="117"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="357"
+			 thickness="40.0"
+			 z="1299.5576"
+			 title="sec#118"
+		>
+			<t2_patch
+				oid="359"
+				width="2903.0"
+				height="1857.0"
+				transform="matrix(0.9961190986962376,-0.08801557369349597,0.08801557369349597,0.9961190986962376,52.14014880312243,379.81936920063663)"
+				locked="true"
+				title="Brain3_118_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_118_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2903"
+				o_height="1857"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="118"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="360"
+			 thickness="40.0"
+			 z="1310.5708"
+			 title="sec#119"
+		>
+			<t2_patch
+				oid="362"
+				width="2902.0"
+				height="1815.0"
+				transform="matrix(0.9999999946133077,1.0379491531843172E-4,-1.0379491531843172E-4,0.9999999946133077,128.03698516241184,264.5901863986901)"
+				locked="true"
+				title="Brain3_119_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_119_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2902"
+				o_height="1815"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="119"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="363"
+			 thickness="40.0"
+			 z="1321.584"
+			 title="sec#120"
+		>
+			<t2_patch
+				oid="365"
+				width="2896.0"
+				height="1819.0"
+				transform="matrix(0.999886727743001,0.015050969516739171,-0.015050969516739171,0.999886727743001,143.8681774958859,242.4414810074859)"
+				locked="true"
+				title="Brain3_120_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_120_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2896"
+				o_height="1819"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="120"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="366"
+			 thickness="40.0"
+			 z="1332.5972000000002"
+			 title="sec#121"
+		>
+			<t2_patch
+				oid="368"
+				width="2885.0"
+				height="1812.0"
+				transform="matrix(0.99997475074481,-0.007106185534817931,0.007106185534817931,0.99997475074481,128.51329957184498,276.4092895247495)"
+				locked="true"
+				title="Brain3_121_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_121_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2885"
+				o_height="1812"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="121"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="369"
+			 thickness="40.0"
+			 z="1343.6104"
+			 title="sec#122"
+		>
+			<t2_patch
+				oid="371"
+				width="2886.0"
+				height="1810.0"
+				transform="matrix(0.9999161050584157,-0.01295310174465714,0.01295310174465714,0.9999161050584157,126.37949416484844,279.0984815733459)"
+				locked="true"
+				title="Brain3_122_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_122_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2886"
+				o_height="1810"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="122"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="372"
+			 thickness="40.0"
+			 z="1354.6236000000001"
+			 title="sec#123"
+		>
+			<t2_patch
+				oid="374"
+				width="2898.0"
+				height="1799.0"
+				transform="matrix(0.999925295055782,0.012223105481325915,-0.012223105481325915,0.999925295055782,142.99446634788364,240.23845257208814)"
+				locked="true"
+				title="Brain3_123_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_123_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2898"
+				o_height="1799"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="123"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="375"
+			 thickness="40.0"
+			 z="1365.6368"
+			 title="sec#124"
+		>
+			<t2_patch
+				oid="377"
+				width="2878.0"
+				height="1833.0"
+				transform="matrix(0.9989319663783326,-0.04620526536573344,0.04620526536573344,0.9989319663783326,112.92115229605224,328.97328397953333)"
+				locked="true"
+				title="Brain3_124_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_124_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2878"
+				o_height="1833"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="124"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="378"
+			 thickness="40.0"
+			 z="1376.65"
+			 title="sec#125"
+		>
+			<t2_patch
+				oid="380"
+				width="2896.0"
+				height="1797.0"
+				transform="matrix(0.9999468302877914,-0.01031196379934965,0.01031196379934965,0.9999468302877914,129.161387310186,270.0384339807051)"
+				locked="true"
+				title="Brain3_125_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_125_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2896"
+				o_height="1797"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="125"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="381"
+			 thickness="40.0"
+			 z="1387.6632"
+			 title="sec#126"
+		>
+			<t2_patch
+				oid="383"
+				width="2905.0"
+				height="1794.0"
+				transform="matrix(0.9999569900480328,-0.009274591855092806,0.009274591855092806,0.9999569900480328,115.68654179676923,277.6487548576288)"
+				locked="true"
+				title="Brain3_126_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_126_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2905"
+				o_height="1794"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="126"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="384"
+			 thickness="40.0"
+			 z="1398.6764"
+			 title="sec#127"
+		>
+			<t2_patch
+				oid="386"
+				width="2911.0"
+				height="1815.0"
+				transform="matrix(0.9999836425710701,-0.005719666974078482,0.005719666974078482,0.9999836425710701,114.4604459161983,273.014089509672)"
+				locked="true"
+				title="Brain3_127_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_127_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2911"
+				o_height="1815"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="127"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="387"
+			 thickness="40.0"
+			 z="1409.6896000000002"
+			 title="sec#128"
+		>
+			<t2_patch
+				oid="389"
+				width="2917.0"
+				height="1807.0"
+				transform="matrix(0.9998770599567175,0.0156800820250032,-0.0156800820250032,0.9998770599567175,125.97441799490116,248.9868116864227)"
+				locked="true"
+				title="Brain3_128_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_128_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2917"
+				o_height="1807"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="128"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="390"
+			 thickness="40.0"
+			 z="1420.7028"
+			 title="sec#129"
+		>
+			<t2_patch
+				oid="392"
+				width="2911.0"
+				height="1807.0"
+				transform="matrix(0.9999330874222491,0.011568088788080631,-0.011568088788080631,0.9999330874222491,127.97494365761395,259.1225127056864)"
+				locked="true"
+				title="Brain3_129_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_129_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2911"
+				o_height="1807"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="129"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="393"
+			 thickness="40.0"
+			 z="1431.7160000000001"
+			 title="sec#130"
+		>
+			<t2_patch
+				oid="395"
+				width="2912.0"
+				height="1765.0"
+				transform="matrix(0.9999900568124761,-0.004459403119353406,0.004459403119353406,0.9999900568124761,105.58906509476583,292.7684752207183)"
+				locked="true"
+				title="Brain3_130_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_130_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2912"
+				o_height="1765"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="130"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="396"
+			 thickness="40.0"
+			 z="1442.7292"
+			 title="sec#131"
+		>
+			<t2_patch
+				oid="398"
+				width="2910.0"
+				height="1760.0"
+				transform="matrix(0.9992609423704522,-0.038439160408575,0.038439160408575,0.9992609423704522,79.54514379256943,343.25229966660345)"
+				locked="true"
+				title="Brain3_131_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_131_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2910"
+				o_height="1760"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="131"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="399"
+			 thickness="40.0"
+			 z="1453.7424"
+			 title="sec#132"
+		>
+			<t2_patch
+				oid="401"
+				width="2907.0"
+				height="1760.0"
+				transform="matrix(0.9987363719784136,-0.050255937832218496,0.050255937832218496,0.9987363719784136,72.86613751230016,358.36650283888866)"
+				locked="true"
+				title="Brain3_132_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_132_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2907"
+				o_height="1760"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="132"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="402"
+			 thickness="40.0"
+			 z="1464.7556"
+			 title="sec#133"
+		>
+			<t2_patch
+				oid="404"
+				width="2917.0"
+				height="1762.0"
+				transform="matrix(0.9999995897819265,-9.057792108755631E-4,9.057792108755631E-4,0.9999995897819265,106.43672003838674,302.1696295101128)"
+				locked="true"
+				title="Brain3_133_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_133_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2917"
+				o_height="1762"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="133"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="405"
+			 thickness="40.0"
+			 z="1475.7688"
+			 title="sec#134"
+		>
+			<t2_patch
+				oid="407"
+				width="2902.0"
+				height="1731.0"
+				transform="matrix(0.999708542053625,-0.02414189191044155,0.02414189191044155,0.999708542053625,95.58897296453051,329.50807924100354)"
+				locked="true"
+				title="Brain3_134_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_134_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2902"
+				o_height="1731"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="134"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="408"
+			 thickness="40.0"
+			 z="1486.7820000000002"
+			 title="sec#135"
+		>
+			<t2_patch
+				oid="410"
+				width="2904.0"
+				height="1772.0"
+				transform="matrix(0.9999753086125417,-0.007027244499218854,0.007027244499218854,0.9999753086125417,106.19190885580883,319.2391436108787)"
+				locked="true"
+				title="Brain3_135_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_135_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2904"
+				o_height="1772"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="135"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="411"
+			 thickness="40.0"
+			 z="1497.7952"
+			 title="sec#136"
+		>
+			<t2_patch
+				oid="413"
+				width="2906.0"
+				height="1753.0"
+				transform="matrix(0.9999999346969444,-3.613946691913578E-4,3.613946691913578E-4,0.9999999346969444,113.83473748724555,320.53725342931557)"
+				locked="true"
+				title="Brain3_136_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_136_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2906"
+				o_height="1753"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="136"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="414"
+			 thickness="40.0"
+			 z="1508.8084000000001"
+			 title="sec#137"
+		>
+			<t2_patch
+				oid="416"
+				width="2906.0"
+				height="1716.0"
+				transform="matrix(0.999768591999981,-0.02151191414949672,0.02151191414949672,0.999768591999981,95.83438282931911,344.7773497600888)"
+				locked="true"
+				title="Brain3_137_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_137_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2906"
+				o_height="1716"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="137"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="417"
+			 thickness="40.0"
+			 z="1519.8216"
+			 title="sec#138"
+		>
+			<t2_patch
+				oid="419"
+				width="2878.0"
+				height="1745.0"
+				transform="matrix(0.9999920560393685,0.003985957621010174,-0.003985957621010174,0.9999920560393685,148.14915253659,283.84188247694965)"
+				locked="true"
+				title="Brain3_138_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_138_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2878"
+				o_height="1745"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="138"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="420"
+			 thickness="40.0"
+			 z="1530.8348"
+			 title="sec#139"
+		>
+			<t2_patch
+				oid="422"
+				width="2900.0"
+				height="1727.0"
+				transform="matrix(0.9995797748622994,-0.028987474643966175,0.028987474643966175,0.9995797748622994,90.53738964872173,333.9050757816103)"
+				locked="true"
+				title="Brain3_139_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_139_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2900"
+				o_height="1727"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="139"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="423"
+			 thickness="40.0"
+			 z="1541.848"
+			 title="sec#140"
+		>
+			<t2_patch
+				oid="425"
+				width="2895.0"
+				height="1719.0"
+				transform="matrix(0.9998268929412124,-0.018606024602840773,0.018606024602840773,0.9998268929412124,100.33740961989679,345.37546589003887)"
+				locked="true"
+				title="Brain3_140_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_140_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2895"
+				o_height="1719"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="140"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="426"
+			 thickness="40.0"
+			 z="1552.8612"
+			 title="sec#141"
+		>
+			<t2_patch
+				oid="428"
+				width="2904.0"
+				height="1726.0"
+				transform="matrix(0.9998786249530585,-0.015579966687420257,0.015579966687420257,0.9998786249530585,98.31396287676762,318.65918864763853)"
+				locked="true"
+				title="Brain3_141_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_141_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2904"
+				o_height="1726"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="141"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="429"
+			 thickness="40.0"
+			 z="1563.8744000000002"
+			 title="sec#142"
+		>
+			<t2_patch
+				oid="431"
+				width="2907.0"
+				height="1790.0"
+				transform="matrix(0.9950989178546934,-0.09888449668384852,0.09888449668384852,0.9950989178546934,27.683148119425823,411.4679515531202)"
+				locked="true"
+				title="Brain3_142_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_142_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2907"
+				o_height="1790"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="142"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="432"
+			 thickness="40.0"
+			 z="1574.8876"
+			 title="sec#143"
+		>
+			<t2_patch
+				oid="434"
+				width="2887.0"
+				height="1737.0"
+				transform="matrix(0.9963315512364487,-0.08557709980346262,0.08557709980346262,0.9963315512364487,54.00938817304541,415.42523471424965)"
+				locked="true"
+				title="Brain3_143_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_143_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2887"
+				o_height="1737"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="143"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="435"
+			 thickness="40.0"
+			 z="1585.9008000000001"
+			 title="sec#144"
+		>
+			<t2_patch
+				oid="437"
+				width="2855.0"
+				height="1735.0"
+				transform="matrix(0.9995838247901858,-0.0288474820014311,0.0288474820014311,0.9995838247901858,153.09477966069153,323.40586095421895)"
+				locked="true"
+				title="Brain3_144_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_144_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2855"
+				o_height="1735"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="144"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="438"
+			 thickness="40.0"
+			 z="1596.914"
+			 title="sec#145"
+		>
+			<t2_patch
+				oid="440"
+				width="2863.0"
+				height="1838.0"
+				transform="matrix(0.9775166000172212,-0.21085847550139347,0.21085847550139347,0.9775166000172212,-0.2881108951223723,602.9992864153246)"
+				locked="true"
+				title="Brain3_145_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_145_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2863"
+				o_height="1838"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="145"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="441"
+			 thickness="40.0"
+			 z="1607.9272"
+			 title="sec#146"
+		>
+			<t2_patch
+				oid="443"
+				width="2795.0"
+				height="1747.0"
+				transform="matrix(0.9937972819850045,-0.11120684474985111,0.11120684474985111,0.9937972819850045,80.87113329580916,445.0728219302646)"
+				locked="true"
+				title="Brain3_146_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_146_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2795"
+				o_height="1747"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="146"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="444"
+			 thickness="40.0"
+			 z="1618.9404"
+			 title="sec#147"
+		>
+			<t2_patch
+				oid="446"
+				width="2852.0"
+				height="1749.0"
+				transform="matrix(0.9978705523499132,0.06522546092500381,-0.06522546092500381,0.9978705523499132,180.35967451426222,257.21892982045074)"
+				locked="true"
+				title="Brain3_147_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_147_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2852"
+				o_height="1749"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="147"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="447"
+			 thickness="40.0"
+			 z="1629.9536"
+			 title="sec#148"
+		>
+			<t2_patch
+				oid="449"
+				width="2804.0"
+				height="1745.0"
+				transform="matrix(0.9881798633724836,-0.15329891592943348,0.15329891592943348,0.9881798633724836,69.67396021637069,598.2022053186383)"
+				locked="true"
+				title="Brain3_148_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_148_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2804"
+				o_height="1745"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="148"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="450"
+			 thickness="40.0"
+			 z="1640.9668000000001"
+			 title="sec#149"
+		>
+			<t2_patch
+				oid="452"
+				width="2883.0"
+				height="1718.0"
+				transform="matrix(0.9967611227301056,-0.08041930249522844,0.08041930249522844,0.9967611227301056,38.21852942487749,508.52985311554494)"
+				locked="true"
+				title="Brain3_149_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_149_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2883"
+				o_height="1718"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="149"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="453"
+			 thickness="40.0"
+			 z="1651.98"
+			 title="sec#150"
+		>
+			<t2_patch
+				oid="455"
+				width="2747.0"
+				height="1775.0"
+				transform="matrix(0.9985292557292244,-0.05421554622837443,0.05421554622837443,0.9985292557292244,171.03754275251958,435.48875304287776)"
+				locked="true"
+				title="Brain3_150_10x_TdT_YFP__RGB__x8.tif"
+				links="515"
+				type="4"
+				file_path="10x__RGB__x8/Brain3_150_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2747"
+				o_height="1775"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="150"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="456"
+			 thickness="40.0"
+			 z="1662.9932000000001"
+			 title="sec#151"
+		>
+			<t2_patch
+				oid="458"
+				width="2792.0"
+				height="1771.0"
+				transform="matrix(0.9976672786288449,-0.06826420111093905,0.06826420111093905,0.9976672786288449,120.77848651298609,426.1311622345547)"
+				locked="true"
+				title="Brain3_151_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_151_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2792"
+				o_height="1771"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="151"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="459"
+			 thickness="40.0"
+			 z="1674.0064"
+			 title="sec#152"
+		>
+			<t2_patch
+				oid="461"
+				width="2820.0"
+				height="1729.0"
+				transform="matrix(0.9999592022213011,0.009032933794681525,-0.009032933794681525,0.9999592022213011,131.52728138538532,374.3713356999033)"
+				locked="true"
+				title="Brain3_152_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_152_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2820"
+				o_height="1729"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="152"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="462"
+			 thickness="40.0"
+			 z="1685.0196"
+			 title="sec#153"
+		>
+			<t2_patch
+				oid="464"
+				width="2807.0"
+				height="1639.0"
+				transform="matrix(0.9938353491030381,-0.11086613041521151,0.11086613041521151,0.9938353491030381,78.9534457802356,608.921159208041)"
+				locked="true"
+				title="Brain3_153_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_153_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2807"
+				o_height="1639"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="153"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="465"
+			 thickness="40.0"
+			 z="1696.0328000000002"
+			 title="sec#154"
+		>
+			<t2_patch
+				oid="467"
+				width="2780.0"
+				height="1715.0"
+				transform="matrix(0.9991660730185711,-0.04083085265638501,0.04083085265638501,0.9991660730185711,143.14068779827812,468.1152898991513)"
+				locked="true"
+				title="Brain3_154_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_154_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2780"
+				o_height="1715"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="154"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="468"
+			 thickness="40.0"
+			 z="1707.046"
+			 title="sec#155"
+		>
+			<t2_patch
+				oid="470"
+				width="2825.0"
+				height="1659.0"
+				transform="matrix(0.977570353211462,-0.2106091273473628,0.2106091273473628,0.977570353211462,26.877886379159463,798.0748891146814)"
+				locked="true"
+				title="Brain3_155_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_155_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2825"
+				o_height="1659"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="155"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="471"
+			 thickness="40.0"
+			 z="1718.0592000000001"
+			 title="sec#156"
+		>
+			<t2_patch
+				oid="473"
+				width="2836.0"
+				height="1670.0"
+				transform="matrix(0.9931676664378628,-0.11669612822356172,0.11669612822356172,0.9931676664378628,79.03494945251259,629.5184195830388)"
+				locked="true"
+				title="Brain3_156_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_156_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2836"
+				o_height="1670"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="156"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="474"
+			 thickness="40.0"
+			 z="1729.0724"
+			 title="sec#157"
+		>
+			<t2_patch
+				oid="476"
+				width="2764.0"
+				height="1708.0"
+				transform="matrix(0.9947684653435135,-0.10215527572333698,0.10215527572333698,0.9947684653435135,109.80097968305563,588.4776601054673)"
+				locked="true"
+				title="Brain3_157_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_157_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2764"
+				o_height="1708"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="157"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="477"
+			 thickness="40.0"
+			 z="1740.0856"
+			 title="sec#158"
+		>
+			<t2_patch
+				oid="479"
+				width="2694.0"
+				height="1744.0"
+				transform="matrix(0.9999031669794718,-0.013916057790276482,0.013916057790276482,0.9999031669794718,258.06809852536844,448.63967514287424)"
+				locked="true"
+				title="Brain3_158_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_158_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2694"
+				o_height="1744"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="158"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="480"
+			 thickness="40.0"
+			 z="1751.0988"
+			 title="sec#159"
+		>
+			<t2_patch
+				oid="482"
+				width="2686.0"
+				height="1738.0"
+				transform="matrix(0.9998026921464461,-0.01986395672363899,0.01986395672363899,0.9998026921464461,225.45660494588446,448.88161253033377)"
+				locked="true"
+				title="Brain3_159_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_159_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2686"
+				o_height="1738"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="159"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="483"
+			 thickness="40.0"
+			 z="1762.112"
+			 title="sec#160"
+		>
+			<t2_patch
+				oid="485"
+				width="2686.0"
+				height="1691.0"
+				transform="matrix(0.9968294553187588,-0.07956781390051482,0.07956781390051482,0.9968294553187588,174.85657552594694,573.8955558151961)"
+				locked="true"
+				title="Brain3_160_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_160_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2686"
+				o_height="1691"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="160"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="486"
+			 thickness="40.0"
+			 z="1773.1252000000002"
+			 title="sec#161"
+		>
+			<t2_patch
+				oid="488"
+				width="2728.0"
+				height="1794.0"
+				transform="matrix(0.9954576985483566,0.09520488643346502,-0.09520488643346502,0.9954576985483566,283.22282371140227,272.00393388746124)"
+				locked="true"
+				title="Brain3_161_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_161_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2728"
+				o_height="1794"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="161"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="489"
+			 thickness="40.0"
+			 z="1784.1384"
+			 title="sec#162"
+		>
+			<t2_patch
+				oid="491"
+				width="2655.0"
+				height="1791.0"
+				transform="matrix(0.9987284959330952,-0.050412214900928176,0.050412214900928176,0.9987284959330952,204.03602804976344,501.7418439991761)"
+				locked="true"
+				title="Brain3_162_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_162_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2655"
+				o_height="1791"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="162"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="492"
+			 thickness="40.0"
+			 z="1795.1516000000001"
+			 title="sec#163"
+		>
+			<t2_patch
+				oid="494"
+				width="2728.0"
+				height="1727.0"
+				transform="matrix(0.9994701548791578,0.032548571486814976,-0.032548571486814976,0.9994701548791578,263.17598635216655,439.7108889990318)"
+				locked="true"
+				title="Brain3_163_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_163_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2728"
+				o_height="1727"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="163"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="495"
+			 thickness="40.0"
+			 z="1806.1648"
+			 title="sec#164"
+		>
+			<t2_patch
+				oid="497"
+				width="2672.0"
+				height="1689.0"
+				transform="matrix(0.9987252365857413,0.05047674520762137,-0.05047674520762137,0.9987252365857413,259.5246091919953,417.14464747843795)"
+				locked="true"
+				title="Brain3_164_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_164_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2672"
+				o_height="1689"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="164"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="498"
+			 thickness="40.0"
+			 z="1817.178"
+			 title="sec#165"
+		>
+			<t2_patch
+				oid="500"
+				width="2634.0"
+				height="1759.0"
+				transform="matrix(0.9941567522739859,0.10794606017840852,-0.10794606017840852,0.9941567522739859,367.713592553695,302.3518992786103)"
+				locked="true"
+				title="Brain3_165_10x_TdT_YFP__RGB__x8.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x8/Brain3_165_10x_TdT_YFP__RGB__x8.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2634"
+				o_height="1759"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="165"
+			>
+				<t2_filter class="ini.trakem2.imaging.filters.CLAHE" fast="true" blockradius="63" bins="255" slope="3.0" />
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+	</t2_layer_set>
+	<t2_display id="512"
+		layer_id="5"
+		c_alphas="-1"
+		c_alphas_state="-1"
+		x="1984"
+		y="16"
+		magnification="0.5"
+		srcrect_x="383"
+		srcrect_y="382"
+		srcrect_width="2802"
+		srcrect_height="1930"
+		scroll_step="1"
+		filter_enabled="false"
+		filter_min_max_enabled="false"
+		filter_min="0"
+		filter_max="255"
+		filter_invert="false"
+		filter_clahe_enabled="true"
+		filter_clahe_block_size="127"
+		filter_clahe_histogram_bins="256"
+		filter_clahe_max_slope="3.0"
+	/>
+</trakem2>

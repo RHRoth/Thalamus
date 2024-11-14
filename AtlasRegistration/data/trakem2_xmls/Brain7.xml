@@ -1,0 +1,6638 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE trakem2_anything [
+	<!ELEMENT trakem2 (project,t2_layer_set,t2_display)>
+	<!ELEMENT project (anything)>
+	<!ATTLIST project id NMTOKEN #REQUIRED>
+	<!ATTLIST project unuid NMTOKEN #REQUIRED>
+	<!ATTLIST project title NMTOKEN #REQUIRED>
+	<!ATTLIST project preprocessor NMTOKEN #REQUIRED>
+	<!ATTLIST project mipmaps_folder NMTOKEN #REQUIRED>
+	<!ATTLIST project storage_folder NMTOKEN #REQUIRED>
+	<!ELEMENT anything (ball, area_list)>
+	<!ATTLIST anything id NMTOKEN #REQUIRED>
+	<!ATTLIST anything expanded NMTOKEN #REQUIRED>
+	<!ELEMENT ball EMPTY>
+	<!ATTLIST ball id NMTOKEN #REQUIRED>
+	<!ATTLIST ball oid NMTOKEN #REQUIRED>
+	<!ATTLIST ball expanded NMTOKEN #REQUIRED>
+	<!ELEMENT area_list EMPTY>
+	<!ATTLIST area_list id NMTOKEN #REQUIRED>
+	<!ATTLIST area_list oid NMTOKEN #REQUIRED>
+	<!ATTLIST area_list expanded NMTOKEN #REQUIRED>
+	<!ELEMENT t2_layer (t2_patch,t2_label,t2_layer_set,t2_profile)>
+	<!ATTLIST t2_layer oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer thickness NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer z NMTOKEN #REQUIRED>
+	<!ELEMENT t2_layer_set (t2_prop,t2_linked_prop,t2_annot,t2_layer,t2_pipe,t2_ball,t2_area_list,t2_calibration,t2_stack,t2_treeline)>
+	<!ATTLIST t2_layer_set oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set layer_width NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set layer_height NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set rot_x NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set rot_y NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set rot_z NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set snapshots_quality NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set color_cues NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set area_color_cues NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set avoid_color_cue_colors NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set n_layers_color_cue NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set paint_arrows NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set paint_tags NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set paint_edge_confidence_boxes NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set preload_ahead NMTOKEN #REQUIRED>
+	<!ELEMENT t2_calibration EMPTY>
+	<!ATTLIST t2_calibration pixelWidth NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration pixelHeight NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration pixelDepth NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration xOrigin NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration yOrigin NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration zOrigin NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration info NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration valueUnit NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration timeUnit NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration unit NMTOKEN #REQUIRED>
+	<!ELEMENT t2_ball (t2_prop,t2_linked_prop,t2_annot,t2_ball_ob)>
+	<!ATTLIST t2_ball oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball fill NMTOKEN #REQUIRED>
+	<!ELEMENT t2_ball_ob EMPTY>
+	<!ATTLIST t2_ball_ob x NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball_ob y NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball_ob r NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball_ob layer_id NMTOKEN #REQUIRED>
+	<!ELEMENT t2_label (t2_prop,t2_linked_prop,t2_annot)>
+	<!ATTLIST t2_label oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label composite NMTOKEN #REQUIRED>
+	<!ELEMENT t2_filter EMPTY>
+	<!ELEMENT t2_patch (t2_prop,t2_linked_prop,t2_annot,ict_transform,ict_transform_list,t2_filter)>
+	<!ATTLIST t2_patch oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch file_path NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch original_path NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch type NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch false_color NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch ct NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch o_width NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch o_height NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch min NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch max NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch o_width NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch o_height NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch pps NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch mres NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch ct_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch alpha_mask_id NMTOKEN #REQUIRED>
+	<!ELEMENT t2_pipe (t2_prop,t2_linked_prop,t2_annot)>
+	<!ATTLIST t2_pipe oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe d NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe p_width NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe layer_ids NMTOKEN #REQUIRED>
+	<!ELEMENT t2_polyline (t2_prop,t2_linked_prop,t2_annot)>
+	<!ATTLIST t2_polyline oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline d NMTOKEN #REQUIRED>
+	<!ELEMENT t2_profile (t2_prop,t2_linked_prop,t2_annot)>
+	<!ATTLIST t2_profile oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile d NMTOKEN #REQUIRED>
+	<!ELEMENT t2_area_list (t2_prop,t2_linked_prop,t2_annot,t2_area)>
+	<!ATTLIST t2_area_list oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list fill_paint NMTOKEN #REQUIRED>
+	<!ELEMENT t2_area (t2_path)>
+	<!ATTLIST t2_area layer_id NMTOKEN #REQUIRED>
+	<!ELEMENT t2_path EMPTY>
+	<!ATTLIST t2_path d NMTOKEN #REQUIRED>
+	<!ELEMENT t2_dissector (t2_prop,t2_linked_prop,t2_annot,t2_dd_item)>
+	<!ATTLIST t2_dissector oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector composite NMTOKEN #REQUIRED>
+	<!ELEMENT t2_dd_item EMPTY>
+	<!ATTLIST t2_dd_item radius NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dd_item tag NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dd_item points NMTOKEN #REQUIRED>
+	<!ELEMENT t2_stack (t2_prop,t2_linked_prop,t2_annot,(iict_transform|iict_transform_list)?)>
+	<!ATTLIST t2_stack oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack file_path CDATA #REQUIRED>
+	<!ATTLIST t2_stack depth CDATA #REQUIRED>
+	<!ELEMENT t2_tag EMPTY>
+	<!ATTLIST t2_tag name NMTOKEN #REQUIRED>
+	<!ATTLIST t2_tag key NMTOKEN #REQUIRED>
+	<!ELEMENT t2_node (t2_area*,t2_tag*)>
+	<!ATTLIST t2_node x NMTOKEN #REQUIRED>
+	<!ATTLIST t2_node y NMTOKEN #REQUIRED>
+	<!ATTLIST t2_node lid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_node c NMTOKEN #REQUIRED>
+	<!ATTLIST t2_node r NMTOKEN #IMPLIED>
+	<!ELEMENT t2_treeline (t2_node*,t2_prop,t2_linked_prop,t2_annot)>
+	<!ATTLIST t2_treeline oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline composite NMTOKEN #REQUIRED>
+	<!ELEMENT t2_areatree (t2_node*,t2_prop,t2_linked_prop,t2_annot)>
+	<!ATTLIST t2_areatree oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree composite NMTOKEN #REQUIRED>
+	<!ELEMENT t2_connector (t2_node*,t2_prop,t2_linked_prop,t2_annot)>
+	<!ATTLIST t2_connector oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector composite NMTOKEN #REQUIRED>
+	<!ELEMENT t2_prop EMPTY>
+	<!ATTLIST t2_prop key NMTOKEN #REQUIRED>
+	<!ATTLIST t2_prop value NMTOKEN #REQUIRED>
+	<!ELEMENT t2_linked_prop EMPTY>
+	<!ATTLIST t2_linked_prop target_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_linked_prop key NMTOKEN #REQUIRED>
+	<!ATTLIST t2_linked_prop value NMTOKEN #REQUIRED>
+	<!ELEMENT t2_annot EMPTY>
+	<!ELEMENT t2_display EMPTY>
+	<!ATTLIST t2_display id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display x NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display y NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display magnification NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display srcrect_x NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display srcrect_y NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display srcrect_width NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display srcrect_height NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display scroll_step NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display c_alphas NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display c_alphas_state NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_enabled NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_min_max_enabled NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_min NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_max NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_invert NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_clahe_enabled NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_clahe_block_size NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_clahe_histogram_bins NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_clahe_max_slope NMTOKEN #REQUIRED>
+	<!ELEMENT ict_transform EMPTY>
+	<!ATTLIST ict_transform class CDATA #REQUIRED>
+	<!ATTLIST ict_transform data CDATA #REQUIRED>
+	<!ELEMENT iict_transform EMPTY>
+	<!ATTLIST iict_transform class CDATA #REQUIRED>
+	<!ATTLIST iict_transform data CDATA #REQUIRED>
+	<!ELEMENT ict_transform_list (ict_transform|iict_transform)*>
+	<!ELEMENT iict_transform_list (iict_transform*)>
+] >
+
+<trakem2>
+	<project 
+		id="0"
+		title="Brain7.xml"
+		unuid="1683306423150.637324812.1062956851"
+		mipmaps_folder="10x__RGB__x4/trakem2.1683306423150.637324812.1062956851/trakem2.mipmaps/"
+		storage_folder="10x__RGB__x4/"
+		mipmaps_format="4"
+		image_resizing_mode="Area downsampling"
+		first_mipmap_level_saved="0"
+	>
+		<anything id="678" title="thal" expanded="true">
+			<ball id="685" oid="684"/>
+			<area_list id="687" oid="686"/>
+		</anything>
+	</project>
+	<t2_layer_set
+		oid="3"
+		width="20.0"
+		height="20.0"
+		transform="matrix(1.0,0.0,0.0,1.0,0.0,0.0)"
+		title="Top Level"
+		links=""
+		layer_width="3248.0"
+		layer_height="2312.0"
+		rot_x="0.0"
+		rot_y="0.0"
+		rot_z="0.0"
+		snapshots_quality="true"
+		snapshots_mode="Full"
+		color_cues="true"
+		area_color_cues="true"
+		avoid_color_cue_colors="false"
+		n_layers_color_cue="0"
+		paint_arrows="true"
+		paint_tags="true"
+		paint_edge_confidence_boxes="true"
+		prepaint="false"
+		preload_ahead="0"
+	>
+		<t2_calibration
+			pixelWidth="3.632005230087531"
+			pixelHeight="3.632005230087531"
+			pixelDepth="40.0"
+			xOrigin="0.0"
+			yOrigin="0.0"
+			zOrigin="0.0"
+			info="null"
+			valueUnit="Gray Value"
+			timeUnit="sec"
+			unit="µm"
+		/>
+		<t2_ball
+			oid="684"
+			width="1621.3334"
+			height="870.0"
+			transform="matrix(1.0,0.0,0.0,1.0,793.3333333333335,552.9999999999999)"
+			title="fiducials"
+			links=""
+			layer_set_id="3"
+			style="fill:none;stroke-opacity:1.0;stroke:#ffff00;stroke-width:1.0px;"
+		>
+			<t2_ball_ob x="827.6666666666667" y="418.0" layer_id="132" r="13.333333333333334" />
+			<t2_ball_ob x="784.3333333333334" y="856.6666666666667" layer_id="234" r="13.333333333333334" />
+			<t2_ball_ob x="782.0000000000001" y="244.66666666666669" layer_id="264" r="13.333333333333334" />
+			<t2_ball_ob x="809.6666666666667" y="13.333333333333334" layer_id="372" r="13.333333333333334" />
+			<t2_ball_ob x="794.6666666666667" y="334.0" layer_id="366" r="13.333333333333334" />
+			<t2_ball_ob x="48.66666666666667" y="597.0" layer_id="435" r="13.333333333333334" />
+			<t2_ball_ob x="1539.3333333333333" y="602.0" layer_id="429" r="13.333333333333334" />
+			<t2_ball_ob x="13.333333333333334" y="825.0" layer_id="384" r="13.333333333333334" />
+			<t2_ball_ob x="1608.0" y="807.0" layer_id="375" r="13.333333333333334" />
+		</t2_ball>
+		<t2_area_list
+			oid="686"
+			width="872.0"
+			height="1132.0"
+			transform="matrix(1.0,0.0,0.0,1.0,1568.0,559.0)"
+			locked="true"
+			title="rect"
+			links="236,239,242,245,248,251,254,257,260,263,266,269,272,275,278,281,284,287,290,293,296,299,302,305,308,311,314,317,320,323,326,329,332,335,338,341,344,347,350,353,356,359,362,365,368,371,374,377,380,383,386,389,392,395,398,401,404,407,410,413,416,419,422,425,428,431,434,437,440,443,446,449,452,455,458,461,464,467,470,473,476,479,482,676"
+			layer_set_id="3"
+			fill_paint="true"
+			style="stroke:none;fill-opacity:0.4;fill:#ffff00;"
+		>
+			<t2_area layer_id="384">
+				<t2_path d="M 42 124 L 42 1104 L 870 1104 L 870 124 z" />
+			</t2_area>
+			<t2_area layer_id="258">
+				<t2_path d="M 6 334 L 6 862 L 528 862 L 528 334 z" />
+			</t2_area>
+			<t2_area layer_id="387">
+				<t2_path d="M 42 122 L 42 1106 L 868 1106 L 868 122 z" />
+			</t2_area>
+			<t2_area layer_id="261">
+				<t2_path d="M 10 314 L 10 874 L 536 874 L 536 314 z" />
+			</t2_area>
+			<t2_area layer_id="390">
+				<t2_path d="M 44 108 L 44 1110 L 872 1110 L 872 108 z" />
+			</t2_area>
+			<t2_area layer_id="264">
+				<t2_path d="M 6 310 L 6 882 L 548 882 L 548 310 z" />
+			</t2_area>
+			<t2_area layer_id="393">
+				<t2_path d="M 36 102 L 36 1118 L 854 1118 L 854 102 z" />
+			</t2_area>
+			<t2_area layer_id="267">
+				<t2_path d="M 12 304 L 12 898 L 580 898 L 580 304 z" />
+			</t2_area>
+			<t2_area layer_id="396">
+				<t2_path d="M 40 102 L 40 1132 L 812 1132 L 812 102 z" />
+			</t2_area>
+			<t2_area layer_id="270">
+				<t2_path d="M 2 286 L 2 890 L 600 890 L 600 286 z" />
+			</t2_area>
+			<t2_area layer_id="399">
+				<t2_path d="M 38 80 L 38 1116 L 814 1116 L 814 80 z" />
+			</t2_area>
+			<t2_area layer_id="273">
+				<t2_path d="M 2 274 L 2 904 L 602 904 L 602 274 z" />
+			</t2_area>
+			<t2_area layer_id="402">
+				<t2_path d="M 30 76 L 30 1110 L 842 1110 L 842 76 z" />
+			</t2_area>
+			<t2_area layer_id="276">
+				<t2_path d="M 4 268 L 4 910 L 618 910 L 618 268 z" />
+			</t2_area>
+			<t2_area layer_id="405">
+				<t2_path d="M 38 90 L 38 1082 L 836 1082 L 836 90 z" />
+			</t2_area>
+			<t2_area layer_id="279">
+				<t2_path d="M 0 262 L 0 916 L 632 916 L 632 262 z" />
+			</t2_area>
+			<t2_area layer_id="408">
+				<t2_path d="M 32 108 L 32 1084 L 824 1084 L 824 108 z" />
+			</t2_area>
+			<t2_area layer_id="282">
+				<t2_path d="M 2 262 L 2 930 L 634 930 L 634 262 z" />
+			</t2_area>
+			<t2_area layer_id="411">
+				<t2_path d="M 24 86 L 24 1058 L 798 1058 L 798 86 z" />
+			</t2_area>
+			<t2_area layer_id="285">
+				<t2_path d="M 2 242 L 2 922 L 686 922 L 686 242 z" />
+			</t2_area>
+			<t2_area layer_id="414">
+				<t2_path d="M 32 86 L 32 1086 L 818 1086 L 818 86 z" />
+			</t2_area>
+			<t2_area layer_id="288">
+				<t2_path d="M 10 246 L 10 946 L 704 946 L 704 246 z" />
+			</t2_area>
+			<t2_area layer_id="417">
+				<t2_path d="M 36 86 L 36 1052 L 810 1052 L 810 86 z" />
+			</t2_area>
+			<t2_area layer_id="291">
+				<t2_path d="M 10 240 L 10 942 L 708 942 L 708 240 z" />
+			</t2_area>
+			<t2_area layer_id="420">
+				<t2_path d="M 32 72 L 32 1058 L 798 1058 L 798 72 z" />
+			</t2_area>
+			<t2_area layer_id="294">
+				<t2_path d="M 18 228 L 18 954 L 722 954 L 722 228 z" />
+			</t2_area>
+			<t2_area layer_id="423">
+				<t2_path d="M 24 68 L 24 1058 L 794 1058 L 794 68 z" />
+			</t2_area>
+			<t2_area layer_id="297">
+				<t2_path d="M 16 228 L 16 958 L 726 958 L 726 228 z" />
+			</t2_area>
+			<t2_area layer_id="426">
+				<t2_path d="M 30 74 L 30 1050 L 774 1050 L 774 74 z" />
+			</t2_area>
+			<t2_area layer_id="300">
+				<t2_path d="M 14 222 L 14 958 L 738 958 L 738 222 z" />
+			</t2_area>
+			<t2_area layer_id="429">
+				<t2_path d="M 32 60 L 32 1040 L 772 1040 L 772 60 z" />
+			</t2_area>
+			<t2_area layer_id="303">
+				<t2_path d="M 14 236 L 14 972 L 748 972 L 748 236 z" />
+			</t2_area>
+			<t2_area layer_id="432">
+				<t2_path d="M 32 64 L 32 1066 L 758 1066 L 758 64 z" />
+			</t2_area>
+			<t2_area layer_id="306">
+				<t2_path d="M 22 228 L 22 978 L 756 978 L 756 228 z" />
+			</t2_area>
+			<t2_area layer_id="435">
+				<t2_path d="M 32 60 L 32 1042 L 760 1042 L 760 60 z" />
+			</t2_area>
+			<t2_area layer_id="309">
+				<t2_path d="M 22 230 L 22 982 L 762 982 L 762 230 z" />
+			</t2_area>
+			<t2_area layer_id="438">
+				<t2_path d="M 24 56 L 24 1066 L 736 1066 L 736 56 z" />
+			</t2_area>
+			<t2_area layer_id="312">
+				<t2_path d="M 28 238 L 28 998 L 778 998 L 778 238 z" />
+			</t2_area>
+			<t2_area layer_id="441">
+				<t2_path d="M 18 52 L 18 1058 L 734 1058 L 734 52 z" />
+			</t2_area>
+			<t2_area layer_id="315">
+				<t2_path d="M 26 240 L 26 996 L 780 996 L 780 240 z" />
+			</t2_area>
+			<t2_area layer_id="444">
+				<t2_path d="M 18 46 L 18 1052 L 734 1052 L 734 46 z" />
+			</t2_area>
+			<t2_area layer_id="318">
+				<t2_path d="M 26 240 L 26 1004 L 794 1004 L 794 240 z" />
+			</t2_area>
+			<t2_area layer_id="447">
+				<t2_path d="M 16 42 L 16 1056 L 742 1056 L 742 42 z" />
+			</t2_area>
+			<t2_area layer_id="321">
+				<t2_path d="M 26 246 L 26 1018 L 812 1018 L 812 246 z" />
+			</t2_area>
+			<t2_area layer_id="450">
+				<t2_path d="M 20 76 L 20 1074 L 744 1074 L 744 76 z" />
+			</t2_area>
+			<t2_area layer_id="324">
+				<t2_path d="M 24 240 L 24 1020 L 822 1020 L 822 240 z" />
+			</t2_area>
+			<t2_area layer_id="453">
+				<t2_path d="M 22 42 L 22 1064 L 748 1064 L 748 42 z" />
+			</t2_area>
+			<t2_area layer_id="327">
+				<t2_path d="M 24 242 L 24 1068 L 828 1068 L 828 242 z" />
+			</t2_area>
+			<t2_area layer_id="456">
+				<t2_path d="M 18 46 L 18 1052 L 754 1052 L 754 46 z" />
+			</t2_area>
+			<t2_area layer_id="330">
+				<t2_path d="M 28 242 L 28 1064 L 824 1064 L 824 242 z" />
+			</t2_area>
+			<t2_area layer_id="459">
+				<t2_path d="M 4 30 L 4 1042 L 752 1042 L 752 30 z" />
+			</t2_area>
+			<t2_area layer_id="333">
+				<t2_path d="M 28 242 L 28 1080 L 830 1080 L 830 242 z" />
+			</t2_area>
+			<t2_area layer_id="462">
+				<t2_path d="M 26 20 L 26 1036 L 758 1036 L 758 20 z" />
+			</t2_area>
+			<t2_area layer_id="336">
+				<t2_path d="M 38 242 L 38 1084 L 836 1084 L 836 242 z" />
+			</t2_area>
+			<t2_area layer_id="465">
+				<t2_path d="M 20 12 L 20 1034 L 770 1034 L 770 12 z" />
+			</t2_area>
+			<t2_area layer_id="339">
+				<t2_path d="M 34 244 L 34 1080 L 838 1080 L 838 244 z" />
+			</t2_area>
+			<t2_area layer_id="468">
+				<t2_path d="M 18 24 L 18 1014 L 740 1014 L 740 24 z" />
+			</t2_area>
+			<t2_area layer_id="342">
+				<t2_path d="M 34 240 L 34 1082 L 850 1082 L 850 240 z" />
+			</t2_area>
+			<t2_area layer_id="471">
+				<t2_path d="M 18 32 L 18 1020 L 676 1020 L 676 32 z" />
+			</t2_area>
+			<t2_area layer_id="345">
+				<t2_path d="M 32 236 L 32 1080 L 856 1080 L 856 236 z" />
+			</t2_area>
+			<t2_area layer_id="474">
+				<t2_path d="M 16 18 L 16 1030 L 660 1030 L 660 18 z" />
+			</t2_area>
+			<t2_area layer_id="348">
+				<t2_path d="M 36 238 L 36 1080 L 852 1080 L 852 238 z" />
+			</t2_area>
+			<t2_area layer_id="477">
+				<t2_path d="M 22 6 L 22 1036 L 664 1036 L 664 6 z" />
+			</t2_area>
+			<t2_area layer_id="351">
+				<t2_path d="M 32 240 L 32 1088 L 860 1088 L 860 240 z" />
+			</t2_area>
+			<t2_area layer_id="480">
+				<t2_path d="M 20 0 L 20 1038 L 656 1038 L 656 0 z" />
+			</t2_area>
+			<t2_area layer_id="354">
+				<t2_path d="M 32 230 L 32 1080 L 858 1080 L 858 230 z" />
+			</t2_area>
+			<t2_area layer_id="357">
+				<t2_path d="M 30 234 L 30 1102 L 838 1102 L 838 234 z" />
+			</t2_area>
+			<t2_area layer_id="360">
+				<t2_path d="M 30 208 L 30 1090 L 836 1090 L 836 208 z" />
+			</t2_area>
+			<t2_area layer_id="234">
+				<t2_path d="M 12 554 L 12 692 L 234 692 L 234 554 z" />
+			</t2_area>
+			<t2_area layer_id="363">
+				<t2_path d="M 36 206 L 36 1100 L 840 1100 L 840 206 z" />
+			</t2_area>
+			<t2_area layer_id="237">
+				<t2_path d="M 10 488 L 10 708 L 358 708 L 358 488 z" />
+			</t2_area>
+			<t2_area layer_id="366">
+				<t2_path d="M 20 194 L 20 1104 L 840 1104 L 840 194 z" />
+			</t2_area>
+			<t2_area layer_id="240">
+				<t2_path d="M 12 464 L 12 732 L 382 732 L 382 464 z" />
+			</t2_area>
+			<t2_area layer_id="369">
+				<t2_path d="M 26 178 L 26 1098 L 852 1098 L 852 178 z" />
+			</t2_area>
+			<t2_area layer_id="243">
+				<t2_path d="M 26 450 L 26 774 L 406 774 L 406 450 z" />
+			</t2_area>
+			<t2_area layer_id="372">
+				<t2_path d="M 30 162 L 30 1104 L 858 1104 L 858 162 z" />
+			</t2_area>
+			<t2_area layer_id="246">
+				<t2_path d="M 12 426 L 12 792 L 468 792 L 468 426 z" />
+			</t2_area>
+			<t2_area layer_id="375">
+				<t2_path d="M 38 154 L 38 1106 L 870 1106 L 870 154 z" />
+			</t2_area>
+			<t2_area layer_id="249">
+				<t2_path d="M 12 370 L 12 802 L 504 802 L 504 370 z" />
+			</t2_area>
+			<t2_area layer_id="378">
+				<t2_path d="M 38 148 L 38 1104 L 872 1104 L 872 148 z" />
+			</t2_area>
+			<t2_area layer_id="252">
+				<t2_path d="M 12 348 L 12 832 L 512 832 L 512 348 z" />
+			</t2_area>
+			<t2_area layer_id="381">
+				<t2_path d="M 38 138 L 38 1106 L 870 1106 L 870 138 z" />
+			</t2_area>
+			<t2_area layer_id="255">
+				<t2_path d="M 12 334 L 12 836 L 510 836 L 510 334 z" />
+			</t2_area>
+		</t2_area_list>
+		<t2_layer oid="5"
+			 thickness="40.0"
+			 z="11.013200000000001"
+			 title="sec#01"
+		>
+			<t2_patch
+				oid="8"
+				width="1561.0"
+				height="1099.0"
+				transform="matrix(0.9951181891170792,-0.09869037282503727,0.09869037282503727,0.9951181891170792,832.674775544453,584.3223086444741)"
+				locked="true"
+				title="Brain7_001_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_001_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1561"
+				o_height="1099"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="1"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="9"
+			 thickness="40.0"
+			 z="22.026400000000002"
+			 title="sec#02"
+		>
+			<t2_patch
+				oid="11"
+				width="1555.0"
+				height="1108.0"
+				transform="matrix(0.9968361686932239,-0.07948366363608626,0.07948366363608626,0.9968361686932239,833.1973817303051,565.4714378273675)"
+				locked="true"
+				title="Brain7_002_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_002_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1555"
+				o_height="1108"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="2"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="12"
+			 thickness="40.0"
+			 z="33.0396"
+			 title="sec#03"
+		>
+			<t2_patch
+				oid="14"
+				width="1612.0"
+				height="1146.0"
+				transform="matrix(0.9944430210832543,-0.10527619777903297,0.10527619777903297,0.9944430210832543,806.9005494389476,560.6616056109278)"
+				locked="true"
+				title="Brain7_003_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_003_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1612"
+				o_height="1146"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="3"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="15"
+			 thickness="40.0"
+			 z="44.052800000000005"
+			 title="sec#04"
+		>
+			<t2_patch
+				oid="17"
+				width="1645.0"
+				height="1170.0"
+				transform="matrix(0.9999460813600496,-0.010384333039779443,0.010384333039779443,0.9999460813600496,820.8681978127097,479.972465180012)"
+				locked="true"
+				title="Brain7_004_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_004_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1645"
+				o_height="1170"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="4"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="18"
+			 thickness="40.0"
+			 z="55.066"
+			 title="sec#05"
+		>
+			<t2_patch
+				oid="20"
+				width="1645.0"
+				height="1212.0"
+				transform="matrix(0.9985772818877721,-0.053323654203637036,0.053323654203637036,0.9985772818877721,803.7515331023615,496.0136580571948)"
+				locked="true"
+				title="Brain7_005_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_005_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1645"
+				o_height="1212"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="5"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="21"
+			 thickness="40.0"
+			 z="66.0792"
+			 title="sec#06"
+		>
+			<t2_patch
+				oid="23"
+				width="1659.0"
+				height="1208.0"
+				transform="matrix(0.996738915547678,-0.08069407805309292,0.08069407805309292,0.996738915547678,779.9862899104501,517.2117812965434)"
+				locked="true"
+				title="Brain7_006_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_006_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1659"
+				o_height="1208"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="6"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="24"
+			 thickness="40.0"
+			 z="77.0924"
+			 title="sec#07"
+		>
+			<t2_patch
+				oid="26"
+				width="1678.0"
+				height="1208.0"
+				transform="matrix(0.9977662016895269,-0.0668027451984909,0.0668027451984909,0.9977662016895269,781.1512192230148,507.50281359242126)"
+				locked="true"
+				title="Brain7_007_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_007_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1678"
+				o_height="1208"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="7"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="27"
+			 thickness="40.0"
+			 z="88.10560000000001"
+			 title="sec#08"
+		>
+			<t2_patch
+				oid="29"
+				width="1689.0"
+				height="1200.0"
+				transform="matrix(0.9957219373126001,-0.09240034390868164,0.09240034390868164,0.9957219373126001,764.3367358466603,530.0461819233974)"
+				locked="true"
+				title="Brain7_008_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_008_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1689"
+				o_height="1200"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="8"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="30"
+			 thickness="40.0"
+			 z="99.11880000000001"
+			 title="sec#09"
+		>
+			<t2_patch
+				oid="32"
+				width="1716.0"
+				height="1200.0"
+				transform="matrix(0.9971187686945518,-0.07585618707172825,0.07585618707172825,0.9971187686945518,745.930303840215,511.98316993980643)"
+				locked="true"
+				title="Brain7_009_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_009_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1716"
+				o_height="1200"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="9"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="33"
+			 thickness="40.0"
+			 z="110.132"
+			 title="sec#10"
+		>
+			<t2_patch
+				oid="35"
+				width="1735.0"
+				height="1200.0"
+				transform="matrix(0.9981558871212916,-0.06070275945216558,0.06070275945216558,0.9981558871212916,748.868942295625,494.44300040995313)"
+				locked="true"
+				title="Brain7_010_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_010_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1735"
+				o_height="1200"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="10"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="36"
+			 thickness="40.0"
+			 z="121.1452"
+			 title="sec#11"
+		>
+			<t2_patch
+				oid="38"
+				width="1750.0"
+				height="1200.0"
+				transform="matrix(0.9955253589350398,-0.09449476026352122,0.09449476026352122,0.9955253589350398,728.8164016269429,515.7615736068915)"
+				locked="true"
+				title="Brain7_011_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_011_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1750"
+				o_height="1200"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="11"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="39"
+			 thickness="40.0"
+			 z="132.1584"
+			 title="sec#12"
+		>
+			<t2_patch
+				oid="41"
+				width="1772.0"
+				height="1219.0"
+				transform="matrix(0.9995829426995975,-0.02887803081952074,0.02887803081952074,0.9995829426995975,749.1042808051589,445.9787998769525)"
+				locked="true"
+				title="Brain7_012_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_012_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1772"
+				o_height="1219"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="12"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="42"
+			 thickness="40.0"
+			 z="143.1716"
+			 title="sec#13"
+		>
+			<t2_patch
+				oid="44"
+				width="1803.0"
+				height="1219.0"
+				transform="matrix(0.999206208143179,-0.0398365863011668,0.0398365863011668,0.999206208143179,728.3746461570236,462.6341283645688)"
+				locked="true"
+				title="Brain7_013_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_013_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1803"
+				o_height="1219"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="13"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="45"
+			 thickness="40.0"
+			 z="154.1848"
+			 title="sec#14"
+		>
+			<t2_patch
+				oid="47"
+				width="1803.0"
+				height="1238.0"
+				transform="matrix(0.9956297071610655,-0.09338889772543221,0.09338889772543221,0.9956297071610655,699.113138905188,507.8728337840812)"
+				locked="true"
+				title="Brain7_014_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_014_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1803"
+				o_height="1238"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="14"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="48"
+			 thickness="40.0"
+			 z="165.198"
+			 title="sec#15"
+		>
+			<t2_patch
+				oid="50"
+				width="1840.0"
+				height="1230.0"
+				transform="matrix(0.9995748424969345,0.029157061704308405,-0.029157061704308405,0.9995748424969345,731.9707158637157,376.826878822038)"
+				locked="true"
+				title="Brain7_015_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_015_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1840"
+				o_height="1230"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="15"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="51"
+			 thickness="40.0"
+			 z="176.21120000000002"
+			 title="sec#16"
+		>
+			<t2_patch
+				oid="53"
+				width="1806.0"
+				height="1272.0"
+				transform="matrix(0.997301428612643,-0.07341566922109606,0.07341566922109606,0.997301428612643,726.3494617445776,466.4073856317709)"
+				locked="true"
+				title="Brain7_016_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_016_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1806"
+				o_height="1272"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="16"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="54"
+			 thickness="40.0"
+			 z="187.2244"
+			 title="sec#17"
+		>
+			<t2_patch
+				oid="56"
+				width="1882.0"
+				height="1287.0"
+				transform="matrix(0.9994181265873372,0.03410877084647432,-0.03410877084647432,0.9994181265873372,732.0693096122432,327.82018526935826)"
+				locked="true"
+				title="Brain7_017_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_017_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1882"
+				o_height="1287"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="17"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="57"
+			 thickness="40.0"
+			 z="198.23760000000001"
+			 title="sec#18"
+		>
+			<t2_patch
+				oid="59"
+				width="1901.0"
+				height="1287.0"
+				transform="matrix(0.9996041766947633,0.028133430903187248,-0.028133430903187248,0.9996041766947633,718.3898134374913,345.1275621948712)"
+				locked="true"
+				title="Brain7_018_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_018_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1901"
+				o_height="1287"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="18"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="60"
+			 thickness="40.0"
+			 z="209.2508"
+			 title="sec#19"
+		>
+			<t2_patch
+				oid="62"
+				width="1927.0"
+				height="1287.0"
+				transform="matrix(0.9999043326644265,-0.01383204680833178,0.01383204680833178,0.9999043326644265,679.6998859395499,372.9522480968094)"
+				locked="true"
+				title="Brain7_019_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_019_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1927"
+				o_height="1287"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="19"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="63"
+			 thickness="40.0"
+			 z="220.264"
+			 title="sec#20"
+		>
+			<t2_patch
+				oid="65"
+				width="1939.0"
+				height="1280.0"
+				transform="matrix(0.9989132036911965,-0.04660913527829154,0.04660913527829154,0.9989132036911965,660.2625907925894,425.1164318017395)"
+				locked="true"
+				title="Brain7_020_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_020_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1939"
+				o_height="1280"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="20"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="66"
+			 thickness="40.0"
+			 z="231.27720000000002"
+			 title="sec#21"
+		>
+			<t2_patch
+				oid="68"
+				width="1961.0"
+				height="1295.0"
+				transform="matrix(0.9987515048133379,-0.04995429544186503,0.04995429544186503,0.9987515048133379,631.6042518955746,406.64788878896206)"
+				locked="true"
+				title="Brain7_021_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_021_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1961"
+				o_height="1295"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="21"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="69"
+			 thickness="40.0"
+			 z="242.2904"
+			 title="sec#22"
+		>
+			<t2_patch
+				oid="71"
+				width="1935.0"
+				height="1329.0"
+				transform="matrix(0.995854732161727,-0.0909579706847896,0.0909579706847896,0.995854732161727,648.8556110547052,451.2067289307088)"
+				locked="true"
+				title="Brain7_022_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_022_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1935"
+				o_height="1329"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="22"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="72"
+			 thickness="40.0"
+			 z="253.30360000000002"
+			 title="sec#23"
+		>
+			<t2_patch
+				oid="74"
+				width="1961.0"
+				height="1298.0"
+				transform="matrix(0.9981587968290854,-0.06065489520815779,0.06065489520815779,0.9981587968290854,622.984283861083,462.4193874931948)"
+				locked="true"
+				title="Brain7_023_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_023_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1961"
+				o_height="1298"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="23"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="75"
+			 thickness="40.0"
+			 z="264.3168"
+			 title="sec#24"
+		>
+			<t2_patch
+				oid="77"
+				width="2018.0"
+				height="1348.0"
+				transform="matrix(0.9997108089521606,0.024047836996635475,-0.024047836996635475,0.9997108089521606,654.4462270576105,331.67178885059093)"
+				locked="true"
+				title="Brain7_024_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_024_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2018"
+				o_height="1348"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="24"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="78"
+			 thickness="40.0"
+			 z="275.33"
+			 title="sec#25"
+		>
+			<t2_patch
+				oid="80"
+				width="1990.0"
+				height="1310.0"
+				transform="matrix(0.9985848148148921,0.053182399542589257,-0.053182399542589257,0.9985848148148921,712.2037424810369,295.25089561799496)"
+				locked="true"
+				title="Brain7_025_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_025_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1990"
+				o_height="1310"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="25"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="81"
+			 thickness="40.0"
+			 z="286.3432"
+			 title="sec#26"
+		>
+			<t2_patch
+				oid="83"
+				width="2042.0"
+				height="1371.0"
+				transform="matrix(0.9986045882656461,0.05280981248593335,-0.05280981248593335,0.9986045882656461,664.4017824520106,251.8216968428801)"
+				locked="true"
+				title="Brain7_026_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_026_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2042"
+				o_height="1371"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="26"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="84"
+			 thickness="40.0"
+			 z="297.3564"
+			 title="sec#27"
+		>
+			<t2_patch
+				oid="86"
+				width="2042.0"
+				height="1389.0"
+				transform="matrix(0.9999101005138987,0.013408612541374423,-0.013408612541374423,0.9999101005138987,645.8055269049437,307.5887626166559)"
+				locked="true"
+				title="Brain7_027_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_027_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2042"
+				o_height="1389"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="27"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="87"
+			 thickness="40.0"
+			 z="308.3696"
+			 title="sec#28"
+		>
+			<t2_patch
+				oid="89"
+				width="2066.0"
+				height="1380.0"
+				transform="matrix(0.9991242936438651,0.04184072000632272,-0.04184072000632272,0.9991242936438651,638.5575691357717,281.8072450718428)"
+				locked="true"
+				title="Brain7_028_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_028_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2066"
+				o_height="1380"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="28"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="90"
+			 thickness="40.0"
+			 z="319.38280000000003"
+			 title="sec#29"
+		>
+			<t2_patch
+				oid="92"
+				width="2099.0"
+				height="1384.0"
+				transform="matrix(0.9999949561975859,0.0031760949904526894,-0.0031760949904526894,0.9999949561975859,589.6169258923319,322.0611501583794)"
+				locked="true"
+				title="Brain7_029_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_029_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2099"
+				o_height="1384"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="29"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="93"
+			 thickness="40.0"
+			 z="330.396"
+			 title="sec#30"
+		>
+			<t2_patch
+				oid="95"
+				width="2116.0"
+				height="1384.0"
+				transform="matrix(0.9996684323145195,0.025749280258499447,-0.025749280258499447,0.9996684323145195,597.9359276633331,290.92845331292574)"
+				locked="true"
+				title="Brain7_030_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_030_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2116"
+				o_height="1384"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="30"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="96"
+			 thickness="40.0"
+			 z="341.4092"
+			 title="sec#31"
+		>
+			<t2_patch
+				oid="98"
+				width="2114.0"
+				height="1414.0"
+				transform="matrix(0.9932249249138625,-0.11620778170954035,0.11620778170954035,0.9932249249138625,517.846348175819,439.4074295410878)"
+				locked="true"
+				title="Brain7_031_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_031_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2114"
+				o_height="1414"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="31"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="99"
+			 thickness="40.0"
+			 z="352.42240000000004"
+			 title="sec#32"
+		>
+			<t2_patch
+				oid="101"
+				width="2137.0"
+				height="1434.0"
+				transform="matrix(0.9999965921470166,0.0026106884826098413,-0.0026106884826098413,0.9999965921470166,581.3782393990732,310.5894747655052)"
+				locked="true"
+				title="Brain7_032_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_032_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2137"
+				o_height="1434"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="32"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="102"
+			 thickness="40.0"
+			 z="363.4356"
+			 title="sec#33"
+		>
+			<t2_patch
+				oid="104"
+				width="2145.0"
+				height="1434.0"
+				transform="matrix(0.9999551965380101,0.009465987356298448,-0.009465987356298448,0.9999551965380101,578.3235632972246,292.75213266088804)"
+				locked="true"
+				title="Brain7_033_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_033_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2145"
+				o_height="1434"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="33"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="105"
+			 thickness="40.0"
+			 z="374.4488"
+			 title="sec#34"
+		>
+			<t2_patch
+				oid="107"
+				width="2170.0"
+				height="1434.0"
+				transform="matrix(0.9995138875957594,0.031176730155859936,-0.031176730155859936,0.9995138875957594,584.3816519930715,273.48420287787985)"
+				locked="true"
+				title="Brain7_034_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_034_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2170"
+				o_height="1434"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="34"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="108"
+			 thickness="40.0"
+			 z="385.462"
+			 title="sec#35"
+		>
+			<t2_patch
+				oid="110"
+				width="2182.0"
+				height="1450.0"
+				transform="matrix(0.9998631636970898,-0.016542487166272442,0.016542487166272442,0.9998631636970898,550.4639584866572,328.1018210881998)"
+				locked="true"
+				title="Brain7_035_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_035_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2182"
+				o_height="1450"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="35"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="111"
+			 thickness="40.0"
+			 z="396.47520000000003"
+			 title="sec#36"
+		>
+			<t2_patch
+				oid="113"
+				width="2199.0"
+				height="1467.0"
+				transform="matrix(0.9999992317399395,-0.0012395642503536424,0.0012395642503536424,0.9999992317399395,547.0336848612496,292.78734529627036)"
+				locked="true"
+				title="Brain7_036_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_036_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2199"
+				o_height="1467"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="36"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="114"
+			 thickness="40.0"
+			 z="407.4884"
+			 title="sec#37"
+		>
+			<t2_patch
+				oid="116"
+				width="2225.0"
+				height="1490.0"
+				transform="matrix(0.9991413622003935,-0.04143112767403734,0.04143112767403734,0.9991413622003935,504.00174376711766,344.3207300364743)"
+				locked="true"
+				title="Brain7_037_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_037_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2225"
+				o_height="1490"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="37"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="117"
+			 thickness="40.0"
+			 z="418.5016"
+			 title="sec#38"
+		>
+			<t2_patch
+				oid="119"
+				width="2225.0"
+				height="1505.0"
+				transform="matrix(0.9993178410385778,0.036930374788186046,-0.036930374788186046,0.9993178410385778,560.422438918541,240.1554945970529)"
+				locked="true"
+				title="Brain7_038_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_038_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2225"
+				o_height="1505"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="38"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="120"
+			 thickness="40.0"
+			 z="429.51480000000004"
+			 title="sec#39"
+		>
+			<t2_patch
+				oid="122"
+				width="2244.0"
+				height="1505.0"
+				transform="matrix(0.9999359846415233,0.011314884841975301,-0.011314884841975301,0.9999359846415233,528.9844988001951,267.5640056104321)"
+				locked="true"
+				title="Brain7_039_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_039_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2244"
+				o_height="1505"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="39"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="123"
+			 thickness="40.0"
+			 z="440.528"
+			 title="sec#40"
+		>
+			<t2_patch
+				oid="125"
+				width="2259.0"
+				height="1530.0"
+				transform="matrix(0.9999297211146511,0.011855497947204594,-0.011855497947204594,0.9999297211146511,518.2640898280215,252.67464763239923)"
+				locked="true"
+				title="Brain7_040_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_040_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2259"
+				o_height="1530"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="40"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="126"
+			 thickness="40.0"
+			 z="451.5412"
+			 title="sec#41"
+		>
+			<t2_patch
+				oid="128"
+				width="2259.0"
+				height="1547.0"
+				transform="matrix(0.9997433265955341,-0.02265570408739182,0.02265570408739182,0.9997433265955341,497.30289089611506,298.5349553456613)"
+				locked="true"
+				title="Brain7_041_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_041_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2259"
+				o_height="1547"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="41"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="129"
+			 thickness="40.0"
+			 z="462.55440000000004"
+			 title="sec#42"
+		>
+			<t2_patch
+				oid="131"
+				width="2291.0"
+				height="1547.0"
+				transform="matrix(0.9999313619276587,0.011716289237536924,-0.011716289237536924,0.9999313619276587,497.7361148314403,250.23156735974953)"
+				locked="true"
+				title="Brain7_042_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_042_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2291"
+				o_height="1547"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="42"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="132"
+			 thickness="40.0"
+			 z="473.5676"
+			 title="sec#43"
+		>
+			<t2_patch
+				oid="134"
+				width="2291.0"
+				height="1568.0"
+				transform="matrix(0.9997713655783044,-0.02138262307792317,0.02138262307792317,0.9997713655783044,474.6089852080486,288.4460361337601)"
+				locked="true"
+				title="Brain7_043_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_043_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2291"
+				o_height="1568"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="43"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="135"
+			 thickness="40.0"
+			 z="484.5808"
+			 title="sec#44"
+		>
+			<t2_patch
+				oid="137"
+				width="2307.0"
+				height="1586.0"
+				transform="matrix(0.9987475255501117,-0.05003379065720422,0.05003379065720422,0.9987475255501117,446.83541846874687,319.5272380041715)"
+				locked="true"
+				title="Brain7_044_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_044_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2307"
+				o_height="1586"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="44"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="138"
+			 thickness="40.0"
+			 z="495.594"
+			 title="sec#45"
+		>
+			<t2_patch
+				oid="140"
+				width="2322.0"
+				height="1586.0"
+				transform="matrix(0.9994667353461424,0.03265340620094846,-0.03265340620094846,0.9994667353461424,495.8025253454425,209.3974790860716)"
+				locked="true"
+				title="Brain7_045_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_045_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2322"
+				o_height="1586"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="45"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="141"
+			 thickness="40.0"
+			 z="506.60720000000003"
+			 title="sec#46"
+		>
+			<t2_patch
+				oid="143"
+				width="2340.0"
+				height="1553.0"
+				transform="matrix(0.9990223232797384,-0.044208569177859786,0.044208569177859786,0.9990223232797384,434.9739254986316,330.9592686702322)"
+				locked="true"
+				title="Brain7_046_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_046_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2340"
+				o_height="1553"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="46"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="144"
+			 thickness="40.0"
+			 z="517.6204"
+			 title="sec#47"
+		>
+			<t2_patch
+				oid="146"
+				width="2340.0"
+				height="1637.0"
+				transform="matrix(0.9982567796847656,-0.05902035084105496,0.05902035084105496,0.9982567796847656,411.4316406249309,316.4896603348634)"
+				locked="true"
+				title="Brain7_047_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_047_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2340"
+				o_height="1637"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="47"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="147"
+			 thickness="40.0"
+			 z="528.6336"
+			 title="sec#48"
+		>
+			<t2_patch
+				oid="149"
+				width="2340.0"
+				height="1654.0"
+				transform="matrix(0.9993963364308545,-0.03474136912365953,0.03474136912365953,0.9993963364308545,426.9618973209517,280.77786096832097)"
+				locked="true"
+				title="Brain7_048_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_048_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2340"
+				o_height="1654"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="48"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="150"
+			 thickness="40.0"
+			 z="539.6468"
+			 title="sec#49"
+		>
+			<t2_patch
+				oid="152"
+				width="2413.0"
+				height="1654.0"
+				transform="matrix(0.9999754036348215,-0.00701370981546999,0.00701370981546999,0.9999754036348215,419.0736630896563,251.40126396252344)"
+				locked="true"
+				title="Brain7_049_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_049_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2413"
+				o_height="1654"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="49"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="153"
+			 thickness="40.0"
+			 z="550.66"
+			 title="sec#50"
+		>
+			<t2_patch
+				oid="155"
+				width="2413.0"
+				height="1631.0"
+				transform="matrix(0.9999928345077217,-0.003785621905625906,0.003785621905625906,0.9999928345077217,427.15119669956493,253.83711519268036)"
+				locked="true"
+				title="Brain7_050_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_050_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2413"
+				o_height="1631"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="50"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="156"
+			 thickness="40.0"
+			 z="561.6732000000001"
+			 title="sec#51"
+		>
+			<t2_patch
+				oid="158"
+				width="2413.0"
+				height="1665.0"
+				transform="matrix(0.9984065231390482,-0.0564306171630011,0.0564306171630011,0.9984065231390482,398.81931881459604,312.4576644944368)"
+				locked="true"
+				title="Brain7_051_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_051_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2413"
+				o_height="1665"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="51"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="159"
+			 thickness="40.0"
+			 z="572.6864"
+			 title="sec#52"
+		>
+			<t2_patch
+				oid="161"
+				width="2445.0"
+				height="1665.0"
+				transform="matrix(0.9999366978683769,-0.011251677923152816,0.011251677923152816,0.9999366978683769,409.3259134029704,254.08796532455972)"
+				locked="true"
+				title="Brain7_052_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_052_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2445"
+				o_height="1665"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="52"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="162"
+			 thickness="40.0"
+			 z="583.6996"
+			 title="sec#53"
+		>
+			<t2_patch
+				oid="164"
+				width="2452.0"
+				height="1665.0"
+				transform="matrix(0.9988146092774404,0.04867623952149344,-0.04867623952149344,0.9988146092774404,457.4127277574553,178.114667088028)"
+				locked="true"
+				title="Brain7_053_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_053_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2452"
+				o_height="1665"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="53"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="165"
+			 thickness="40.0"
+			 z="594.7128"
+			 title="sec#54"
+		>
+			<t2_patch
+				oid="167"
+				width="2477.0"
+				height="1690.0"
+				transform="matrix(0.9996317563616373,0.02713580058424931,-0.02713580058424931,0.9996317563616373,423.9728932221178,185.78367537073382)"
+				locked="true"
+				title="Brain7_054_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_054_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2477"
+				o_height="1690"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="54"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="168"
+			 thickness="40.0"
+			 z="605.726"
+			 title="sec#55"
+		>
+			<t2_patch
+				oid="170"
+				width="2455.0"
+				height="1690.0"
+				transform="matrix(0.9999941088013686,0.003432544618267605,-0.003432544618267605,0.9999941088013686,415.9774194557822,222.0460845109119)"
+				locked="true"
+				title="Brain7_055_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_055_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2455"
+				o_height="1690"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="55"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="171"
+			 thickness="40.0"
+			 z="616.7392"
+			 title="sec#56"
+		>
+			<t2_patch
+				oid="173"
+				width="2502.0"
+				height="1658.0"
+				transform="matrix(0.9991855949972424,0.04035030049462927,-0.04035030049462927,0.9991855949972424,409.2605774861913,201.4015184641712)"
+				locked="true"
+				title="Brain7_056_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_056_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2502"
+				o_height="1658"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="56"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="174"
+			 thickness="40.0"
+			 z="627.7524000000001"
+			 title="sec#57"
+		>
+			<t2_patch
+				oid="176"
+				width="2516.0"
+				height="1744.0"
+				transform="matrix(0.9986339188823672,0.05225223495359516,-0.05225223495359516,0.9986339188823672,391.0651242204822,133.65808804590415)"
+				locked="true"
+				title="Brain7_057_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_057_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2516"
+				o_height="1744"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="57"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="177"
+			 thickness="40.0"
+			 z="638.7656000000001"
+			 title="sec#58"
+		>
+			<t2_patch
+				oid="179"
+				width="2556.0"
+				height="1701.0"
+				transform="matrix(0.9999703829336529,-0.007696314411695682,0.007696314411695682,0.9999703829336529,330.86420013275983,242.95616138870264)"
+				locked="true"
+				title="Brain7_058_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_058_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2556"
+				o_height="1701"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="58"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="180"
+			 thickness="40.0"
+			 z="649.7788"
+			 title="sec#59"
+		>
+			<t2_patch
+				oid="182"
+				width="2551.0"
+				height="1718.0"
+				transform="matrix(0.9996037123276712,0.02814992541266048,-0.02814992541266048,0.9996037123276712,365.58597520374406,184.5748939483824)"
+				locked="true"
+				title="Brain7_059_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_059_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2551"
+				o_height="1718"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="59"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="183"
+			 thickness="40.0"
+			 z="660.792"
+			 title="sec#60"
+		>
+			<t2_patch
+				oid="185"
+				width="2551.0"
+				height="1708.0"
+				transform="matrix(0.9998460109707088,-0.017548628036434977,0.017548628036434977,0.9998460109707088,324.68932543853407,249.62714987372146)"
+				locked="true"
+				title="Brain7_060_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_060_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2551"
+				o_height="1708"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="60"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="186"
+			 thickness="40.0"
+			 z="671.8052"
+			 title="sec#61"
+		>
+			<t2_patch
+				oid="188"
+				width="2551.0"
+				height="1751.0"
+				transform="matrix(0.9989698270715164,0.04537934112241751,-0.04537934112241751,0.9989698270715164,373.7331276095874,155.08801209280728)"
+				locked="true"
+				title="Brain7_061_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_061_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2551"
+				o_height="1751"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="61"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="189"
+			 thickness="40.0"
+			 z="682.8184"
+			 title="sec#62"
+		>
+			<t2_patch
+				oid="191"
+				width="2551.0"
+				height="1718.0"
+				transform="matrix(0.9999136602847105,0.013140470921262134,-0.013140470921262134,0.9999136602847105,353.1807161553015,211.1710276830063)"
+				locked="true"
+				title="Brain7_062_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_062_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2551"
+				o_height="1718"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="62"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="192"
+			 thickness="40.0"
+			 z="693.8316"
+			 title="sec#63"
+		>
+			<t2_patch
+				oid="194"
+				width="2580.0"
+				height="1741.0"
+				transform="matrix(0.999786050286982,0.02068462355365046,-0.02068462355365046,0.999786050286982,335.8105723466115,182.42995240233358)"
+				locked="true"
+				title="Brain7_063_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_063_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2580"
+				o_height="1741"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="63"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="195"
+			 thickness="40.0"
+			 z="704.8448000000001"
+			 title="sec#64"
+		>
+			<t2_patch
+				oid="197"
+				width="2593.0"
+				height="1747.0"
+				transform="matrix(0.9995334248250514,0.03054394633152507,-0.03054394633152507,0.9995334248250514,340.9961167125339,169.62731147097293)"
+				locked="true"
+				title="Brain7_064_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_064_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2593"
+				o_height="1747"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="64"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="198"
+			 thickness="40.0"
+			 z="715.8580000000001"
+			 title="sec#65"
+		>
+			<t2_patch
+				oid="200"
+				width="2638.0"
+				height="1747.0"
+				transform="matrix(0.9998868819827315,0.015040719359501282,-0.015040719359501282,0.9998868819827315,289.4552537367481,179.106436123584)"
+				locked="true"
+				title="Brain7_065_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_065_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2638"
+				o_height="1747"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="65"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="201"
+			 thickness="40.0"
+			 z="726.8712"
+			 title="sec#66"
+		>
+			<t2_patch
+				oid="203"
+				width="2626.0"
+				height="1747.0"
+				transform="matrix(0.9999441000812088,0.010573396463845966,-0.010573396463845966,0.9999441000812088,306.4924576060912,185.47298656981502)"
+				locked="true"
+				title="Brain7_066_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_066_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2626"
+				o_height="1747"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="66"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="204"
+			 thickness="40.0"
+			 z="737.8844"
+			 title="sec#67"
+		>
+			<t2_patch
+				oid="206"
+				width="2626.0"
+				height="1757.0"
+				transform="matrix(0.9994205258627595,-0.034038397203821576,0.034038397203821576,0.9994205258627595,266.43312560874165,237.32098572454197)"
+				locked="true"
+				title="Brain7_067_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_067_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2626"
+				o_height="1757"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="67"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="207"
+			 thickness="40.0"
+			 z="748.8976"
+			 title="sec#68"
+		>
+			<t2_patch
+				oid="209"
+				width="2626.0"
+				height="1740.0"
+				transform="matrix(0.9991289838394409,-0.04172857117091722,0.04172857117091722,0.9991289838394409,269.2851474854806,270.6544798330078)"
+				locked="true"
+				title="Brain7_068_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_068_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2626"
+				o_height="1740"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="68"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="210"
+			 thickness="40.0"
+			 z="759.9108"
+			 title="sec#69"
+		>
+			<t2_patch
+				oid="212"
+				width="2645.0"
+				height="1762.0"
+				transform="matrix(0.9999984115339965,0.0017823943120929778,-0.0017823943120929778,0.9999984115339965,289.5342133524173,190.89307393408626)"
+				locked="true"
+				title="Brain7_069_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_069_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2645"
+				o_height="1762"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="69"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="213"
+			 thickness="40.0"
+			 z="770.924"
+			 title="sec#70"
+		>
+			<t2_patch
+				oid="215"
+				width="2670.0"
+				height="1762.0"
+				transform="matrix(0.9996148059435109,0.027753193303063094,-0.027753193303063094,0.9996148059435109,292.5578195577182,163.7392766482244)"
+				locked="true"
+				title="Brain7_070_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_070_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2670"
+				o_height="1762"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="70"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="216"
+			 thickness="40.0"
+			 z="781.9372000000001"
+			 title="sec#71"
+		>
+			<t2_patch
+				oid="218"
+				width="2719.0"
+				height="1791.0"
+				transform="matrix(0.9988301346132981,0.04835661473243179,-0.04835661473243179,0.9988301346132981,283.0841206427831,127.04323040486952)"
+				locked="true"
+				title="Brain7_071_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_071_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2719"
+				o_height="1791"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="71"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="219"
+			 thickness="40.0"
+			 z="792.9504000000001"
+			 title="sec#72"
+		>
+			<t2_patch
+				oid="221"
+				width="2670.0"
+				height="1799.0"
+				transform="matrix(0.9999995203515949,9.794368690076985E-4,-9.794368690076985E-4,0.9999995203515949,274.83844990720263,185.87181832988745)"
+				locked="true"
+				title="Brain7_072_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_072_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2670"
+				o_height="1799"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="72"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="222"
+			 thickness="40.0"
+			 z="803.9636"
+			 title="sec#73"
+		>
+			<t2_patch
+				oid="224"
+				width="2710.0"
+				height="1743.0"
+				transform="matrix(0.9994155582535159,-0.03418394244104668,0.03418394244104668,0.9994155582535159,226.26945329294267,235.9688103412809)"
+				locked="true"
+				title="Brain7_073_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_073_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2710"
+				o_height="1743"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="73"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="225"
+			 thickness="40.0"
+			 z="814.9768"
+			 title="sec#74"
+		>
+			<t2_patch
+				oid="227"
+				width="2710.0"
+				height="1745.0"
+				transform="matrix(0.9997971341778283,-0.02014175984867221,0.02014175984867221,0.9997971341778283,236.52563693020693,219.39244490177043)"
+				locked="true"
+				title="Brain7_074_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_074_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2710"
+				o_height="1745"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="74"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="228"
+			 thickness="40.0"
+			 z="825.99"
+			 title="sec#75"
+		>
+			<t2_patch
+				oid="230"
+				width="2710.0"
+				height="1775.0"
+				transform="matrix(0.9998647046510991,-0.016449084867263063,0.016449084867263063,0.9998647046510991,230.38619376886345,198.6390645821789)"
+				locked="true"
+				title="Brain7_075_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_075_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2710"
+				o_height="1775"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="75"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="231"
+			 thickness="40.0"
+			 z="837.0032"
+			 title="sec#76"
+		>
+			<t2_patch
+				oid="233"
+				width="2718.0"
+				height="1775.0"
+				transform="matrix(0.999611291420702,-0.027879491821701408,0.027879491821701408,0.999611291420702,206.67450822912815,217.8810669498771)"
+				locked="true"
+				title="Brain7_076_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_076_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2718"
+				o_height="1775"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="76"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="234"
+			 thickness="40.0"
+			 z="848.0164000000001"
+			 title="sec#77"
+		>
+			<t2_patch
+				oid="236"
+				width="2727.0"
+				height="1766.0"
+				transform="matrix(0.9999515257791669,-0.009846120653128487,0.009846120653128487,0.9999515257791669,212.67658943197966,194.48828665384008)"
+				locked="true"
+				title="Brain7_077_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_077_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2727"
+				o_height="1766"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="77"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="237"
+			 thickness="40.0"
+			 z="859.0296000000001"
+			 title="sec#78"
+		>
+			<t2_patch
+				oid="239"
+				width="2744.0"
+				height="1804.0"
+				transform="matrix(0.9974715904202357,-0.0710663514226381,0.0710663514226381,0.9974715904202357,153.39720339652922,262.14465029555913)"
+				locked="true"
+				title="Brain7_078_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_078_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2744"
+				o_height="1804"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="78"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="240"
+			 thickness="40.0"
+			 z="870.0428"
+			 title="sec#79"
+		>
+			<t2_patch
+				oid="242"
+				width="2744.0"
+				height="1768.0"
+				transform="matrix(0.9995624300816105,-0.029579526185282052,0.029579526185282052,0.9995624300816105,193.08311403574498,216.37421831127267)"
+				locked="true"
+				title="Brain7_079_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_079_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2744"
+				o_height="1768"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="79"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="243"
+			 thickness="40.0"
+			 z="881.056"
+			 title="sec#80"
+		>
+			<t2_patch
+				oid="245"
+				width="2768.0"
+				height="1751.0"
+				transform="matrix(0.9997933236554467,-0.02033002641403372,0.02033002641403372,0.9997933236554467,193.6755166861094,200.09641463005755)"
+				locked="true"
+				title="Brain7_080_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_080_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2768"
+				o_height="1751"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="80"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="246"
+			 thickness="40.0"
+			 z="892.0692"
+			 title="sec#81"
+		>
+			<t2_patch
+				oid="248"
+				width="2778.0"
+				height="1768.0"
+				transform="matrix(0.9999618253084689,0.008737730011572813,-0.008737730011572813,0.9999618253084689,207.85458959272455,140.6791329462062)"
+				locked="true"
+				title="Brain7_081_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_081_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2778"
+				o_height="1768"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="81"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="249"
+			 thickness="40.0"
+			 z="903.0824"
+			 title="sec#82"
+		>
+			<t2_patch
+				oid="251"
+				width="2778.0"
+				height="1768.0"
+				transform="matrix(0.9998963643750712,-0.014396545054792239,0.014396545054792239,0.9998963643750712,178.66339220537247,180.82342671466722)"
+				locked="true"
+				title="Brain7_082_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_082_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2778"
+				o_height="1768"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="82"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="252"
+			 thickness="40.0"
+			 z="914.0956"
+			 title="sec#83"
+		>
+			<t2_patch
+				oid="254"
+				width="2786.0"
+				height="1768.0"
+				transform="matrix(0.9986752511384774,0.05145622181523759,-0.05145622181523759,0.9986752511384774,237.14622224218147,79.88953107155885)"
+				locked="true"
+				title="Brain7_083_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_083_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2786"
+				o_height="1768"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="83"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="255"
+			 thickness="40.0"
+			 z="925.1088000000001"
+			 title="sec#84"
+		>
+			<t2_patch
+				oid="257"
+				width="2814.0"
+				height="1687.0"
+				transform="matrix(0.9999820739078433,0.005987642521752068,-0.005987642521752068,0.9999820739078433,174.54558305160208,198.94407353070255)"
+				locked="true"
+				title="Brain7_084_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_084_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2814"
+				o_height="1687"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="84"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="258"
+			 thickness="40.0"
+			 z="936.1220000000001"
+			 title="sec#85"
+		>
+			<t2_patch
+				oid="260"
+				width="2811.0"
+				height="1739.0"
+				transform="matrix(0.999976296039457,0.006885300226442561,-0.006885300226442561,0.999976296039457,180.90677923785643,150.65069071243806)"
+				locked="true"
+				title="Brain7_085_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_085_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2811"
+				o_height="1739"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="85"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="261"
+			 thickness="40.0"
+			 z="947.1352"
+			 title="sec#86"
+		>
+			<t2_patch
+				oid="263"
+				width="2828.0"
+				height="1784.0"
+				transform="matrix(0.9995123248255557,0.031226791731027673,-0.031226791731027673,0.9995123248255557,193.54244168939476,106.569721416638)"
+				locked="true"
+				title="Brain7_086_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_086_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2828"
+				o_height="1784"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="86"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="264"
+			 thickness="40.0"
+			 z="958.1484"
+			 title="sec#87"
+		>
+			<t2_patch
+				oid="266"
+				width="2828.0"
+				height="1767.0"
+				transform="matrix(0.9999999970990148,-7.617066745597083E-5,7.617066745597083E-5,0.9999999970990148,164.61635906269566,154.5685744360767)"
+				locked="true"
+				title="Brain7_087_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_087_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2828"
+				o_height="1767"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="87"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="267"
+			 thickness="40.0"
+			 z="969.1616"
+			 title="sec#88"
+		>
+			<t2_patch
+				oid="269"
+				width="2800.0"
+				height="1767.0"
+				transform="matrix(0.9998823611267681,0.015338315016967105,-0.015338315016967105,0.9998823611267681,187.53356293541128,142.69428033724216)"
+				locked="true"
+				title="Brain7_088_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_088_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2800"
+				o_height="1767"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="88"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="270"
+			 thickness="40.0"
+			 z="980.1748"
+			 title="sec#89"
+		>
+			<t2_patch
+				oid="272"
+				width="2837.0"
+				height="1798.0"
+				transform="matrix(0.9993253910759857,0.036725505453676296,-0.036725505453676296,0.9993253910759857,209.07561338886808,100.66441788422253)"
+				locked="true"
+				title="Brain7_089_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_089_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2837"
+				o_height="1798"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="89"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="273"
+			 thickness="40.0"
+			 z="991.188"
+			 title="sec#90"
+		>
+			<t2_patch
+				oid="275"
+				width="2837.0"
+				height="1818.0"
+				transform="matrix(0.9986399693831411,0.052136470444774,-0.052136470444774,0.9986399693831411,210.07465697840325,78.0799416348932)"
+				locked="true"
+				title="Brain7_090_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_090_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2837"
+				o_height="1818"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="90"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="276"
+			 thickness="40.0"
+			 z="1002.2012000000001"
+			 title="sec#91"
+		>
+			<t2_patch
+				oid="278"
+				width="2837.0"
+				height="1800.0"
+				transform="matrix(0.9995849543448794,-0.02880831559368724,0.02880831559368724,0.9995849543448794,136.80463637943194,199.26031567174732)"
+				locked="true"
+				title="Brain7_091_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_091_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2837"
+				o_height="1800"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="91"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="279"
+			 thickness="40.0"
+			 z="1013.2144000000001"
+			 title="sec#92"
+		>
+			<t2_patch
+				oid="281"
+				width="2837.0"
+				height="1818.0"
+				transform="matrix(0.9996892578663014,-0.02492764944240647,0.02492764944240647,0.9996892578663014,136.77951468079937,180.8205720937126)"
+				locked="true"
+				title="Brain7_092_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_092_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2837"
+				o_height="1818"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="92"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="282"
+			 thickness="40.0"
+			 z="1024.2276"
+			 title="sec#93"
+		>
+			<t2_patch
+				oid="284"
+				width="2851.0"
+				height="1818.0"
+				transform="matrix(0.9999343935462526,0.011454632394281536,-0.011454632394281536,0.9999343935462526,170.22640408660573,136.43732727345332)"
+				locked="true"
+				title="Brain7_093_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_093_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2851"
+				o_height="1818"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="93"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="285"
+			 thickness="40.0"
+			 z="1035.2408"
+			 title="sec#94"
+		>
+			<t2_patch
+				oid="287"
+				width="2851.0"
+				height="1865.0"
+				transform="matrix(0.999398605997492,0.034676019527477064,-0.034676019527477064,0.999398605997492,174.44107198895563,90.35264556611537)"
+				locked="true"
+				title="Brain7_094_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_094_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2851"
+				o_height="1865"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="94"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="288"
+			 thickness="40.0"
+			 z="1046.2540000000001"
+			 title="sec#95"
+		>
+			<t2_patch
+				oid="290"
+				width="2840.0"
+				height="1837.0"
+				transform="matrix(0.9995243383309296,-0.030839861934148137,0.030839861934148137,0.9995243383309296,120.89123104348255,192.56544425699394)"
+				locked="true"
+				title="Brain7_095_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_095_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2840"
+				o_height="1837"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="95"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="291"
+			 thickness="40.0"
+			 z="1057.2672"
+			 title="sec#96"
+		>
+			<t2_patch
+				oid="293"
+				width="2895.0"
+				height="1837.0"
+				transform="matrix(0.9999000733112674,-0.014136597614773443,0.014136597614773443,0.9999000733112674,120.04460175677559,156.45020706605283)"
+				locked="true"
+				title="Brain7_096_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_096_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2895"
+				o_height="1837"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="96"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="294"
+			 thickness="40.0"
+			 z="1068.2804"
+			 title="sec#97"
+		>
+			<t2_patch
+				oid="296"
+				width="2887.0"
+				height="1855.0"
+				transform="matrix(0.9999726421354828,0.007396957521945182,-0.007396957521945182,0.9999726421354828,146.33149537769987,132.3803799266184)"
+				locked="true"
+				title="Brain7_097_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_097_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2887"
+				o_height="1855"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="97"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="297"
+			 thickness="40.0"
+			 z="1079.2936"
+			 title="sec#98"
+		>
+			<t2_patch
+				oid="299"
+				width="2887.0"
+				height="1861.0"
+				transform="matrix(0.9999960617727579,0.002806499416444544,-0.002806499416444544,0.9999960617727579,139.40262295409593,122.6039889829467)"
+				locked="true"
+				title="Brain7_098_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_098_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2887"
+				o_height="1861"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="98"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="300"
+			 thickness="40.0"
+			 z="1090.3068"
+			 title="sec#99"
+		>
+			<t2_patch
+				oid="302"
+				width="2857.0"
+				height="1850.0"
+				transform="matrix(0.9999740004352766,-0.007210995317522042,0.007210995317522042,0.9999740004352766,136.40042725439162,142.02685237148307)"
+				locked="true"
+				title="Brain7_099_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_099_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2857"
+				o_height="1850"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="99"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="303"
+			 thickness="40.0"
+			 z="1101.32"
+			 title="sec#100"
+		>
+			<t2_patch
+				oid="305"
+				width="2887.0"
+				height="1844.0"
+				transform="matrix(0.9996298596937777,-0.027205580467952278,0.027205580467952278,0.9996298596937777,108.48849404978955,183.87940798084492)"
+				locked="true"
+				title="Brain7_100_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_100_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2887"
+				o_height="1844"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="100"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="306"
+			 thickness="40.0"
+			 z="1112.3332"
+			 title="sec#101"
+		>
+			<t2_patch
+				oid="308"
+				width="2887.0"
+				height="1855.0"
+				transform="matrix(0.9999880556076819,-0.004887600839656577,0.004887600839656577,0.9999880556076819,132.49244342546444,147.17915251863087)"
+				locked="true"
+				title="Brain7_101_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_101_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2887"
+				o_height="1855"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="101"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="309"
+			 thickness="40.0"
+			 z="1123.3464000000001"
+			 title="sec#102"
+		>
+			<t2_patch
+				oid="311"
+				width="2895.0"
+				height="1850.0"
+				transform="matrix(0.9999293143301067,-0.011889757916912665,0.011889757916912665,0.9999293143301067,123.28735632010284,149.76224469248564)"
+				locked="true"
+				title="Brain7_102_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_102_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2895"
+				o_height="1850"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="102"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="312"
+			 thickness="40.0"
+			 z="1134.3596"
+			 title="sec#103"
+		>
+			<t2_patch
+				oid="314"
+				width="2886.0"
+				height="1878.0"
+				transform="matrix(0.9999809620624717,-0.006170535844923073,0.006170535844923073,0.9999809620624717,138.98590586126556,140.73176190624645)"
+				locked="true"
+				title="Brain7_103_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_103_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2886"
+				o_height="1878"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="103"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="315"
+			 thickness="40.0"
+			 z="1145.3728"
+			 title="sec#104"
+		>
+			<t2_patch
+				oid="317"
+				width="2894.0"
+				height="1878.0"
+				transform="matrix(0.9998971539310534,0.014341602441130884,-0.014341602441130884,0.9998971539310534,156.9852645046103,121.35550545843671)"
+				locked="true"
+				title="Brain7_104_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_104_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2894"
+				o_height="1878"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="104"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="318"
+			 thickness="40.0"
+			 z="1156.386"
+			 title="sec#105"
+		>
+			<t2_patch
+				oid="320"
+				width="2894.0"
+				height="1857.0"
+				transform="matrix(0.9999074899563453,-0.013601894323992685,0.013601894323992685,0.9999074899563453,128.04864392643594,161.84038782926018)"
+				locked="true"
+				title="Brain7_105_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_105_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2894"
+				o_height="1857"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="105"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="321"
+			 thickness="40.0"
+			 z="1167.3992"
+			 title="sec#106"
+		>
+			<t2_patch
+				oid="323"
+				width="2904.0"
+				height="1857.0"
+				transform="matrix(0.9995931665439471,-0.02852194591266235,0.02852194591266235,0.9995931665439471,108.53690900013225,191.69387718727376)"
+				locked="true"
+				title="Brain7_106_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_106_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2904"
+				o_height="1857"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="106"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="324"
+			 thickness="40.0"
+			 z="1178.4124000000002"
+			 title="sec#107"
+		>
+			<t2_patch
+				oid="326"
+				width="2922.0"
+				height="1864.0"
+				transform="matrix(0.999948960867901,-0.010103249932823688,0.010103249932823688,0.999948960867901,114.60259182445134,157.3809564948897)"
+				locked="true"
+				title="Brain7_107_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_107_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2922"
+				o_height="1864"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="107"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="327"
+			 thickness="40.0"
+			 z="1189.4256"
+			 title="sec#108"
+		>
+			<t2_patch
+				oid="329"
+				width="2932.0"
+				height="1874.0"
+				transform="matrix(0.9999920807865532,-0.003979744235455153,0.003979744235455153,0.9999920807865532,126.21763113506586,155.3147812197608)"
+				locked="true"
+				title="Brain7_108_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_108_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2932"
+				o_height="1874"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="108"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="330"
+			 thickness="40.0"
+			 z="1200.4388000000001"
+			 title="sec#109"
+		>
+			<t2_patch
+				oid="332"
+				width="2912.0"
+				height="1876.0"
+				transform="matrix(0.9999190190358905,-0.012726168720488025,0.012726168720488025,0.9999190190358905,121.91576668802554,151.87225145793582)"
+				locked="true"
+				title="Brain7_109_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_109_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2912"
+				o_height="1876"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="109"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="333"
+			 thickness="40.0"
+			 z="1211.452"
+			 title="sec#110"
+		>
+			<t2_patch
+				oid="335"
+				width="2940.0"
+				height="1895.0"
+				transform="matrix(0.9996436147275537,0.026695384140900016,-0.026695384140900016,0.9996436147275537,163.4247547240493,107.14210495522457)"
+				locked="true"
+				title="Brain7_110_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_110_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2940"
+				o_height="1895"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="110"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="336"
+			 thickness="40.0"
+			 z="1222.4652"
+			 title="sec#111"
+		>
+			<t2_patch
+				oid="338"
+				width="2929.0"
+				height="1895.0"
+				transform="matrix(0.9998711357025635,0.016053410505750616,-0.016053410505750616,0.9998711357025635,157.97844430830355,114.51160815538515)"
+				locked="true"
+				title="Brain7_111_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_111_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2929"
+				o_height="1895"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="111"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="339"
+			 thickness="40.0"
+			 z="1233.4784"
+			 title="sec#112"
+		>
+			<t2_patch
+				oid="341"
+				width="2944.0"
+				height="1882.0"
+				transform="matrix(0.9988483977945234,-0.047977893068721,0.047977893068721,0.9988483977945234,88.8417875994628,212.20857843175054)"
+				locked="true"
+				title="Brain7_112_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_112_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2944"
+				o_height="1882"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="112"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="342"
+			 thickness="40.0"
+			 z="1244.4916"
+			 title="sec#113"
+		>
+			<t2_patch
+				oid="344"
+				width="2964.0"
+				height="1897.0"
+				transform="matrix(0.997627123278225,-0.06884855045397321,0.06884855045397321,0.997627123278225,59.78493334760151,232.81676492470615)"
+				locked="true"
+				title="Brain7_113_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_113_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2964"
+				o_height="1897"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="113"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="345"
+			 thickness="40.0"
+			 z="1255.5048000000002"
+			 title="sec#114"
+		>
+			<t2_patch
+				oid="347"
+				width="2958.0"
+				height="1889.0"
+				transform="matrix(0.9998269367107846,-0.01860367242048307,0.01860367242048307,0.9998269367107846,98.92524915354988,153.40966742075307)"
+				locked="true"
+				title="Brain7_114_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_114_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2958"
+				o_height="1889"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="114"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="348"
+			 thickness="40.0"
+			 z="1266.518"
+			 title="sec#115"
+		>
+			<t2_patch
+				oid="350"
+				width="2958.0"
+				height="1864.0"
+				transform="matrix(0.9995134919423804,-0.03118941206802796,0.03118941206802796,0.9995134919423804,95.60759102091015,185.11586280958818)"
+				locked="true"
+				title="Brain7_115_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_115_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2958"
+				o_height="1864"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="115"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="351"
+			 thickness="40.0"
+			 z="1277.5312000000001"
+			 title="sec#116"
+		>
+			<t2_patch
+				oid="353"
+				width="2967.0"
+				height="1864.0"
+				transform="matrix(0.9997029572896273,-0.024372057491596304,0.024372057491596304,0.9997029572896273,93.08933594604514,166.10804853002082)"
+				locked="true"
+				title="Brain7_116_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_116_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2967"
+				o_height="1864"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="116"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="354"
+			 thickness="40.0"
+			 z="1288.5444"
+			 title="sec#117"
+		>
+			<t2_patch
+				oid="356"
+				width="2984.0"
+				height="1899.0"
+				transform="matrix(0.9990521892651306,-0.04352841743677271,0.04352841743677271,0.9990521892651306,68.80940717558133,196.0907944696819)"
+				locked="true"
+				title="Brain7_117_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_117_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2984"
+				o_height="1899"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="117"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="357"
+			 thickness="40.0"
+			 z="1299.5576"
+			 title="sec#118"
+		>
+			<t2_patch
+				oid="359"
+				width="2976.0"
+				height="1899.0"
+				transform="matrix(0.9998928193294436,-0.014640691698700527,0.014640691698700527,0.9998928193294436,103.2132667290216,143.95713502355193)"
+				locked="true"
+				title="Brain7_118_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_118_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2976"
+				o_height="1899"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="118"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="360"
+			 thickness="40.0"
+			 z="1310.5708"
+			 title="sec#119"
+		>
+			<t2_patch
+				oid="362"
+				width="2998.0"
+				height="1868.0"
+				transform="matrix(0.9999908389486083,-0.004280422742966967,0.004280422742966967,0.9999908389486083,104.96984466668073,139.11419637534254)"
+				locked="true"
+				title="Brain7_119_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_119_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2998"
+				o_height="1868"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="119"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="363"
+			 thickness="40.0"
+			 z="1321.584"
+			 title="sec#120"
+		>
+			<t2_patch
+				oid="365"
+				width="2998.0"
+				height="1868.0"
+				transform="matrix(0.9996997839171035,-0.024501878215696844,0.024501878215696844,0.9996997839171035,91.24858957247034,187.76373996506436)"
+				locked="true"
+				title="Brain7_120_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_120_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2998"
+				o_height="1868"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="120"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="366"
+			 thickness="40.0"
+			 z="1332.5972000000002"
+			 title="sec#121"
+		>
+			<t2_patch
+				oid="368"
+				width="3009.0"
+				height="1922.0"
+				transform="matrix(0.9995106505026623,0.031280337781826754,-0.031280337781826754,0.9995106505026623,137.55560998304645,86.21878437931991)"
+				locked="true"
+				title="Brain7_121_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_121_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="3009"
+				o_height="1922"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="121"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="369"
+			 thickness="40.0"
+			 z="1343.6104"
+			 title="sec#122"
+		>
+			<t2_patch
+				oid="371"
+				width="3009.0"
+				height="1915.0"
+				transform="matrix(0.9999944966052974,0.0033176436091919767,-0.0033176436091919767,0.9999944966052974,108.46383327396507,115.9697249272649)"
+				locked="true"
+				title="Brain7_122_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_122_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="3009"
+				o_height="1915"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="122"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="372"
+			 thickness="40.0"
+			 z="1354.6236000000001"
+			 title="sec#123"
+		>
+			<t2_patch
+				oid="374"
+				width="3018.0"
+				height="1906.0"
+				transform="matrix(0.9999953652275818,0.0030445891931297426,-0.0030445891931297426,0.9999953652275818,109.34118233819845,124.85560034399032)"
+				locked="true"
+				title="Brain7_123_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_123_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="3018"
+				o_height="1906"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="123"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="375"
+			 thickness="40.0"
+			 z="1365.6368"
+			 title="sec#124"
+		>
+			<t2_patch
+				oid="377"
+				width="3018.0"
+				height="1955.0"
+				transform="matrix(0.9991776874390447,0.04054564001175634,-0.04054564001175634,0.9991776874390447,151.96208440578084,54.236667394526194)"
+				locked="true"
+				title="Brain7_124_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_124_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="3018"
+				o_height="1955"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="124"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="378"
+			 thickness="40.0"
+			 z="1376.65"
+			 title="sec#125"
+		>
+			<t2_patch
+				oid="380"
+				width="3029.0"
+				height="1889.0"
+				transform="matrix(0.99826638046386,-0.058857740659866195,0.058857740659866195,0.99826638046386,57.10992152459312,218.05598091294496)"
+				locked="true"
+				title="Brain7_125_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_125_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="3029"
+				o_height="1889"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="125"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="381"
+			 thickness="40.0"
+			 z="1387.6632"
+			 title="sec#126"
+		>
+			<t2_patch
+				oid="383"
+				width="3015.0"
+				height="1889.0"
+				transform="matrix(0.9992007736767077,-0.03997266420779074,0.03997266420779074,0.9992007736767077,76.7023067901946,193.14234996909636)"
+				locked="true"
+				title="Brain7_126_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_126_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="3015"
+				o_height="1889"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="126"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="384"
+			 thickness="40.0"
+			 z="1398.6764"
+			 title="sec#127"
+		>
+			<t2_patch
+				oid="386"
+				width="3004.0"
+				height="1868.0"
+				transform="matrix(0.9995971052258278,-0.02838357313914955,0.02838357313914955,0.9995971052258278,96.71626286385435,173.11556520603108)"
+				locked="true"
+				title="Brain7_127_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_127_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="3004"
+				o_height="1868"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="127"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="387"
+			 thickness="40.0"
+			 z="1409.6896000000002"
+			 title="sec#128"
+		>
+			<t2_patch
+				oid="389"
+				width="3116.0"
+				height="1827.0"
+				transform="matrix(0.9989766382205785,-0.0452291530930145,0.0452291530930145,0.9989766382205785,-0.36785073621194897,215.85934968748006)"
+				locked="true"
+				title="Brain7_128_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_128_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="3116"
+				o_height="1827"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="128"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="390"
+			 thickness="40.0"
+			 z="1420.7028"
+			 title="sec#129"
+		>
+			<t2_patch
+				oid="392"
+				width="3041.0"
+				height="1881.0"
+				transform="matrix(0.9960277795766047,-0.08904303628975477,0.08904303628975477,0.9960277795766047,40.15670748445518,286.0279144178771)"
+				locked="true"
+				title="Brain7_129_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_129_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="3041"
+				o_height="1881"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="129"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="393"
+			 thickness="40.0"
+			 z="1431.7160000000001"
+			 title="sec#130"
+		>
+			<t2_patch
+				oid="395"
+				width="3037.0"
+				height="1863.0"
+				transform="matrix(0.9993638905365165,-0.03566250540437998,0.03566250540437998,0.9993638905365165,87.80803848526739,186.0279663243041)"
+				locked="true"
+				title="Brain7_130_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_130_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="3037"
+				o_height="1863"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="130"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="396"
+			 thickness="40.0"
+			 z="1442.7292"
+			 title="sec#131"
+		>
+			<t2_patch
+				oid="398"
+				width="2937.0"
+				height="1845.0"
+				transform="matrix(0.9999703502319772,-0.007700562118222899,0.007700562118222899,0.9999703502319772,145.91738569737026,154.07843607938003)"
+				locked="true"
+				title="Brain7_131_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_131_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2937"
+				o_height="1845"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="131"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="399"
+			 thickness="40.0"
+			 z="1453.7424"
+			 title="sec#132"
+		>
+			<t2_patch
+				oid="401"
+				width="2869.0"
+				height="1888.0"
+				transform="matrix(0.9976982951866413,-0.06780937827225346,0.06780937827225346,0.9976982951866413,77.30399099732495,241.84951843391173)"
+				locked="true"
+				title="Brain7_132_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_132_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2869"
+				o_height="1888"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="223"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+			<t2_patch
+				oid="676"
+				width="2869.0"
+				height="1888.0"
+				transform="matrix(0.996871038871134,-0.07904512546631819,0.07904512546631819,0.996871038871134,152.4149282392491,262.2178404104825)"
+				locked="true"
+				title="Brain7_132_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_132_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2869"
+				o_height="1888"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="224"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="402"
+			 thickness="40.0"
+			 z="1464.7556"
+			 title="sec#133"
+		>
+			<t2_patch
+				oid="404"
+				width="3008.0"
+				height="1826.0"
+				transform="matrix(0.9991487629886012,-0.04125226561472315,0.04125226561472315,0.9991487629886012,72.56407433028107,203.70400281740967)"
+				locked="true"
+				title="Brain7_133_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_133_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="3008"
+				o_height="1826"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="133"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="405"
+			 thickness="40.0"
+			 z="1475.7688"
+			 title="sec#134"
+		>
+			<t2_patch
+				oid="407"
+				width="3070.0"
+				height="1858.0"
+				transform="matrix(0.9999497749298955,-0.010022355893269844,0.010022355893269844,0.9999497749298955,107.22815969558906,140.4732442384343)"
+				locked="true"
+				title="Brain7_134_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_134_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="3070"
+				o_height="1858"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="134"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="408"
+			 thickness="40.0"
+			 z="1486.7820000000002"
+			 title="sec#135"
+		>
+			<t2_patch
+				oid="410"
+				width="3129.0"
+				height="1858.0"
+				transform="matrix(0.9998535117240902,0.017115930971008442,-0.017115930971008442,0.9998535117240902,120.1447308959996,105.08014424076646)"
+				locked="true"
+				title="Brain7_135_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_135_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="3129"
+				o_height="1858"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="135"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="411"
+			 thickness="40.0"
+			 z="1497.7952"
+			 title="sec#136"
+		>
+			<t2_patch
+				oid="413"
+				width="3079.0"
+				height="1808.0"
+				transform="matrix(0.9990763045961578,-0.04297135783850849,0.04297135783850849,0.9990763045961578,37.13988151279591,182.74933714675262)"
+				locked="true"
+				title="Brain7_136_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_136_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="3079"
+				o_height="1808"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="136"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="414"
+			 thickness="40.0"
+			 z="1508.8084000000001"
+			 title="sec#137"
+		>
+			<t2_patch
+				oid="416"
+				width="3061.0"
+				height="1898.0"
+				transform="matrix(0.9979308858403282,0.06429577813463339,-0.06429577813463339,0.9979308858403282,171.1132154289926,9.09940712192747)"
+				locked="true"
+				title="Brain7_137_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_137_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="3061"
+				o_height="1898"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="137"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="417"
+			 thickness="40.0"
+			 z="1519.8216"
+			 title="sec#138"
+		>
+			<t2_patch
+				oid="419"
+				width="2967.0"
+				height="1808.0"
+				transform="matrix(0.999973641542691,-0.007260593629300437,0.007260593629300437,0.999973641542691,102.88977837522543,134.49144458740284)"
+				locked="true"
+				title="Brain7_138_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_138_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2967"
+				o_height="1808"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="138"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="420"
+			 thickness="40.0"
+			 z="1530.8348"
+			 title="sec#139"
+		>
+			<t2_patch
+				oid="422"
+				width="3039.0"
+				height="1808.0"
+				transform="matrix(0.9998156003294224,-0.01920326373085211,0.01920326373085211,0.9998156003294224,89.67252431646011,149.99547399395487)"
+				locked="true"
+				title="Brain7_139_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_139_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="3039"
+				o_height="1808"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="139"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="423"
+			 thickness="40.0"
+			 z="1541.848"
+			 title="sec#140"
+		>
+			<t2_patch
+				oid="425"
+				width="3075.0"
+				height="1808.0"
+				transform="matrix(0.9999159474576881,0.012965262041084957,-0.012965262041084957,0.9999159474576881,120.3218708294653,107.84622742146985)"
+				locked="true"
+				title="Brain7_140_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_140_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="3075"
+				o_height="1808"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="140"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="426"
+			 thickness="40.0"
+			 z="1552.8612"
+			 title="sec#141"
+		>
+			<t2_patch
+				oid="428"
+				width="3010.0"
+				height="1754.0"
+				transform="matrix(0.9991546288231516,0.04110994650045127,-0.04110994650045127,0.9991546288231516,177.23383532964272,74.23983437143261)"
+				locked="true"
+				title="Brain7_141_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_141_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="3010"
+				o_height="1754"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="141"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="429"
+			 thickness="40.0"
+			 z="1563.8744000000002"
+			 title="sec#142"
+		>
+			<t2_patch
+				oid="431"
+				width="3042.0"
+				height="1754.0"
+				transform="matrix(0.9993814021454662,-0.0351683529008983,0.0351683529008983,0.9993814021454662,86.12096033873149,192.9426794457654)"
+				locked="true"
+				title="Brain7_142_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_142_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="3042"
+				o_height="1754"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="142"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="432"
+			 thickness="40.0"
+			 z="1574.8876"
+			 title="sec#143"
+		>
+			<t2_patch
+				oid="434"
+				width="3042.0"
+				height="1808.0"
+				transform="matrix(0.9992751731634616,0.0380674178154215,-0.0380674178154215,0.9992751731634616,143.05402911713463,71.70698718509175)"
+				locked="true"
+				title="Brain7_143_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_143_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="3042"
+				o_height="1808"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="143"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="435"
+			 thickness="40.0"
+			 z="1585.9008000000001"
+			 title="sec#144"
+		>
+			<t2_patch
+				oid="437"
+				width="3050.0"
+				height="1751.0"
+				transform="matrix(0.9997140297602124,-0.02391356729133537,0.02391356729133537,0.9997140297602124,86.70418604548013,191.52483765130773)"
+				locked="true"
+				title="Brain7_144_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_144_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="3050"
+				o_height="1751"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="144"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="438"
+			 thickness="40.0"
+			 z="1596.914"
+			 title="sec#145"
+		>
+			<t2_patch
+				oid="440"
+				width="2970.0"
+				height="1846.0"
+				transform="matrix(0.9958246960337809,0.09128622442202067,-0.09128622442202067,0.9958246960337809,216.02504266454343,-0.28540091719787597)"
+				locked="true"
+				title="Brain7_145_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_145_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2970"
+				o_height="1846"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="145"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="441"
+			 thickness="40.0"
+			 z="1607.9272"
+			 title="sec#146"
+		>
+			<t2_patch
+				oid="443"
+				width="2984.0"
+				height="1740.0"
+				transform="matrix(0.9998579529954378,0.016854489958844216,-0.016854489958844216,0.9998579529954378,139.7620743711468,125.09590554741908)"
+				locked="true"
+				title="Brain7_146_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_146_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2984"
+				o_height="1740"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="146"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="444"
+			 thickness="40.0"
+			 z="1618.9404"
+			 title="sec#147"
+		>
+			<t2_patch
+				oid="446"
+				width="2984.0"
+				height="1777.0"
+				transform="matrix(0.9989901059030238,0.044930705623937923,-0.044930705623937923,0.9989901059030238,164.72790367238395,68.93476609134132)"
+				locked="true"
+				title="Brain7_147_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_147_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2984"
+				o_height="1777"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="147"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="447"
+			 thickness="40.0"
+			 z="1629.9536"
+			 title="sec#148"
+		>
+			<t2_patch
+				oid="449"
+				width="2994.0"
+				height="1747.0"
+				transform="matrix(0.999883271875372,0.01527882926801599,-0.01527882926801599,0.999883271875372,135.56196423469555,120.04229810184688)"
+				locked="true"
+				title="Brain7_148_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_148_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2994"
+				o_height="1747"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="148"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="450"
+			 thickness="40.0"
+			 z="1640.9668000000001"
+			 title="sec#149"
+		>
+			<t2_patch
+				oid="452"
+				width="2994.0"
+				height="1766.0"
+				transform="matrix(0.9977741196713801,0.06668437683597715,-0.06668437683597715,0.9977741196713801,190.87989095585908,42.578861852264254)"
+				locked="true"
+				title="Brain7_149_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_149_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2994"
+				o_height="1766"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="149"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="453"
+			 thickness="40.0"
+			 z="1651.98"
+			 title="sec#150"
+		>
+			<t2_patch
+				oid="455"
+				width="2994.0"
+				height="1735.0"
+				transform="matrix(0.9988142139991,0.04868434977854899,-0.04868434977854899,0.9988142139991,181.5387136687441,84.69501191710924)"
+				locked="true"
+				title="Brain7_150_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_150_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2994"
+				o_height="1735"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="150"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="456"
+			 thickness="40.0"
+			 z="1662.9932000000001"
+			 title="sec#151"
+		>
+			<t2_patch
+				oid="458"
+				width="2973.0"
+				height="1752.0"
+				transform="matrix(0.9993732938541049,0.03539801592175731,-0.03539801592175731,0.9993732938541049,163.14298355016126,101.47341644111839)"
+				locked="true"
+				title="Brain7_151_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_151_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2973"
+				o_height="1752"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="151"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="459"
+			 thickness="40.0"
+			 z="1674.0064"
+			 title="sec#152"
+		>
+			<t2_patch
+				oid="461"
+				width="2949.0"
+				height="1707.0"
+				transform="matrix(0.9999465450711332,-0.010339584145609546,0.010339584145609546,0.9999465450711332,123.49850673338369,177.58660151582217)"
+				locked="true"
+				title="Brain7_152_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_152_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2949"
+				o_height="1707"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="152"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="462"
+			 thickness="40.0"
+			 z="1685.0196"
+			 title="sec#153"
+		>
+			<t2_patch
+				oid="464"
+				width="2949.0"
+				height="1662.0"
+				transform="matrix(0.9999366990108468,0.011251576391389708,-0.011251576391389708,0.9999366990108468,144.1707089472775,159.58042154047052)"
+				locked="true"
+				title="Brain7_153_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_153_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2949"
+				o_height="1662"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="153"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="465"
+			 thickness="40.0"
+			 z="1696.0328000000002"
+			 title="sec#154"
+		>
+			<t2_patch
+				oid="467"
+				width="2970.0"
+				height="1700.0"
+				transform="matrix(0.9992804380491869,-0.03792896165498322,0.03792896165498322,0.9992804380491869,86.11508725248859,235.4014744587189)"
+				locked="true"
+				title="Brain7_154_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_154_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2970"
+				o_height="1700"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="154"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="468"
+			 thickness="40.0"
+			 z="1707.046"
+			 title="sec#155"
+		>
+			<t2_patch
+				oid="470"
+				width="2934.0"
+				height="1633.0"
+				transform="matrix(0.9998733157437002,-0.015917049465871556,0.015917049465871556,0.9998733157437002,123.95842932693631,212.86165300515495)"
+				locked="true"
+				title="Brain7_155_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_155_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2934"
+				o_height="1633"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="155"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="471"
+			 thickness="40.0"
+			 z="1718.0592000000001"
+			 title="sec#156"
+		>
+			<t2_patch
+				oid="473"
+				width="2875.0"
+				height="1647.0"
+				transform="matrix(0.9962153842311219,0.08691897503559473,-0.08691897503559473,0.9962153842311219,217.34437484756472,129.40541619335772)"
+				locked="true"
+				title="Brain7_156_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_156_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2875"
+				o_height="1647"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="156"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="474"
+			 thickness="40.0"
+			 z="1729.0724"
+			 title="sec#157"
+		>
+			<t2_patch
+				oid="476"
+				width="2934.0"
+				height="1728.0"
+				transform="matrix(0.9955818158132339,-0.09389807251495634,0.09389807251495634,0.9955818158132339,19.149912162776673,303.5108823719438)"
+				locked="true"
+				title="Brain7_157_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_157_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2934"
+				o_height="1728"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="157"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="477"
+			 thickness="40.0"
+			 z="1740.0856"
+			 title="sec#158"
+		>
+			<t2_patch
+				oid="479"
+				width="2875.0"
+				height="1714.0"
+				transform="matrix(0.996373318906983,0.08508941984925808,-0.08508941984925808,0.996373318906983,195.80548400644057,84.14978631271379)"
+				locked="true"
+				title="Brain7_158_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_158_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2875"
+				o_height="1714"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="158"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="480"
+			 thickness="40.0"
+			 z="1751.0988"
+			 title="sec#159"
+		>
+			<t2_patch
+				oid="482"
+				width="2899.0"
+				height="1686.0"
+				transform="matrix(0.9967360964603973,0.08072889205785932,-0.08072889205785932,0.9967360964603973,196.4212379183591,86.96341270003995)"
+				locked="true"
+				title="Brain7_159_10x__RGB__x4.tif"
+				links="686"
+				type="4"
+				file_path="10x__RGB__x4/Brain7_159_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2899"
+				o_height="1686"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="159"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="483"
+			 thickness="40.0"
+			 z="1762.112"
+			 title="sec#160"
+		>
+			<t2_patch
+				oid="485"
+				width="2921.0"
+				height="1760.0"
+				transform="matrix(0.9996147898922092,-0.027753771432984443,0.027753771432984443,0.9996147898922092,81.03203173165912,162.37681964221701)"
+				locked="true"
+				title="Brain7_160_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_160_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2921"
+				o_height="1760"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="160"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="486"
+			 thickness="40.0"
+			 z="1773.1252000000002"
+			 title="sec#161"
+		>
+			<t2_patch
+				oid="488"
+				width="2921.0"
+				height="1660.0"
+				transform="matrix(0.9993007288340613,0.03739055163692835,-0.03739055163692835,0.9993007288340613,155.71042553912957,170.7173142419847)"
+				locked="true"
+				title="Brain7_161_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_161_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2921"
+				o_height="1660"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="161"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="489"
+			 thickness="40.0"
+			 z="1784.1384"
+			 title="sec#162"
+		>
+			<t2_patch
+				oid="491"
+				width="2886.0"
+				height="1695.0"
+				transform="matrix(0.9994125451068793,0.034271922662583325,-0.034271922662583325,0.9994125451068793,153.25635506543404,138.3992860138428)"
+				locked="true"
+				title="Brain7_162_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_162_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2886"
+				o_height="1695"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="162"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="492"
+			 thickness="40.0"
+			 z="1795.1516000000001"
+			 title="sec#163"
+		>
+			<t2_patch
+				oid="494"
+				width="2865.0"
+				height="1708.0"
+				transform="matrix(0.9997379496730434,-0.022891744877563302,0.022891744877563302,0.9997379496730434,85.32856593083761,208.80313523953464)"
+				locked="true"
+				title="Brain7_163_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_163_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2865"
+				o_height="1708"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="163"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="495"
+			 thickness="40.0"
+			 z="1806.1648"
+			 title="sec#164"
+		>
+			<t2_patch
+				oid="497"
+				width="2757.0"
+				height="1669.0"
+				transform="matrix(0.9997732645793102,0.021293647701338746,-0.021293647701338746,0.9997732645793102,212.97844465780418,196.43116126555833)"
+				locked="true"
+				title="Brain7_164_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_164_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2757"
+				o_height="1669"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="164"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="498"
+			 thickness="40.0"
+			 z="1817.178"
+			 title="sec#165"
+		>
+			<t2_patch
+				oid="500"
+				width="2748.0"
+				height="1643.0"
+				transform="matrix(0.999333984575099,0.036490920422150006,-0.036490920422150006,0.999333984575099,212.0797896905733,205.53628867026327)"
+				locked="true"
+				title="Brain7_165_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_165_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2748"
+				o_height="1643"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="165"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="501"
+			 thickness="40.0"
+			 z="1828.1912"
+			 title="sec#166"
+		>
+			<t2_patch
+				oid="503"
+				width="2796.0"
+				height="1686.0"
+				transform="matrix(0.9977944747838791,-0.06637910884279048,0.06637910884279048,0.9977944747838791,140.72040716776883,326.1800603928982)"
+				locked="true"
+				title="Brain7_166_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_166_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2796"
+				o_height="1686"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="166"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="504"
+			 thickness="40.0"
+			 z="1839.2044"
+			 title="sec#167"
+		>
+			<t2_patch
+				oid="506"
+				width="2865.0"
+				height="1699.0"
+				transform="matrix(0.9998749485361175,-0.015814148408835955,0.015814148408835955,0.9998749485361175,106.0208561616264,246.45125237195816)"
+				locked="true"
+				title="Brain7_167_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_167_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2865"
+				o_height="1699"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="167"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="507"
+			 thickness="40.0"
+			 z="1850.2176000000002"
+			 title="sec#168"
+		>
+			<t2_patch
+				oid="509"
+				width="2791.0"
+				height="1652.0"
+				transform="matrix(0.9995837786126991,0.02884908203667535,-0.02884908203667535,0.9995837786126991,149.73883751613994,227.01365346016337)"
+				locked="true"
+				title="Brain7_168_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_168_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2791"
+				o_height="1652"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="168"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="510"
+			 thickness="40.0"
+			 z="1861.2308"
+			 title="sec#169"
+		>
+			<t2_patch
+				oid="512"
+				width="2138.0"
+				height="1637.0"
+				transform="matrix(0.9997898862495813,-0.020498374400165484,0.020498374400165484,0.9997898862495813,117.21571034744466,318.678656246474)"
+				locked="true"
+				title="Brain7_169_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_169_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2138"
+				o_height="1637"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="169"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="513"
+			 thickness="40.0"
+			 z="1872.2440000000001"
+			 title="sec#170"
+		>
+			<t2_patch
+				oid="515"
+				width="2131.0"
+				height="1683.0"
+				transform="matrix(0.9999872193004484,-0.005055812076892669,0.005055812076892669,0.9999872193004484,145.21104087754065,248.12076518478898)"
+				locked="true"
+				title="Brain7_170_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_170_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2131"
+				o_height="1683"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="170"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="516"
+			 thickness="40.0"
+			 z="1883.2572"
+			 title="sec#171"
+		>
+			<t2_patch
+				oid="518"
+				width="2014.0"
+				height="1683.0"
+				transform="matrix(0.999662620217687,0.02597394347241984,-0.02597394347241984,0.999662620217687,279.8079653661043,236.7397573376811)"
+				locked="true"
+				title="Brain7_171_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_171_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2014"
+				o_height="1683"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="171"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="519"
+			 thickness="40.0"
+			 z="1894.2704"
+			 title="sec#172"
+		>
+			<t2_patch
+				oid="521"
+				width="2051.0"
+				height="1652.0"
+				transform="matrix(0.999959781421991,-0.008968586203192234,0.008968586203192234,0.999959781421991,205.2810534781729,313.91882220994285)"
+				locked="true"
+				title="Brain7_172_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_172_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2051"
+				o_height="1652"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="172"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="522"
+			 thickness="40.0"
+			 z="1905.2836"
+			 title="sec#173"
+		>
+			<t2_patch
+				oid="524"
+				width="2080.0"
+				height="1615.0"
+				transform="matrix(0.9998756483348001,0.01576984042605304,-0.01576984042605304,0.9998756483348001,197.48340414366612,309.82588522616334)"
+				locked="true"
+				title="Brain7_173_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_173_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2080"
+				o_height="1615"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="173"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="525"
+			 thickness="40.0"
+			 z="1916.2968"
+			 title="sec#174"
+		>
+			<t2_patch
+				oid="527"
+				width="2055.0"
+				height="1648.0"
+				transform="matrix(0.9978989596910406,-0.06478939919106315,0.06478939919106315,0.9978989596910406,156.04984724632232,390.04924551824615)"
+				locked="true"
+				title="Brain7_174_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_174_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2055"
+				o_height="1648"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="174"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="528"
+			 thickness="40.0"
+			 z="1927.3100000000002"
+			 title="sec#175"
+		>
+			<t2_patch
+				oid="530"
+				width="1484.0"
+				height="1599.0"
+				transform="matrix(0.9999876971285828,0.004960402349963459,-0.004960402349963459,0.9999876971285828,846.6306622178208,370.9792117605957)"
+				locked="true"
+				title="Brain7_175_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_175_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1484"
+				o_height="1599"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="175"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="531"
+			 thickness="40.0"
+			 z="1938.3232"
+			 title="sec#176"
+		>
+			<t2_patch
+				oid="533"
+				width="1397.0"
+				height="1552.0"
+				transform="matrix(0.9997598785074905,-0.021913131375687525,0.021913131375687525,0.9997598785074905,871.8564648295369,422.09432971329943)"
+				locked="true"
+				title="Brain7_176_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_176_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1397"
+				o_height="1552"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="176"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="534"
+			 thickness="40.0"
+			 z="1949.3364000000001"
+			 title="sec#177"
+		>
+			<t2_patch
+				oid="536"
+				width="1426.0"
+				height="1603.0"
+				transform="matrix(0.99934036085128,-0.036315880460667416,0.036315880460667416,0.99934036085128,851.8576613752602,447.70793912044974)"
+				locked="true"
+				title="Brain7_177_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_177_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1426"
+				o_height="1603"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="177"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="537"
+			 thickness="40.0"
+			 z="1960.3496"
+			 title="sec#178"
+		>
+			<t2_patch
+				oid="539"
+				width="1468.0"
+				height="1561.0"
+				transform="matrix(0.9989418133500149,-0.04599188559935749,0.04599188559935749,0.9989418133500149,821.7373385421561,481.0111926469576)"
+				locked="true"
+				title="Brain7_178_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_178_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1468"
+				o_height="1561"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="178"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="540"
+			 thickness="40.0"
+			 z="1971.3628"
+			 title="sec#179"
+		>
+			<t2_patch
+				oid="542"
+				width="1476.0"
+				height="1561.0"
+				transform="matrix(0.999930266527813,-0.011809406488757303,0.011809406488757303,0.999930266527813,881.7534736619364,450.88532732821704)"
+				locked="true"
+				title="Brain7_179_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_179_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1476"
+				o_height="1561"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="179"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="543"
+			 thickness="40.0"
+			 z="1982.376"
+			 title="sec#180"
+		>
+			<t2_patch
+				oid="545"
+				width="1476.0"
+				height="1590.0"
+				transform="matrix(0.996365959793355,-0.08517554910340493,0.08517554910340493,0.996365959793355,805.9280178566487,481.72310793341785)"
+				locked="true"
+				title="Brain7_180_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_180_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1476"
+				o_height="1590"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="180"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="546"
+			 thickness="40.0"
+			 z="1993.3892"
+			 title="sec#181"
+		>
+			<t2_patch
+				oid="548"
+				width="1476.0"
+				height="1590.0"
+				transform="matrix(0.9999415252657846,-0.010814159659274307,0.010814159659274307,0.9999415252657846,878.8972148101093,444.5785506507341)"
+				locked="true"
+				title="Brain7_181_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_181_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1476"
+				o_height="1590"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="181"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="549"
+			 thickness="40.0"
+			 z="2004.4024000000002"
+			 title="sec#182"
+		>
+			<t2_patch
+				oid="551"
+				width="1490.0"
+				height="1663.0"
+				transform="matrix(0.9999982557397179,-0.0018677573508819646,0.0018677573508819646,0.9999982557397179,879.0235562309317,437.80890688755517)"
+				locked="true"
+				title="Brain7_182_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_182_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1490"
+				o_height="1663"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="182"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="552"
+			 thickness="40.0"
+			 z="2015.4156"
+			 title="sec#183"
+		>
+			<t2_patch
+				oid="554"
+				width="1490.0"
+				height="1748.0"
+				transform="matrix(0.9993005591169397,0.037395087225085,-0.037395087225085,0.9993005591169397,919.647849453052,410.71668614726013)"
+				locked="true"
+				title="Brain7_183_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_183_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1490"
+				o_height="1748"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="183"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="555"
+			 thickness="40.0"
+			 z="2026.4288000000001"
+			 title="sec#184"
+		>
+			<t2_patch
+				oid="557"
+				width="1490.0"
+				height="1755.0"
+				transform="matrix(0.9990610293074974,0.043325047248027306,-0.043325047248027306,0.9990610293074974,927.6754024332495,385.832527894489)"
+				locked="true"
+				title="Brain7_184_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_184_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1490"
+				o_height="1755"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="184"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="558"
+			 thickness="40.0"
+			 z="2037.442"
+			 title="sec#185"
+		>
+			<t2_patch
+				oid="560"
+				width="1543.0"
+				height="1562.0"
+				transform="matrix(0.9992579770083374,0.03851617043795109,-0.03851617043795109,0.9992579770083374,883.3660441569318,393.1449468824303)"
+				locked="true"
+				title="Brain7_185_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_185_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1543"
+				o_height="1562"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="185"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="561"
+			 thickness="40.0"
+			 z="2048.4552"
+			 title="sec#186"
+		>
+			<t2_patch
+				oid="563"
+				width="1696.0"
+				height="1726.0"
+				transform="matrix(0.9985104135673007,0.0545614699000844,-0.0545614699000844,0.9985104135673007,780.6104554279118,350.45234249103396)"
+				locked="true"
+				title="Brain7_186_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_186_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1696"
+				o_height="1726"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="186"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="564"
+			 thickness="40.0"
+			 z="2059.4684"
+			 title="sec#187"
+		>
+			<t2_patch
+				oid="566"
+				width="1758.0"
+				height="1733.0"
+				transform="matrix(0.9992259831030843,-0.03933744643052566,0.03933744643052566,0.9992259831030843,657.4557986829641,439.52324537945105)"
+				locked="true"
+				title="Brain7_187_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_187_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1758"
+				o_height="1733"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="187"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="567"
+			 thickness="40.0"
+			 z="2070.4816"
+			 title="sec#188"
+		>
+			<t2_patch
+				oid="569"
+				width="1796.0"
+				height="1733.0"
+				transform="matrix(0.9999794722476225,0.0064074240820012765,-0.0064074240820012765,0.9999794722476225,753.3989832988864,415.6235607058561)"
+				locked="true"
+				title="Brain7_188_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_188_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1796"
+				o_height="1733"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="188"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="570"
+			 thickness="40.0"
+			 z="2081.4948"
+			 title="sec#189"
+		>
+			<t2_patch
+				oid="572"
+				width="1761.0"
+				height="1863.0"
+				transform="matrix(0.9997362644713693,0.022965223727021127,-0.022965223727021127,0.9997362644713693,767.7729065771573,383.9766039250703)"
+				locked="true"
+				title="Brain7_189_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_189_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1761"
+				o_height="1863"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="189"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="573"
+			 thickness="40.0"
+			 z="2092.5080000000003"
+			 title="sec#190"
+		>
+			<t2_patch
+				oid="575"
+				width="1815.0"
+				height="1696.0"
+				transform="matrix(0.9979520417030601,0.0639665729947578,-0.0639665729947578,0.9979520417030601,783.4934257529585,369.0582731640643)"
+				locked="true"
+				title="Brain7_190_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_190_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1815"
+				o_height="1696"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="190"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="576"
+			 thickness="40.0"
+			 z="2103.5212"
+			 title="sec#191"
+		>
+			<t2_patch
+				oid="578"
+				width="1838.0"
+				height="1811.0"
+				transform="matrix(0.9999873319998374,0.005033471947581954,-0.005033471947581954,0.9999873319998374,728.052848227363,410.01873776593357)"
+				locked="true"
+				title="Brain7_191_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_191_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1838"
+				o_height="1811"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="191"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="579"
+			 thickness="40.0"
+			 z="2114.5344"
+			 title="sec#192"
+		>
+			<t2_patch
+				oid="581"
+				width="1850.0"
+				height="1830.0"
+				transform="matrix(0.9995311204413105,0.030619263043684227,-0.030619263043684227,0.9995311204413105,743.2947030341111,386.88748749967544)"
+				locked="true"
+				title="Brain7_192_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_192_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1850"
+				o_height="1830"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="192"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="582"
+			 thickness="40.0"
+			 z="2125.5476"
+			 title="sec#193"
+		>
+			<t2_patch
+				oid="584"
+				width="1904.0"
+				height="1641.0"
+				transform="matrix(0.9999001811709607,0.014128966497233586,-0.014128966497233586,0.9999001811709607,704.9022480972826,410.3806971486565)"
+				locked="true"
+				title="Brain7_193_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_193_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1904"
+				o_height="1641"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="193"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="585"
+			 thickness="40.0"
+			 z="2136.5608"
+			 title="sec#194"
+		>
+			<t2_patch
+				oid="587"
+				width="1926.0"
+				height="1822.0"
+				transform="matrix(0.9999737108157013,0.007251046646945755,-0.007251046646945755,0.9999737108157013,681.6078659853747,411.47186853338053)"
+				locked="true"
+				title="Brain7_194_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_194_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1926"
+				o_height="1822"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="194"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="588"
+			 thickness="40.0"
+			 z="2147.574"
+			 title="sec#195"
+		>
+			<t2_patch
+				oid="590"
+				width="1968.0"
+				height="1822.0"
+				transform="matrix(0.9991562328047107,0.041070944078493835,-0.041070944078493835,0.9991562328047107,700.8639426325881,382.17390081801796)"
+				locked="true"
+				title="Brain7_195_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_195_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="1968"
+				o_height="1822"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="195"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="591"
+			 thickness="40.0"
+			 z="2158.5872"
+			 title="sec#196"
+		>
+			<t2_patch
+				oid="593"
+				width="2021.0"
+				height="1601.0"
+				transform="matrix(0.9977527465331082,0.06700340876134152,-0.06700340876134152,0.9977527465331082,699.2514056920982,375.7959937767164)"
+				locked="true"
+				title="Brain7_196_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_196_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2021"
+				o_height="1601"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="196"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="594"
+			 thickness="40.0"
+			 z="2169.6004000000003"
+			 title="sec#197"
+		>
+			<t2_patch
+				oid="596"
+				width="2089.0"
+				height="1559.0"
+				transform="matrix(0.9968648694361656,-0.0791228922879873,0.0791228922879873,0.9968648694361656,573.5934730351091,558.7114272004765)"
+				locked="true"
+				title="Brain7_197_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_197_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2089"
+				o_height="1559"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="197"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="597"
+			 thickness="40.0"
+			 z="2180.6136"
+			 title="sec#198"
+		>
+			<t2_patch
+				oid="599"
+				width="2161.0"
+				height="1845.0"
+				transform="matrix(0.9999789672177006,0.006485763040777211,-0.006485763040777211,0.9999789672177006,622.3075897911494,426.8232553813805)"
+				locked="true"
+				title="Brain7_198_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_198_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2161"
+				o_height="1845"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="198"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="600"
+			 thickness="40.0"
+			 z="2191.6268"
+			 title="sec#199"
+		>
+			<t2_patch
+				oid="602"
+				width="2182.0"
+				height="1771.0"
+				transform="matrix(0.9948731247894079,0.10113093281365106,-0.10113093281365106,0.9948731247894079,627.7469091191615,329.3257061203608)"
+				locked="true"
+				title="Brain7_199_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_199_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2182"
+				o_height="1771"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="199"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="603"
+			 thickness="40.0"
+			 z="2202.64"
+			 title="sec#200"
+		>
+			<t2_patch
+				oid="605"
+				width="2428.0"
+				height="1601.0"
+				transform="matrix(0.9993951776612675,0.0347746871647102,-0.0347746871647102,0.9993951776612675,550.5929670844789,424.7768999049663)"
+				locked="true"
+				title="Brain7_200_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_200_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2428"
+				o_height="1601"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="200"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="606"
+			 thickness="40.0"
+			 z="2213.6532"
+			 title="sec#201"
+		>
+			<t2_patch
+				oid="608"
+				width="2363.0"
+				height="1731.0"
+				transform="matrix(0.9992241041744269,0.03938514487486839,-0.03938514487486839,0.9992241041744269,555.3264198877323,280.0062806517735)"
+				locked="true"
+				title="Brain7_201_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_201_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2363"
+				o_height="1731"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="201"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="609"
+			 thickness="40.0"
+			 z="2224.6664"
+			 title="sec#202"
+		>
+			<t2_patch
+				oid="611"
+				width="2494.0"
+				height="1707.0"
+				transform="matrix(0.9994733271230254,-0.032451014924492955,0.032451014924492955,0.9994733271230254,456.1806830519645,402.931516425444)"
+				locked="true"
+				title="Brain7_202_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_202_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2494"
+				o_height="1707"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="202"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="612"
+			 thickness="40.0"
+			 z="2235.6796"
+			 title="sec#203"
+		>
+			<t2_patch
+				oid="614"
+				width="2521.0"
+				height="1707.0"
+				transform="matrix(0.9999569719769826,0.009276540013599162,-0.009276540013599162,0.9999569719769826,473.5848944486961,335.70830270604984)"
+				locked="true"
+				title="Brain7_203_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_203_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2521"
+				o_height="1707"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="203"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="615"
+			 thickness="40.0"
+			 z="2246.6928000000003"
+			 title="sec#204"
+		>
+			<t2_patch
+				oid="617"
+				width="2564.0"
+				height="1649.0"
+				transform="matrix(0.9999844898585809,0.005569563921321813,-0.005569563921321813,0.9999844898585809,426.8703825183529,398.73029428542077)"
+				locked="true"
+				title="Brain7_204_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_204_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2564"
+				o_height="1649"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="204"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="618"
+			 thickness="40.0"
+			 z="2257.706"
+			 title="sec#205"
+		>
+			<t2_patch
+				oid="620"
+				width="2564.0"
+				height="1676.0"
+				transform="matrix(0.9986315960328843,-0.05229660987878872,0.05229660987878872,0.9986315960328843,348.8975150126025,454.95138530977056)"
+				locked="true"
+				title="Brain7_205_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_205_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2564"
+				o_height="1676"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="205"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="621"
+			 thickness="40.0"
+			 z="2268.7192"
+			 title="sec#206"
+		>
+			<t2_patch
+				oid="623"
+				width="2589.0"
+				height="1693.0"
+				transform="matrix(0.9983008246818161,-0.05827060527921099,0.05827060527921099,0.9983008246818161,334.51110783092645,457.82334082100806)"
+				locked="true"
+				title="Brain7_206_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_206_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2589"
+				o_height="1693"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="206"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="624"
+			 thickness="40.0"
+			 z="2279.7324"
+			 title="sec#207"
+		>
+			<t2_patch
+				oid="626"
+				width="2609.0"
+				height="1728.0"
+				transform="matrix(0.9999900227700668,-0.004467030369397941,0.004467030369397941,0.9999900227700668,385.270395051979,382.2568588972199)"
+				locked="true"
+				title="Brain7_207_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_207_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2609"
+				o_height="1728"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="207"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="627"
+			 thickness="40.0"
+			 z="2290.7456"
+			 title="sec#208"
+		>
+			<t2_patch
+				oid="629"
+				width="2603.0"
+				height="1863.0"
+				transform="matrix(0.9989204375923251,-0.04645384117979643,0.04645384117979643,0.9989204375923251,321.9155506260395,313.81884015770174)"
+				locked="true"
+				title="Brain7_208_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_208_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2603"
+				o_height="1863"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="208"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="630"
+			 thickness="40.0"
+			 z="2301.7588"
+			 title="sec#209"
+		>
+			<t2_patch
+				oid="632"
+				width="2615.0"
+				height="1744.0"
+				transform="matrix(0.9996284764535515,0.027256358215127584,-0.027256358215127584,0.9996284764535515,410.7300611923929,305.32815153822503)"
+				locked="true"
+				title="Brain7_209_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_209_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2615"
+				o_height="1744"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="209"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="633"
+			 thickness="40.0"
+			 z="2312.772"
+			 title="sec#210"
+		>
+			<t2_patch
+				oid="635"
+				width="2603.0"
+				height="1735.0"
+				transform="matrix(0.999540213647083,0.030320971329164042,-0.030320971329164042,0.999540213647083,408.9535347696865,310.01778063511665)"
+				locked="true"
+				title="Brain7_210_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_210_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2603"
+				o_height="1735"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="210"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="636"
+			 thickness="40.0"
+			 z="2323.7852000000003"
+			 title="sec#211"
+		>
+			<t2_patch
+				oid="638"
+				width="2568.0"
+				height="1767.0"
+				transform="matrix(0.9999968602199348,0.0025059030851356636,-0.0025059030851356636,0.9999968602199348,381.05599210448327,392.13142105791985)"
+				locked="true"
+				title="Brain7_211_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_211_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2568"
+				o_height="1767"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="211"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="639"
+			 thickness="40.0"
+			 z="2334.7984"
+			 title="sec#212"
+		>
+			<t2_patch
+				oid="641"
+				width="2630.0"
+				height="1767.0"
+				transform="matrix(0.9999226934641096,-0.012434110160378412,0.012434110160378412,0.9999226934641096,355.30257977225665,355.3616142109295)"
+				locked="true"
+				title="Brain7_212_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_212_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2630"
+				o_height="1767"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="212"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="642"
+			 thickness="40.0"
+			 z="2345.8116"
+			 title="sec#213"
+		>
+			<t2_patch
+				oid="644"
+				width="2595.0"
+				height="1702.0"
+				transform="matrix(0.9994340590620101,-0.03363869181217628,0.03363869181217628,0.9994340590620101,341.7870718090817,449.3679292675679)"
+				locked="true"
+				title="Brain7_213_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_213_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2595"
+				o_height="1702"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="213"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="645"
+			 thickness="40.0"
+			 z="2356.8248000000003"
+			 title="sec#214"
+		>
+			<t2_patch
+				oid="647"
+				width="2610.0"
+				height="1678.0"
+				transform="matrix(0.9998930245959372,-0.014626666208966153,0.014626666208966153,0.9998930245959372,349.32170926632443,419.2231278420172)"
+				locked="true"
+				title="Brain7_214_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_214_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2610"
+				o_height="1678"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="214"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="648"
+			 thickness="40.0"
+			 z="2367.838"
+			 title="sec#215"
+		>
+			<t2_patch
+				oid="650"
+				width="2599.0"
+				height="1734.0"
+				transform="matrix(0.9999931633216153,0.003697743910749379,-0.003697743910749379,0.9999931633216153,368.88427016635615,338.28114685511946)"
+				locked="true"
+				title="Brain7_215_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_215_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2599"
+				o_height="1734"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="215"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="651"
+			 thickness="40.0"
+			 z="2378.8512"
+			 title="sec#216"
+		>
+			<t2_patch
+				oid="653"
+				width="2616.0"
+				height="1723.0"
+				transform="matrix(0.999990724183921,-0.004307150579826014,0.004307150579826014,0.999990724183921,373.6627892632014,384.42453422765993)"
+				locked="true"
+				title="Brain7_216_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_216_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2616"
+				o_height="1723"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="216"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="654"
+			 thickness="40.0"
+			 z="2389.8644"
+			 title="sec#217"
+		>
+			<t2_patch
+				oid="656"
+				width="2598.0"
+				height="1672.0"
+				transform="matrix(0.9944876389589917,-0.10485387907831585,0.10485387907831585,0.9944876389589917,259.57090346391215,544.9292394264085)"
+				locked="true"
+				title="Brain7_217_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_217_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2598"
+				o_height="1672"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="217"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="657"
+			 thickness="40.0"
+			 z="2400.8776000000003"
+			 title="sec#218"
+		>
+			<t2_patch
+				oid="659"
+				width="2609.0"
+				height="1691.0"
+				transform="matrix(0.9944232147753077,-0.1054631211179639,0.1054631211179639,0.9944232147753077,268.54901622080797,532.8705534361716)"
+				locked="true"
+				title="Brain7_218_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_218_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2609"
+				o_height="1691"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="218"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="660"
+			 thickness="40.0"
+			 z="2411.8908"
+			 title="sec#219"
+		>
+			<t2_patch
+				oid="662"
+				width="2453.0"
+				height="1691.0"
+				transform="matrix(0.9931649394220959,-0.11671933474238226,0.11671933474238226,0.9931649394220959,246.63259309555633,561.0223287445947)"
+				locked="true"
+				title="Brain7_219_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_219_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2453"
+				o_height="1691"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="219"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="663"
+			 thickness="40.0"
+			 z="2422.904"
+			 title="sec#220"
+		>
+			<t2_patch
+				oid="665"
+				width="2457.0"
+				height="1691.0"
+				transform="matrix(0.9909675953430181,-0.1341015472695085,0.1341015472695085,0.9909675953430181,319.8988339020998,579.7871223991528)"
+				locked="true"
+				title="Brain7_220_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_220_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2457"
+				o_height="1691"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="220"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="666"
+			 thickness="40.0"
+			 z="2433.9172000000003"
+			 title="sec#221"
+		>
+			<t2_patch
+				oid="668"
+				width="2533.0"
+				height="1676.0"
+				transform="matrix(0.9992429713439005,-0.03890352451658908,0.03890352451658908,0.9992429713439005,342.3388018882615,482.31819862886005)"
+				locked="true"
+				title="Brain7_221_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_221_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2533"
+				o_height="1676"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="221"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="669"
+			 thickness="40.0"
+			 z="2444.9304"
+			 title="sec#222"
+		>
+			<t2_patch
+				oid="671"
+				width="2359.0"
+				height="1676.0"
+				transform="matrix(0.9977697051523624,-0.06675039685401005,0.06675039685401005,0.9977697051523624,321.2584380264416,511.1703842296092)"
+				locked="true"
+				title="Brain7_222_10x__RGB__x4.tif"
+				links=""
+				type="4"
+				file_path="10x__RGB__x4/Brain7_222_10x__RGB__x4.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="2359"
+				o_height="1676"
+				min="0.0"
+				max="255.0"
+				mres="32"
+				alpha_mask_id="222"
+			>
+				<t2_prop key="unit" value="µm" />
+				<t2_prop key="cal" value="3.6320052301" />
+			</t2_patch>
+		</t2_layer>
+	</t2_layer_set>
+	<t2_display id="683"
+		layer_id="5"
+		c_alphas="-1"
+		c_alphas_state="-1"
+		x="541"
+		y="354"
+		magnification="0.5"
+		srcrect_x="0"
+		srcrect_y="369"
+		srcrect_width="3028"
+		srcrect_height="1924"
+		scroll_step="1"
+		filter_enabled="true"
+		filter_min_max_enabled="false"
+		filter_min="0"
+		filter_max="255"
+		filter_invert="false"
+		filter_clahe_enabled="true"
+		filter_clahe_block_size="127"
+		filter_clahe_histogram_bins="256"
+		filter_clahe_max_slope="6.0"
+	/>
+</trakem2>
